@@ -47,6 +47,15 @@ const metrics = [
   { label: 'Unit Produk', value: '12+' },
   { label: 'Fokus Industri', value: 'HealthTech' },
   { label: 'Model Eksekusi', value: 'Build Fast' },
+  { label: 'Total Produk Ditampilkan', value: '12/12' },
+];
+
+const navLinks = [
+  { label: 'Tentang', href: '#about' },
+  { label: 'Value', href: '#value' },
+  { label: 'Journey', href: '#journey' },
+  { label: 'Produk', href: '#products' },
+  { label: 'Kontak', href: '#contact' },
 ];
 
 const landingMaterials = [
@@ -91,6 +100,21 @@ export function App() {
           e('img', { src: '/somansa-logo.svg', className: 'brand-logo', alt: 'Logo Somansa' }),
           e('div', { className: 'brand' }, 'SOMANSA'),
         ),
+        e(
+          'div',
+          { className: 'nav-menu' },
+          ...navLinks.map((item) =>
+            e(
+              'a',
+              {
+                key: item.label,
+                href: item.href,
+                className: 'nav-link',
+              },
+              item.label,
+            ),
+          ),
+        ),
         e('a', { className: 'cta', href: '#products' }, 'Explore Produk'),
       ),
       e(
@@ -108,6 +132,13 @@ export function App() {
           { className: 'hero-actions' },
           e('a', { href: '#products', className: 'btn btn-primary' }, 'Lihat Portofolio'),
           e('a', { href: '#value', className: 'btn btn-secondary' }, 'Nilai Unggul'),
+        ),
+        e(
+          'div',
+          { className: 'luxury-strip' },
+          e('span', null, 'Premium Product Design'),
+          e('span', null, 'Healthcare Innovation'),
+          e('span', null, 'Conversion-Oriented Experience'),
         ),
         e(
           'div',
@@ -142,9 +173,9 @@ export function App() {
         ),
       ),
     ),
-    e(
+      e(
       'section',
-      { className: 'section journey' },
+      { id: 'journey', className: 'section journey' },
       e(
         'div',
         { className: 'section-head' },
@@ -191,7 +222,7 @@ export function App() {
         ),
       ),
     ),
-    e(
+      e(
       'section',
       { className: 'section story' },
       e(
@@ -249,9 +280,9 @@ export function App() {
         ),
       ),
     ),
-    e(
-      'section',
-      { className: 'section banner' },
+      e(
+        'section',
+      { id: 'contact', className: 'section banner' },
       e('h2', null, 'Ready to collaborate with Somansa?'),
       e(
         'p',
