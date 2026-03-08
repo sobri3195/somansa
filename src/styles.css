@@ -165,7 +165,8 @@ h1 {
 .card,
 .product-card,
 .banner,
-.value-card {
+.value-card,
+.story-card {
   border: 1px solid var(--line);
   background: var(--card);
   border-radius: 1.1rem;
@@ -187,6 +188,41 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.9rem;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.story-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.story-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(81, 241, 211, 0.13), rgba(94, 139, 255, 0.08));
+  transform: translateX(-100%);
+  transition: transform 0.55s ease;
+}
+
+.story-card:hover::before {
+  transform: translateX(0);
+}
+
+.story-card h3,
+.story-card p {
+  position: relative;
+}
+
+.story-card p {
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0.5rem 0 0;
 }
 
 .value-card {
@@ -226,10 +262,53 @@ h1 {
 }
 
 .product-card {
+  position: relative;
+  overflow: hidden;
   min-height: 140px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.product-card::after {
+  content: '';
+  position: absolute;
+  inset: -25% -10% auto auto;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(81, 241, 211, 0.26), transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(81, 241, 211, 0.5);
+}
+
+.product-card:hover::after {
+  opacity: 1;
+}
+
+.product-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.product-icon {
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 1.15rem;
+  animation: bob 3s ease-in-out infinite;
 }
 
 .product-card span {
@@ -241,6 +320,12 @@ h1 {
 .product-card h4 {
   margin: 0.8rem 0 0;
   line-height: 1.4;
+}
+
+.product-tag {
+  margin: 0.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 .banner {
@@ -295,6 +380,14 @@ h1 {
   animation: float 3.5s ease-in-out infinite;
 }
 
+.tilt:nth-child(odd) {
+  animation: tiltLeft 4.2s ease-in-out infinite;
+}
+
+.tilt:nth-child(even) {
+  animation: tiltRight 4.2s ease-in-out infinite;
+}
+
 @keyframes reveal {
   to {
     opacity: 1;
@@ -339,6 +432,36 @@ h1 {
   }
 }
 
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes tiltLeft {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-0.8deg);
+  }
+}
+
+@keyframes tiltRight {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0.8deg);
+  }
+}
+
 @media (max-width: 768px) {
   .page {
     padding: 1rem 0.9rem 1.5rem;
@@ -377,6 +500,7 @@ h1 {
   }
 
   .highlights,
+  .story-grid,
   .value-grid,
   .grid {
     grid-template-columns: 1fr;
