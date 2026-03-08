@@ -64,6 +64,15 @@ const landingMaterials = [
   },
 ];
 
+const audiences = ['Rumah Sakit', 'Klinik & Dokter', 'Startup Digital', 'UMKM Health Retail'];
+
+const journey = [
+  { step: 'Discover', detail: 'Audit kebutuhan, pain point, dan peluang pertumbuhan bisnis.' },
+  { step: 'Design', detail: 'Menyusun UI/UX, alur layanan, dan blueprint teknis berbasis data.' },
+  { step: 'Develop', detail: 'Pengembangan cepat dengan kualitas production-ready dan aman.' },
+  { step: 'Scale', detail: 'Monitoring, iterasi fitur, serta optimasi conversion berkelanjutan.' },
+];
+
 const e = React.createElement;
 
 export function App() {
@@ -102,6 +111,11 @@ export function App() {
         ),
         e(
           'div',
+          { className: 'audience-pills' },
+          ...audiences.map((item) => e('span', { className: 'audience-pill', key: item }, item)),
+        ),
+        e(
+          'div',
           { className: 'metrics' },
           ...metrics.map((item) =>
             e(
@@ -125,6 +139,29 @@ export function App() {
           { className: 'card float', key: item.title },
           e('h3', null, item.title),
           e('p', null, item.desc),
+        ),
+      ),
+    ),
+    e(
+      'section',
+      { className: 'section journey' },
+      e(
+        'div',
+        { className: 'section-head' },
+        e('p', { className: 'badge' }, 'Workflow Kolaborasi'),
+        e('h2', null, 'Proses End-to-End yang Jelas dan Nyaman'),
+      ),
+      e(
+        'div',
+        { className: 'journey-grid' },
+        ...journey.map((item, i) =>
+          e(
+            'article',
+            { className: 'journey-card reveal', style: { animationDelay: `${i * 90}ms` }, key: item.step },
+            e('span', { className: 'journey-index' }, `${String(i + 1).padStart(2, '0')}`),
+            e('h3', null, item.step),
+            e('p', null, item.detail),
+          ),
         ),
       ),
     ),
@@ -154,63 +191,63 @@ export function App() {
         ),
       ),
     ),
+    e(
+      'section',
+      { className: 'section story' },
       e(
-        'section',
-        { className: 'section story' },
-        e(
-          'div',
-          { className: 'section-head' },
-          e('p', { className: 'badge' }, 'Materi Landing Page'),
-          e('h2', null, 'Bahan Konten Baru untuk Tingkatkan Conversion'),
-        ),
-        e(
-          'div',
-          { className: 'story-grid' },
-          ...landingMaterials.map((item, i) =>
-            e(
-              'article',
-              {
-                className: 'story-card reveal',
-                key: item.title,
-                style: { animationDelay: `${120 + i * 100}ms` },
-              },
-              e('h3', null, item.title),
-              e('p', null, item.desc),
-            ),
+        'div',
+        { className: 'section-head' },
+        e('p', { className: 'badge' }, 'Materi Landing Page'),
+        e('h2', null, 'Bahan Konten Baru untuk Tingkatkan Conversion'),
+      ),
+      e(
+        'div',
+        { className: 'story-grid' },
+        ...landingMaterials.map((item, i) =>
+          e(
+            'article',
+            {
+              className: 'story-card reveal',
+              key: item.title,
+              style: { animationDelay: `${120 + i * 100}ms` },
+            },
+            e('h3', null, item.title),
+            e('p', null, item.desc),
           ),
         ),
       ),
+    ),
+    e(
+      'section',
+      { id: 'products', className: 'section products' },
       e(
-        'section',
-        { id: 'products', className: 'section products' },
-        e(
-          'div',
+        'div',
         { className: 'section-head' },
         e('p', { className: 'badge' }, 'Produk & Unit Bisnis'),
         e('h2', null, '12 Pilar Bisnis Somansa'),
       ),
-        e(
-          'div',
-          { className: 'grid' },
-          ...products.map((product, i) =>
+      e(
+        'div',
+        { className: 'grid' },
+        ...products.map((product, i) =>
+          e(
+            'div',
+            {
+              className: 'product-card reveal tilt',
+              style: { animationDelay: `${i * 70}ms` },
+              key: product.name,
+            },
             e(
               'div',
-              {
-                className: 'product-card reveal tilt',
-                style: { animationDelay: `${i * 70}ms` },
-                key: product.name,
-              },
-              e(
-                'div',
-                { className: 'product-head' },
-                e('span', null, String(i + 1).padStart(2, '0')),
-                e('div', { className: 'product-icon', 'aria-hidden': true }, product.icon),
-              ),
-              e('h4', null, product.name),
-              e('p', { className: 'product-tag' }, product.tag),
+              { className: 'product-head' },
+              e('span', null, String(i + 1).padStart(2, '0')),
+              e('div', { className: 'product-icon', 'aria-hidden': true }, product.icon),
             ),
+            e('h4', null, product.name),
+            e('p', { className: 'product-tag' }, product.tag),
           ),
         ),
+      ),
     ),
     e(
       'section',
