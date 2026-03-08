@@ -106,7 +106,7 @@ export function App() {
           { className: 'hero', id: 'top' },
         e(
           'div',
-          { className: 'hero-content' },
+          { className: 'hero-content animated-border' },
           e('p', { className: 'eyebrow' }, 'Digital partner untuk organisasi kesehatan & bisnis berbasis teknologi'),
           e('h1', null, 'Membangun Solusi HealthTech dan AI yang Siap Dipakai, Siap Tumbuh, dan Siap Dipercaya.'),
           e(
@@ -136,7 +136,8 @@ export function App() {
         ),
         e(
           'aside',
-          { className: 'trust-block', 'aria-label': 'Company highlights' },
+          { className: 'trust-block animated-border', 'aria-label': 'Company highlights' },
+          e('img', { src: '/src/health-illustration.svg', className: 'trust-image', alt: 'Ilustrasi dashboard kesehatan digital Somansa' }),
           e('p', { className: 'trust-label' }, 'Company highlights'),
           e('h2', null, 'Execution partner yang fokus pada dampak bisnis.'),
           e(
@@ -173,7 +174,7 @@ export function App() {
         ...serviceItems.map((item) =>
           e(
             'article',
-            { className: 'service-card', key: item.title },
+            { className: 'service-card animated-border', key: item.title },
             e('span', { className: 'service-icon', 'aria-hidden': true }, item.icon),
             e('h3', null, item.title),
             e('p', null, item.desc),
@@ -190,7 +191,7 @@ export function App() {
         ...portfolioItems.map((item, index) =>
           e(
             'article',
-            { className: 'portfolio-card', key: item.title },
+            { className: 'portfolio-card animated-border', key: item.title },
             e('div', { className: 'portfolio-top' }, e('span', { className: 'portfolio-index' }, `0${index + 1}`), e('span', { className: 'portfolio-badge' }, item.category)),
             e('h3', null, item.title),
             e('p', { className: 'portfolio-industry' }, item.industry),
@@ -212,7 +213,7 @@ export function App() {
         ...processSteps.map((step, index) =>
           e(
             'article',
-            { className: 'step-card', key: step.title },
+            { className: 'step-card animated-border', key: step.title },
             e('span', { className: 'step-index' }, `Step ${index + 1}`),
             e('h3', null, step.title),
             e('p', null, step.desc),
@@ -223,7 +224,7 @@ export function App() {
     ),
     e(
       'section',
-      { id: 'cta', className: 'section cta-panel' },
+      { id: 'cta', className: 'section cta-panel animated-border' },
       e('p', { className: 'section-kicker' }, 'Start a Strategic Conversation'),
       e('h2', null, 'Butuh partner eksekusi untuk inisiatif HealthTech atau AI Anda?'),
       e(

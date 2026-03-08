@@ -1,15 +1,15 @@
 :root {
-  --bg: #050b1a;
-  --bg-soft: #0b1530;
+  --bg: #08091f;
+  --bg-soft: #11143a;
   --surface: rgba(13, 25, 52, 0.72);
   --surface-strong: #111f41;
   --line: rgba(146, 178, 255, 0.22);
   --line-strong: rgba(146, 178, 255, 0.35);
   --text: #f3f7ff;
   --muted: #a9b9de;
-  --primary: #5d84ff;
-  --primary-strong: #3a6dff;
-  --accent: #74d5ff;
+  --primary: #7a66ff;
+  --primary-strong: #486dff;
+  --accent: #4af1ff;
   --shadow: 0 30px 60px rgba(2, 8, 26, 0.45);
 }
 
@@ -25,14 +25,49 @@ body,
   font-family: Inter, 'Segoe UI', Roboto, Arial, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 12% 0%, rgba(46, 94, 224, 0.25) 0%, transparent 42%),
-    radial-gradient(circle at 88% 10%, rgba(58, 109, 255, 0.18) 0%, transparent 36%),
+    radial-gradient(circle at 12% 0%, rgba(82, 111, 255, 0.35) 0%, transparent 42%),
+    radial-gradient(circle at 88% 10%, rgba(90, 63, 255, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(74, 241, 255, 0.14) 0%, transparent 38%),
     var(--bg);
 }
 
 a {
   color: inherit;
 }
+
+
+@keyframes borderSpin {
+  to {
+    --spin-angle: 1turn;
+  }
+}
+
+@property --spin-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0turn;
+}
+
+.animated-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: conic-gradient(from var(--spin-angle), rgba(74, 241, 255, 0.85), rgba(122, 102, 255, 0.95), rgba(255, 111, 196, 0.85), rgba(74, 241, 255, 0.85));
+  animation: borderSpin 6s linear infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+}
+
 
 .page {
   width: min(1160px, calc(100% - 3rem));
@@ -268,6 +303,15 @@ h1 {
 .stat-pill span {
   color: var(--muted);
   font-size: 0.82rem;
+}
+
+
+.trust-image {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(140, 170, 255, 0.3);
+  margin-bottom: 1rem;
+  background: rgba(5, 12, 32, 0.8);
 }
 
 .trust-block h2 {
