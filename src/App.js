@@ -30,48 +30,13 @@ const highlights = [
   },
 ];
 
-const valuePoints = [
-  'UI modern dengan fokus conversion dan trust.',
-  'Arsitektur produk dibuat modular dan mudah dikembangkan.',
-  'Pendekatan AI-first untuk efisiensi operasional klinik.',
-  'Integrasi data antar unit bisnis untuk insight real-time.',
-  'Peta jalan produk berbasis kebutuhan pengguna nyata.',
-  'Keamanan data dan privasi menjadi prioritas utama.',
-  'Sistem siap multi-device: desktop, tablet, mobile.',
-  'Monitoring performa untuk menjaga uptime layanan.',
-  'Onboarding cepat untuk tim medis dan non-teknis.',
-  'Kolaborasi end-to-end dari strategi hingga deployment.',
-];
-
 const metrics = [
   { label: 'Unit Produk', value: '12+' },
   { label: 'Fokus Industri', value: 'HealthTech' },
   { label: 'Model Eksekusi', value: 'Build Fast' },
 ];
 
-const landingMaterials = [
-  {
-    title: 'Visual Story yang Lebih Kuat',
-    desc: 'Narasi landing page sekarang didorong oleh blok konten yang menekankan transformasi digital kesehatan secara nyata dan mudah dipahami visitor.',
-  },
-  {
-    title: 'Call-to-Action Bertingkat',
-    desc: 'CTA disusun untuk audience berbeda: rumah sakit, startup, hingga UMKM agar pengunjung cepat menemukan jalur kolaborasi yang relevan.',
-  },
-  {
-    title: 'Konten yang Siap Iklan',
-    desc: 'Struktur section mendukung kampanye ads & social traffic: hero yang jelas, value proposition singkat, dan showcase produk dengan ikon visual.',
-  },
-];
-
 const audiences = ['Rumah Sakit', 'Klinik & Dokter', 'Startup Digital', 'UMKM Health Retail'];
-
-const journey = [
-  { step: 'Discover', detail: 'Audit kebutuhan, pain point, dan peluang pertumbuhan bisnis.' },
-  { step: 'Design', detail: 'Menyusun UI/UX, alur layanan, dan blueprint teknis berbasis data.' },
-  { step: 'Develop', detail: 'Pengembangan cepat dengan kualitas production-ready dan aman.' },
-  { step: 'Scale', detail: 'Monitoring, iterasi fitur, serta optimasi conversion berkelanjutan.' },
-];
 
 const e = React.createElement;
 
@@ -107,7 +72,7 @@ export function App() {
           'div',
           { className: 'hero-actions' },
           e('a', { href: '#products', className: 'btn btn-primary' }, 'Lihat Portofolio'),
-          e('a', { href: '#value', className: 'btn btn-secondary' }, 'Nilai Unggul'),
+          e('a', { href: '#about', className: 'btn btn-secondary' }, 'Tentang Somansa'),
         ),
         e(
           'div',
@@ -139,81 +104,6 @@ export function App() {
           { className: 'card float', key: item.title },
           e('h3', null, item.title),
           e('p', null, item.desc),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { className: 'section journey' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'Workflow Kolaborasi'),
-        e('h2', null, 'Proses End-to-End yang Jelas dan Nyaman'),
-      ),
-      e(
-        'div',
-        { className: 'journey-grid' },
-        ...journey.map((item, i) =>
-          e(
-            'article',
-            { className: 'journey-card reveal', style: { animationDelay: `${i * 90}ms` }, key: item.step },
-            e('span', { className: 'journey-index' }, `${String(i + 1).padStart(2, '0')}`),
-            e('h3', null, item.step),
-            e('p', null, item.detail),
-          ),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { id: 'value', className: 'section value' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, '10 Nilai & Animasi Experience'),
-        e('h2', null, 'Kenapa UI/UX Somansa Lebih Menarik?'),
-      ),
-      e(
-        'div',
-        { className: 'value-grid' },
-        ...valuePoints.map((point, i) =>
-          e(
-            'article',
-            {
-              className: 'value-card reveal',
-              key: point,
-              style: { animationDelay: `${100 + i * 80}ms` },
-            },
-            e('span', { className: 'value-index' }, `${String(i + 1).padStart(2, '0')}`),
-            e('p', null, point),
-          ),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { className: 'section story' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'Materi Landing Page'),
-        e('h2', null, 'Bahan Konten Baru untuk Tingkatkan Conversion'),
-      ),
-      e(
-        'div',
-        { className: 'story-grid' },
-        ...landingMaterials.map((item, i) =>
-          e(
-            'article',
-            {
-              className: 'story-card reveal',
-              key: item.title,
-              style: { animationDelay: `${120 + i * 100}ms` },
-            },
-            e('h3', null, item.title),
-            e('p', null, item.desc),
-          ),
         ),
       ),
     ),
