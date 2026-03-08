@@ -1,18 +1,18 @@
 import React from 'https://esm.sh/react@18.3.1';
 
 const products = [
-  'CogniScan — AI Radiologi & Lab',
-  'Kaist Medika — Klinik Dokter Sobri & HomeCare',
-  'Klinik Kecantikan',
-  'SIMRS & SIMKlinik',
-  'Klinik Rawat Luka',
-  'Jualan Scrub Dokter',
-  'Jualan Alat Medis Dokter',
-  'Apotek',
-  'Website Ujian Dokter',
-  'Tools Hacking Sobri',
-  'Software House',
-  'Kosan',
+  { name: 'CogniScan — AI Radiologi & Lab', icon: '🧠', tag: 'AI Diagnostic' },
+  { name: 'Kaist Medika — Klinik Dokter Sobri & HomeCare', icon: '🏥', tag: 'Clinical Service' },
+  { name: 'Klinik Kecantikan', icon: '✨', tag: 'Aesthetic Care' },
+  { name: 'SIMRS & SIMKlinik', icon: '📊', tag: 'Hospital System' },
+  { name: 'Klinik Rawat Luka', icon: '🩹', tag: 'Specialized Care' },
+  { name: 'Jualan Scrub Dokter', icon: '🧴', tag: 'Medical Retail' },
+  { name: 'Jualan Alat Medis Dokter', icon: '🩺', tag: 'Medical Device' },
+  { name: 'Apotek', icon: '💊', tag: 'Pharmacy' },
+  { name: 'Website Ujian Dokter', icon: '📝', tag: 'Medical Education' },
+  { name: 'Tools Hacking Sobri', icon: '🛡️', tag: 'Security Tools' },
+  { name: 'Software House', icon: '💻', tag: 'Tech Builder' },
+  { name: 'Kosan', icon: '🏠', tag: 'Property' },
 ];
 
 const highlights = [
@@ -47,6 +47,21 @@ const metrics = [
   { label: 'Unit Produk', value: '12+' },
   { label: 'Fokus Industri', value: 'HealthTech' },
   { label: 'Model Eksekusi', value: 'Build Fast' },
+];
+
+const landingMaterials = [
+  {
+    title: 'Visual Story yang Lebih Kuat',
+    desc: 'Narasi landing page sekarang didorong oleh blok konten yang menekankan transformasi digital kesehatan secara nyata dan mudah dipahami visitor.',
+  },
+  {
+    title: 'Call-to-Action Bertingkat',
+    desc: 'CTA disusun untuk audience berbeda: rumah sakit, startup, hingga UMKM agar pengunjung cepat menemukan jalur kolaborasi yang relevan.',
+  },
+  {
+    title: 'Konten yang Siap Iklan',
+    desc: 'Struktur section mendukung kampanye ads & social traffic: hero yang jelas, value proposition singkat, dan showcase produk dengan ikon visual.',
+  },
 ];
 
 const e = React.createElement;
@@ -139,31 +154,63 @@ export function App() {
         ),
       ),
     ),
-    e(
-      'section',
-      { id: 'products', className: 'section products' },
       e(
-        'div',
+        'section',
+        { className: 'section story' },
+        e(
+          'div',
+          { className: 'section-head' },
+          e('p', { className: 'badge' }, 'Materi Landing Page'),
+          e('h2', null, 'Bahan Konten Baru untuk Tingkatkan Conversion'),
+        ),
+        e(
+          'div',
+          { className: 'story-grid' },
+          ...landingMaterials.map((item, i) =>
+            e(
+              'article',
+              {
+                className: 'story-card reveal',
+                key: item.title,
+                style: { animationDelay: `${120 + i * 100}ms` },
+              },
+              e('h3', null, item.title),
+              e('p', null, item.desc),
+            ),
+          ),
+        ),
+      ),
+      e(
+        'section',
+        { id: 'products', className: 'section products' },
+        e(
+          'div',
         { className: 'section-head' },
         e('p', { className: 'badge' }, 'Produk & Unit Bisnis'),
         e('h2', null, '12 Pilar Bisnis Somansa'),
       ),
-      e(
-        'div',
-        { className: 'grid' },
-        ...products.map((product, i) =>
-          e(
-            'div',
-            {
-              className: 'product-card reveal',
-              style: { animationDelay: `${i * 70}ms` },
-              key: product,
-            },
-            e('span', null, String(i + 1).padStart(2, '0')),
-            e('h4', null, product),
+        e(
+          'div',
+          { className: 'grid' },
+          ...products.map((product, i) =>
+            e(
+              'div',
+              {
+                className: 'product-card reveal tilt',
+                style: { animationDelay: `${i * 70}ms` },
+                key: product.name,
+              },
+              e(
+                'div',
+                { className: 'product-head' },
+                e('span', null, String(i + 1).padStart(2, '0')),
+                e('div', { className: 'product-icon', 'aria-hidden': true }, product.icon),
+              ),
+              e('h4', null, product.name),
+              e('p', { className: 'product-tag' }, product.tag),
+            ),
           ),
         ),
-      ),
     ),
     e(
       'section',
