@@ -76,7 +76,7 @@ export default function App() {
 
         <div className="grid">
           {products.map((product, i) => (
-            <div className="product-card reveal" style={{ animationDelay: `${i * 70}ms` }} key={product}>
+            <div className="product-card reveal tilt" style={{ animationDelay: `${i * 70}ms` }} key={product}>
               <span>{String(i + 1).padStart(2, '0')}</span>
               <h4>{product}</h4>
             </div>
