@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Somansa Favicon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)" />
+  <path
+    d="M44.5 21.6c-2.3-2.8-6-4.5-10.1-4.5-6.8 0-12.1 3.9-12.1 9.3 0 4.8 3.7 7 9.8 8.3 5.1 1.1 6.4 2 6.4 3.8 0 2-2.1 3.3-5.4 3.3-3.3 0-6.7-1.4-9-3.8l-4.2 5.1c3.2 3.2 8 5.1 13 5.1 7.6 0 12.8-3.7 12.8-9.8 0-5.2-3.4-7.4-9.6-8.8-5.2-1.2-6.6-1.8-6.6-3.7 0-1.7 1.8-2.9 4.7-2.9 2.9 0 5.8 1.1 7.8 3.1l4.5-4.5z"
+    fill="#ffffff"
+  />
+</svg>
