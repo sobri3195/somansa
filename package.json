@@ -1,0 +1,10 @@
+{
+  "name": "somansa-landing",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "build": "echo 'Static React CDN app - no build step required'",
+    "preview": "python3 -m http.server 4173"
+  }
+}
