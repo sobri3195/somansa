@@ -1,119 +1,73 @@
 import React from 'https://esm.sh/react@18.3.1';
 
-const productNames = [
-  'CogniScan — AI Radiologi & Lab',
-  'Kaist Medika — Klinik Dokter Sobri & HomeCare',
-  'Klinik Kecantikan',
-  'SIMRS & SIMKlinik',
-  'Klinik Rawat Luka',
-  'Jualan Scrub Dokter',
-  'Jualan Alat Medis Dokter',
-  'Apotek',
-  'Website Ujian Dokter',
-  'Tools Hacking Sobri',
-  'Software House',
-  'Kosan',
+const navLinks = [
+  { label: 'Layanan', href: '#services' },
+  { label: 'Inisiatif', href: '#portfolio' },
+  { label: 'Proses', href: '#process' },
+  { label: 'Kontak', href: '#cta' },
 ];
 
-const productMeta = {
-  'CogniScan — AI Radiologi & Lab': { icon: '🧠', tag: 'AI Diagnostic' },
-  'Kaist Medika — Klinik Dokter Sobri & HomeCare': { icon: '🏥', tag: 'Clinical Service' },
-  'Klinik Kecantikan': { icon: '✨', tag: 'Aesthetic Care' },
-  'SIMRS & SIMKlinik': { icon: '📊', tag: 'Hospital System' },
-  'Klinik Rawat Luka': { icon: '🩹', tag: 'Specialized Care' },
-  'Jualan Scrub Dokter': { icon: '🧴', tag: 'Medical Retail' },
-  'Jualan Alat Medis Dokter': { icon: '🩺', tag: 'Medical Device' },
-  Apotek: { icon: '💊', tag: 'Pharmacy' },
-  'Website Ujian Dokter': { icon: '📝', tag: 'Medical Education' },
-  'Tools Hacking Sobri': { icon: '🛡️', tag: 'Security Tools' },
-  'Software House': { icon: '💻', tag: 'Tech Builder' },
-  Kosan: { icon: '🏠', tag: 'Property' },
-};
-
-const products = productNames.map((name) => ({ name, ...productMeta[name] }));
-
-const highlights = [
+const serviceItems = [
   {
-    title: 'HealthTech Terintegrasi',
-    desc: 'Ekosistem kesehatan dari AI diagnostik, manajemen klinik, hingga layanan pasien di rumah.',
+    icon: '✦',
+    title: 'HealthTech Product Engineering',
+    desc: 'Membangun platform klinik, homecare, e-health, hingga sistem operasional medis dengan fondasi arsitektur yang aman dan scalable.',
   },
   {
-    title: 'Eksekusi Cepat',
-    desc: 'Tim software house Somansa fokus pada produk yang scalable, aman, dan siap dipakai bisnis nyata.',
+    icon: '◉',
+    title: 'Applied AI Solutions',
+    desc: 'Mengintegrasikan AI untuk triage, diagnostic assist, automation workflow, dan intelligence layer yang relevan untuk use case nyata.',
   },
   {
-    title: 'Diversifikasi Cerdas',
-    desc: 'Dari medis, edukasi dokter, retail kesehatan, hingga properti — semua tumbuh dalam satu visi.',
+    icon: '▣',
+    title: 'Enterprise System Modernization',
+    desc: 'Merapikan proses bisnis lewat integrasi SIMRS/SIMKlinik, dashboard manajemen, dan digital operations yang siap tumbuh jangka panjang.',
   },
 ];
 
-const metrics = [
-  { label: 'Unit Produk', value: '12+' },
-  { label: 'Fokus Industri', value: 'HealthTech' },
-  { label: 'Model Eksekusi', value: 'Build Fast' },
-];
-
-const audiences = ['Rumah Sakit', 'Klinik & Dokter', 'Startup Digital', 'UMKM Health Retail'];
-
-const valueProps = [
+const portfolioItems = [
   {
-    title: 'Satu Mitra, Banyak Solusi',
-    desc: 'Dari konsultasi strategi, pengembangan sistem, hingga operasional digital, semua bisa dieksekusi dalam satu tim.',
+    title: 'CogniScan',
+    category: 'AI Diagnostic Platform',
+    industry: 'Radiologi & Laboratorium',
+    impact: 'Mendukung proses analisis lebih cepat dan konsisten dengan AI-assisted workflow untuk tim medis.',
   },
   {
-    title: 'Berorientasi Dampak',
-    desc: 'Kami membangun produk yang menyelesaikan masalah nyata pasien, tenaga medis, dan pelaku bisnis kesehatan.',
+    title: 'Kaist Medika Ecosystem',
+    category: 'Clinical Operations Suite',
+    industry: 'Klinik & Homecare',
+    impact: 'Menyatukan alur pasien dari registrasi, layanan tindakan, hingga follow-up homecare dalam satu sistem terintegrasi.',
   },
   {
-    title: 'Siap Scale',
-    desc: 'Arsitektur produk dirancang modular sehingga cepat berkembang seiring pertumbuhan bisnis Anda.',
-  },
-];
-
-const journeys = [
-  {
-    title: 'Discovery & Audit',
-    desc: 'Memetakan kebutuhan bisnis, tantangan operasional, dan prioritas transformasi digital.',
+    title: 'SIMRS & SIMKlinik Initiative',
+    category: 'Hospital / Clinic System',
+    industry: 'Fasilitas Kesehatan',
+    impact: 'Meningkatkan visibilitas operasional dan kualitas pengambilan keputusan lewat data yang lebih rapi dan terstruktur.',
   },
   {
-    title: 'Build & Integrate',
-    desc: 'Mengembangkan solusi web/app/AI dan menghubungkannya dengan sistem yang sudah berjalan.',
-  },
-  {
-    title: 'Launch & Iterate',
-    desc: 'Meluncurkan produk, memonitor performa, lalu melakukan iterasi berbasis data pengguna.',
+    title: 'Medical Commerce Stack',
+    category: 'Digital Commerce Enablement',
+    industry: 'Retail Kesehatan',
+    impact: 'Membantu unit bisnis apotek, alat medis, dan produk dokter memperluas distribusi digital secara terukur.',
   },
 ];
 
-const stories = [
+const processSteps = [
   {
-    title: 'Klinik Lebih Efisien',
-    desc: 'Digitalisasi alur pendaftaran, rekam medis, dan laporan manajemen untuk operasional yang lebih rapi.',
+    title: 'Discovery & Strategic Alignment',
+    desc: 'Audit kebutuhan, pemetaan prioritas, dan perumusan objective yang jelas untuk memastikan solusi tepat sasaran.',
   },
   {
-    title: 'Layanan Pasien Lebih Cepat',
-    desc: 'Integrasi layanan homecare dan komunikasi pasien membuat proses pelayanan lebih responsif.',
+    title: 'Design, Build & Integration',
+    desc: 'Eksekusi product design dan engineering secara disiplin, dengan standar kualitas enterprise dan dokumentasi yang rapi.',
   },
   {
-    title: 'Bisnis Kesehatan Lebih Tumbuh',
-    desc: 'Pendekatan produk + marketing membantu unit bisnis kesehatan meningkatkan visibilitas dan konversi.',
+    title: 'Launch, Measure & Improve',
+    desc: 'Go-live terkontrol, monitoring metrik bisnis, lalu iterasi terarah agar produk terus memberi dampak berkelanjutan.',
   },
 ];
 
-const faq = [
-  {
-    q: 'Apakah Somansa hanya untuk sektor kesehatan?',
-    a: 'Fokus utama kami HealthTech, namun kami juga mengerjakan solusi teknologi untuk edukasi, retail, dan layanan digital lainnya.',
-  },
-  {
-    q: 'Bisa mulai dari project kecil dulu?',
-    a: 'Bisa. Kami dapat mulai dari audit singkat atau MVP, lalu scale bertahap sesuai kebutuhan dan budget.',
-  },
-  {
-    q: 'Apakah Somansa menerima kolaborasi jangka panjang?',
-    a: 'Ya. Kami membuka model kerja project-based maupun partnership jangka panjang untuk pengembangan berkelanjutan.',
-  },
-];
+const trustIndicators = ['Fokus: HealthTech, Product Engineering, AI', 'Execution model: end-to-end delivery', 'Kolaborasi: startup, institusi, enterprise'];
 
 const e = React.createElement;
 
@@ -123,194 +77,137 @@ export function App() {
     { className: 'page' },
     e(
       'header',
-      { className: 'hero' },
+      { className: 'hero-wrapper' },
       e(
         'nav',
         { className: 'nav' },
         e(
-          'div',
-          { className: 'brand-wrap' },
+          'a',
+          { className: 'brand-wrap', href: '#top', 'aria-label': 'Somansa' },
           e('img', { src: '/somansa-logo.svg', className: 'brand-logo', alt: 'Logo Somansa' }),
-          e('div', { className: 'brand' }, 'SOMANSA'),
-        ),
-        e('a', { className: 'cta', href: '#products' }, 'Explore Produk'),
-      ),
-      e(
-        'div',
-        { className: 'hero-content' },
-        e('p', { className: 'badge' }, 'Innovating Health, Technology, & Lifestyle'),
-        e('h1', null, 'Perusahaan Multi-Produk yang Membangun Masa Depan dari Indonesia'),
-        e(
-          'p',
-          { className: 'lead' },
-          'Somansa menghadirkan solusi terintegrasi untuk kesehatan, teknologi, dan layanan modern dengan fokus pada dampak nyata, desain unggul, dan inovasi berkelanjutan.',
-        ),
-        e(
-          'div',
-          { className: 'hero-actions' },
-          e('a', { href: '#products', className: 'btn btn-primary' }, 'Lihat Portofolio'),
-          e('a', { href: '#value', className: 'btn btn-secondary' }, 'Kenapa Somansa'),
-        ),
-        e(
-          'div',
-          { className: 'audience-pills' },
-          ...audiences.map((item) => e('span', { className: 'audience-pill', key: item }, item)),
-        ),
-        e(
-          'div',
-          { className: 'metrics' },
-          ...metrics.map((item) =>
-            e(
-              'article',
-              { className: 'metric-card', key: item.label },
-              e('strong', null, item.value),
-              e('span', null, item.label),
-            ),
-          ),
-        ),
-      ),
-      e('div', { className: 'glow glow-a' }),
-      e('div', { className: 'glow glow-b' }),
-    ),
-    e(
-      'section',
-      { id: 'about', className: 'highlights section' },
-      ...highlights.map((item) =>
-        e(
-          'article',
-          { className: 'card float', key: item.title },
-          e('h3', null, item.title),
-          e('p', null, item.desc),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { id: 'value', className: 'section' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'Value Proposition'),
-        e('h2', null, 'Kenapa brand memilih Somansa'),
-      ),
-      e(
-        'div',
-        { className: 'value-grid' },
-        ...valueProps.map((item, i) =>
-          e(
-            'article',
-            { className: 'value-card', key: item.title },
-            e('span', { className: 'value-index' }, `${String(i + 1).padStart(2, '0')}.`),
-            e('h3', null, item.title),
-            e('p', null, item.desc),
-          ),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { id: 'products', className: 'section products' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'Produk & Unit Bisnis'),
-        e('h2', null, '12 Pilar Bisnis Somansa'),
-      ),
-      e(
-        'div',
-        { className: 'grid' },
-        ...products.map((product, i) =>
           e(
             'div',
-            {
-              className: 'product-card reveal tilt',
-              style: { animationDelay: `${i * 70}ms` },
-              key: product.name,
-            },
-            e(
-              'div',
-              { className: 'product-head' },
-              e('span', null, String(i + 1).padStart(2, '0')),
-              e('div', { className: 'product-icon', 'aria-hidden': true }, product.icon),
-            ),
-            e('h4', null, product.name),
-            e('p', { className: 'product-tag' }, product.tag),
+            { className: 'brand-copy' },
+            e('strong', { className: 'brand' }, 'SOMANSA'),
+            e('span', null, 'HealthTech • Engineering • AI'),
           ),
         ),
-      ),
-    ),
-    e(
-      'section',
-      { className: 'section' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'How We Work'),
-        e('h2', null, 'Perjalanan kolaborasi bersama Somansa'),
+        e('div', { className: 'nav-links' }, ...navLinks.map((link) => e('a', { key: link.label, href: link.href }, link.label))),
+        e('a', { className: 'nav-cta', href: '#cta' }, 'Konsultasi'),
       ),
       e(
         'div',
-        { className: 'journey-grid' },
-        ...journeys.map((item, i) =>
+        { className: 'hero', id: 'top' },
+        e(
+          'div',
+          { className: 'hero-content' },
+          e('p', { className: 'eyebrow' }, 'Digital partner untuk organisasi kesehatan & bisnis berbasis teknologi'),
+          e('h1', null, 'Membangun Solusi HealthTech dan AI yang Siap Dipakai, Siap Tumbuh, dan Siap Dipercaya.'),
           e(
-            'article',
-            { className: 'journey-card', key: item.title },
-            e('span', { className: 'journey-index' }, `Step ${i + 1}`),
-            e('h3', null, item.title),
-            e('p', null, item.desc),
+            'p',
+            { className: 'lead' },
+            'Somansa membantu institusi dan bisnis merancang, membangun, serta mengembangkan produk digital dengan pendekatan strategis, eksekusi rapi, dan kualitas enterprise.',
           ),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { className: 'section' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'Impact Story'),
-        e('h2', null, 'Dampak yang ingin kami ciptakan'),
-      ),
-      e(
-        'div',
-        { className: 'story-grid' },
-        ...stories.map((item) =>
           e(
-            'article',
-            { className: 'story-card', key: item.title },
-            e('h3', null, item.title),
-            e('p', null, item.desc),
+            'div',
+            { className: 'hero-actions' },
+            e('a', { href: '#cta', className: 'btn btn-primary' }, 'Jadwalkan Konsultasi'),
+            e('a', { href: '#portfolio', className: 'btn btn-secondary' }, 'Lihat Inisiatif'),
           ),
+          e('p', { className: 'hero-proof' }, 'Diskusi awal tanpa komitmen • Respon cepat untuk kebutuhan digital health & AI'),
+        ),
+        e(
+          'aside',
+          { className: 'trust-block', 'aria-label': 'Company highlights' },
+          e('p', { className: 'trust-label' }, 'Company highlights'),
+          e('h2', null, 'Execution partner yang fokus pada dampak bisnis.'),
+          e(
+            'div',
+            { className: 'trust-metrics' },
+            e('article', null, e('strong', null, '12+'), e('span', null, 'inisiatif lintas produk & layanan')),
+            e('article', null, e('strong', null, '3 Core'), e('span', null, 'healthtech, engineering, AI solutions')),
+            e('article', null, e('strong', null, 'End-to-End'), e('span', null, 'discovery sampai iterasi pasca launch')),
+          ),
+          e('ul', { className: 'trust-list' }, ...trustIndicators.map((item) => e('li', { key: item }, item))),
         ),
       ),
     ),
     e(
       'section',
-      { className: 'section' },
-      e(
-        'div',
-        { className: 'section-head' },
-        e('p', { className: 'badge' }, 'FAQ'),
-        e('h2', null, 'Pertanyaan yang sering ditanyakan'),
-      ),
-      e(
-        'div',
-        { className: 'highlights' },
-        ...faq.map((item) =>
-          e('article', { className: 'card', key: item.q }, e('h3', null, item.q), e('p', null, item.a)),
-        ),
-      ),
-    ),
-    e(
-      'section',
-      { className: 'section banner' },
-      e('h2', null, 'Ready to collaborate with Somansa?'),
+      { id: 'services', className: 'section' },
+      e('p', { className: 'section-kicker' }, 'Core Services'),
+      e('h2', null, 'Kapabilitas yang dirancang untuk kebutuhan organisasi modern'),
       e(
         'p',
-        null,
-        'Kami membuka kolaborasi untuk institusi kesehatan, startup, UMKM, dan transformasi digital enterprise.',
+        { className: 'section-intro' },
+        'Setiap layanan dibangun dengan standar delivery yang konsisten agar keputusan bisnis dapat diterjemahkan menjadi produk digital yang relevan dan bernilai jangka panjang.',
       ),
-      e('a', { className: 'btn btn-primary', href: 'mailto:hello@somansa.id' }, 'Hubungi Tim Somansa'),
+      e(
+        'div',
+        { className: 'service-grid' },
+        ...serviceItems.map((item) =>
+          e(
+            'article',
+            { className: 'service-card', key: item.title },
+            e('span', { className: 'service-icon', 'aria-hidden': true }, item.icon),
+            e('h3', null, item.title),
+            e('p', null, item.desc),
+          ),
+        ),
+      ),
+    ),
+    e(
+      'section',
+      { id: 'portfolio', className: 'section' },
+      e('p', { className: 'section-kicker' }, 'Portfolio & Initiatives'),
+      e('h2', null, 'Inisiatif yang menunjukkan konteks nyata dan nilai terukur'),
+      e('div', { className: 'portfolio-grid' },
+        ...portfolioItems.map((item, index) =>
+          e(
+            'article',
+            { className: 'portfolio-card', key: item.title },
+            e('div', { className: 'portfolio-top' }, e('span', { className: 'portfolio-index' }, `0${index + 1}`), e('span', { className: 'portfolio-badge' }, item.category)),
+            e('h3', null, item.title),
+            e('p', { className: 'portfolio-industry' }, item.industry),
+            e('p', { className: 'portfolio-impact' }, item.impact),
+          ),
+        ),
+      ),
+    ),
+    e(
+      'section',
+      { id: 'process', className: 'section process' },
+      e('p', { className: 'section-kicker' }, 'How We Work'),
+      e('h2', null, 'Proses kerja terstruktur untuk delivery yang dapat diandalkan'),
+      e('p', { className: 'section-intro' }, 'Tim Somansa bekerja dengan ritme eksekusi yang jelas: discovery → build → launch & improve.'),
+      e('div', { className: 'process-line', 'aria-hidden': true }),
+      e(
+        'div',
+        { className: 'process-grid' },
+        ...processSteps.map((step, index) =>
+          e(
+            'article',
+            { className: 'step-card', key: step.title },
+            e('span', { className: 'step-index' }, `Step ${index + 1}`),
+            e('h3', null, step.title),
+            e('p', null, step.desc),
+          ),
+        ),
+      ),
+      e('p', { className: 'process-note' }, 'Setiap fase memiliki owner, scope, dan indikator keberhasilan yang terdefinisi sejak awal.'),
+    ),
+    e(
+      'section',
+      { id: 'cta', className: 'section cta-panel' },
+      e('p', { className: 'section-kicker' }, 'Start a Strategic Conversation'),
+      e('h2', null, 'Butuh partner eksekusi untuk inisiatif HealthTech atau AI Anda?'),
+      e(
+        'p',
+        { className: 'section-intro' },
+        'Mari validasi prioritas, ruang lingkup, dan pendekatan implementasi terbaik untuk kebutuhan organisasi Anda.',
+      ),
+      e('a', { className: 'btn btn-primary btn-large', href: 'mailto:hello@somansa.id' }, 'Konsultasi dengan Tim Somansa'),
+      e('p', { className: 'cta-cue' }, 'Diskusi awal tanpa komitmen • Respon cepat pada hari kerja'),
     ),
     e('footer', { className: 'footer' }, `© ${new Date().getFullYear()} Somansa. All rights reserved.`),
   );
