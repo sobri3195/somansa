@@ -1,19 +1,36 @@
 import React from 'https://esm.sh/react@18.3.1';
 
-const products = [
-  { name: 'CogniScan — AI Radiologi & Lab', icon: '🧠', tag: 'AI Diagnostic' },
-  { name: 'Kaist Medika — Klinik Dokter Sobri & HomeCare', icon: '🏥', tag: 'Clinical Service' },
-  { name: 'Klinik Kecantikan', icon: '✨', tag: 'Aesthetic Care' },
-  { name: 'SIMRS & SIMKlinik', icon: '📊', tag: 'Hospital System' },
-  { name: 'Klinik Rawat Luka', icon: '🩹', tag: 'Specialized Care' },
-  { name: 'Jualan Scrub Dokter', icon: '🧴', tag: 'Medical Retail' },
-  { name: 'Jualan Alat Medis Dokter', icon: '🩺', tag: 'Medical Device' },
-  { name: 'Apotek', icon: '💊', tag: 'Pharmacy' },
-  { name: 'Website Ujian Dokter', icon: '📝', tag: 'Medical Education' },
-  { name: 'Tools Hacking Sobri', icon: '🛡️', tag: 'Security Tools' },
-  { name: 'Software House', icon: '💻', tag: 'Tech Builder' },
-  { name: 'Kosan', icon: '🏠', tag: 'Property' },
+const productNames = [
+  'CogniScan — AI Radiologi & Lab',
+  'Kaist Medika — Klinik Dokter Sobri & HomeCare',
+  'Klinik Kecantikan',
+  'SIMRS & SIMKlinik',
+  'Klinik Rawat Luka',
+  'Jualan Scrub Dokter',
+  'Jualan Alat Medis Dokter',
+  'Apotek',
+  'Website Ujian Dokter',
+  'Tools Hacking Sobri',
+  'Software House',
+  'Kosan',
 ];
+
+const productMeta = {
+  'CogniScan — AI Radiologi & Lab': { icon: '🧠', tag: 'AI Diagnostic' },
+  'Kaist Medika — Klinik Dokter Sobri & HomeCare': { icon: '🏥', tag: 'Clinical Service' },
+  'Klinik Kecantikan': { icon: '✨', tag: 'Aesthetic Care' },
+  'SIMRS & SIMKlinik': { icon: '📊', tag: 'Hospital System' },
+  'Klinik Rawat Luka': { icon: '🩹', tag: 'Specialized Care' },
+  'Jualan Scrub Dokter': { icon: '🧴', tag: 'Medical Retail' },
+  'Jualan Alat Medis Dokter': { icon: '🩺', tag: 'Medical Device' },
+  Apotek: { icon: '💊', tag: 'Pharmacy' },
+  'Website Ujian Dokter': { icon: '📝', tag: 'Medical Education' },
+  'Tools Hacking Sobri': { icon: '🛡️', tag: 'Security Tools' },
+  'Software House': { icon: '💻', tag: 'Tech Builder' },
+  Kosan: { icon: '🏠', tag: 'Property' },
+};
+
+const products = productNames.map((name) => ({ name, ...productMeta[name] }));
 
 const highlights = [
   {
