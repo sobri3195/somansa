@@ -420,8 +420,8 @@ h1 {
 }
 
 .reveal {
-  opacity: 0;
-  animation: reveal 500ms forwards;
+  opacity: 1;
+  animation: reveal 500ms both;
 }
 
 .float {
