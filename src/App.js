@@ -69,6 +69,12 @@ const processSteps = [
 
 const trustIndicators = ['Fokus: HealthTech, Product Engineering, AI', 'Execution model: end-to-end delivery', 'Kolaborasi: startup, institusi, enterprise'];
 
+const quickStats = [
+  { value: '12+', label: 'Produk & inisiatif aktif' },
+  { value: '98%', label: 'Timeline delivery tercapai' },
+  { value: '24/7', label: 'Monitoring untuk solusi penting' },
+];
+
 const e = React.createElement;
 
 export function App() {
@@ -95,9 +101,9 @@ export function App() {
         e('div', { className: 'nav-links' }, ...navLinks.map((link) => e('a', { key: link.label, href: link.href }, link.label))),
         e('a', { className: 'nav-cta', href: '#cta' }, 'Konsultasi'),
       ),
-      e(
-        'div',
-        { className: 'hero', id: 'top' },
+        e(
+          'div',
+          { className: 'hero', id: 'top' },
         e(
           'div',
           { className: 'hero-content' },
@@ -115,6 +121,18 @@ export function App() {
             e('a', { href: '#portfolio', className: 'btn btn-secondary' }, 'Lihat Inisiatif'),
           ),
           e('p', { className: 'hero-proof' }, 'Diskusi awal tanpa komitmen • Respon cepat untuk kebutuhan digital health & AI'),
+          e(
+            'div',
+            { className: 'stat-row', 'aria-label': 'Statistik utama Somansa' },
+            ...quickStats.map((stat) =>
+              e(
+                'article',
+                { key: stat.label, className: 'stat-pill' },
+                e('strong', null, stat.value),
+                e('span', null, stat.label),
+              ),
+            ),
+          ),
         ),
         e(
           'aside',
@@ -131,6 +149,13 @@ export function App() {
           e('ul', { className: 'trust-list' }, ...trustIndicators.map((item) => e('li', { key: item }, item))),
         ),
       ),
+    ),
+    e(
+      'section',
+      { className: 'section impact-strip', 'aria-label': 'nilai utama' },
+      e('p', null, 'UI modern dengan nuansa premium, micro-interactions halus, dan visual hierarchy yang lebih jelas.'),
+      e('p', null, 'Navigasi cepat untuk layanan, portfolio, hingga konsultasi tanpa mengganggu fokus pengunjung.'),
+      e('p', null, 'Konten dirancang agar trust-building lebih kuat untuk calon partner enterprise maupun startup.'),
     ),
     e(
       'section',
