@@ -1,0 +1,21 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="orbitTitle orbitDesc">
+  <title id="orbitTitle">Orbit Care Animation</title>
+  <desc id="orbitDesc">Node bergerak mengorbit pusat konektivitas.</desc>
+  <rect width="640" height="360" rx="24" fill="#0A1230"/>
+  <circle cx="320" cy="180" r="44" fill="#355EFF" opacity="0.8"/>
+  <circle cx="320" cy="180" r="84" stroke="#5AC8FF" opacity="0.35"/>
+  <circle cx="320" cy="180" r="128" stroke="#8E7BFF" opacity="0.35"/>
+  <circle cx="320" cy="180" r="164" stroke="#5AC8FF" opacity="0.25"/>
+
+  <g fill="#9AF3FF">
+    <circle r="9">
+      <animateMotion dur="6s" repeatCount="indefinite" path="M320,96 a84,84 0 1,1 -0.1,0"/>
+    </circle>
+    <circle r="10" fill="#B9A0FF">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M320,52 a128,128 0 1,0 -0.1,0"/>
+    </circle>
+    <circle r="8" fill="#6DE9FF">
+      <animateMotion dur="10s" repeatCount="indefinite" path="M320,16 a164,164 0 1,1 -0.1,0"/>
+    </circle>
+  </g>
+</svg>
