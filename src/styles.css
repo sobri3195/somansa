@@ -369,6 +369,45 @@ h1 {
 }
 
 
+
+.animation-section {
+  margin-top: 4rem;
+}
+
+.animation-grid {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.animation-card {
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1.1rem;
+  background: var(--surface);
+  box-shadow: 0 12px 30px rgba(3, 9, 26, 0.26);
+}
+
+.animation-image {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(140, 170, 255, 0.28);
+  background: rgba(4, 10, 26, 0.7);
+}
+
+.animation-card h3 {
+  margin: 0.85rem 0 0;
+  font-size: 1.05rem;
+}
+
+.animation-card p {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
 .impact-strip {
   margin-top: 2rem;
   display: grid;
@@ -581,6 +620,7 @@ h1 {
   .service-grid,
   .process-grid,
   .portfolio-grid,
+  .animation-grid,
   .impact-strip,
   .stat-row {
     grid-template-columns: 1fr;

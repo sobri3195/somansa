@@ -75,6 +75,24 @@ const quickStats = [
   { value: '24/7', label: 'Monitoring untuk solusi penting' },
 ];
 
+const animationGallery = [
+  {
+    title: 'Pulse Network',
+    desc: 'Visual animasi ritme data pasien real-time untuk menggambarkan monitoring yang hidup dan responsif.',
+    src: '/src/animated-pulse.svg',
+  },
+  {
+    title: 'Orbit Care',
+    desc: 'Komposisi orbit bergerak yang merepresentasikan konektivitas antar layanan klinik, homecare, dan AI.',
+    src: '/src/animated-orbit.svg',
+  },
+  {
+    title: 'Flow Intelligence',
+    desc: 'Animasi aliran sinyal untuk menunjukkan integrasi data serta automasi proses operasional modern.',
+    src: '/src/animated-flow.svg',
+  },
+];
+
 const e = React.createElement;
 
 export function App() {
@@ -148,6 +166,30 @@ export function App() {
             e('article', null, e('strong', null, 'End-to-End'), e('span', null, 'discovery sampai iterasi pasca launch')),
           ),
           e('ul', { className: 'trust-list' }, ...trustIndicators.map((item) => e('li', { key: item }, item))),
+        ),
+      ),
+    ),
+    e(
+      'section',
+      { className: 'section animation-section', 'aria-label': 'Galeri gambar animasi' },
+      e('p', { className: 'section-kicker' }, 'Animated Visuals'),
+      e('h2', null, 'Galeri gambar animasi untuk memperkaya identitas visual Somansa'),
+      e(
+        'p',
+        { className: 'section-intro' },
+        'Tiga ilustrasi animasi ini dibuat untuk menambah dinamika halaman dan memperjelas narasi teknologi kesehatan yang aktif, terhubung, serta terus bergerak.',
+      ),
+      e(
+        'div',
+        { className: 'animation-grid' },
+        ...animationGallery.map((item) =>
+          e(
+            'article',
+            { className: 'animation-card animated-border', key: item.title },
+            e('img', { src: item.src, className: 'animation-image', alt: `Animasi ${item.title}` }),
+            e('h3', null, item.title),
+            e('p', null, item.desc),
+          ),
         ),
       ),
     ),

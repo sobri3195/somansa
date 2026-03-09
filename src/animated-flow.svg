@@ -1,0 +1,23 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="flowTitle flowDesc">
+  <title id="flowTitle">Flow Intelligence Animation</title>
+  <desc id="flowDesc">Partikel bergerak di sepanjang jalur aliran data.</desc>
+  <rect width="640" height="360" rx="24" fill="#071227"/>
+  <path id="flowPath1" d="M40 250C120 180 180 180 260 250C330 310 390 310 470 250C530 205 560 205 600 230" stroke="#467DFF" stroke-opacity="0.5" stroke-width="6" fill="none"/>
+  <path id="flowPath2" d="M40 120C110 160 170 160 240 120C320 70 390 70 470 120C530 155 570 155 610 135" stroke="#62E7FF" stroke-opacity="0.45" stroke-width="6" fill="none"/>
+
+  <circle r="8" fill="#9BEFFF">
+    <animateMotion dur="4.8s" repeatCount="indefinite">
+      <mpath href="#flowPath1"/>
+    </animateMotion>
+  </circle>
+  <circle r="7" fill="#B29BFF">
+    <animateMotion dur="5.6s" repeatCount="indefinite">
+      <mpath href="#flowPath2"/>
+    </animateMotion>
+  </circle>
+  <circle r="6" fill="#8DF7FF">
+    <animateMotion dur="3.9s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#flowPath1"/>
+    </animateMotion>
+  </circle>
+</svg>
