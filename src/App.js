@@ -74,6 +74,21 @@ const highlights = [
 
 const indicators = ['NDA-ready', 'Keamanan data sebagai fondasi', 'Pendekatan audit-trail'];
 
+const trustPoints = [
+  {
+    title: 'Discovery yang terukur',
+    detail: 'Workshop singkat untuk memetakan prioritas, risiko, dan peluang dampak bisnis sebelum fase delivery.',
+  },
+  {
+    title: 'Eksekusi transparan',
+    detail: 'Update progres berkala dengan metrik yang mudah dibaca stakeholder non-teknis maupun tim operasional.',
+  },
+  {
+    title: 'Adopsi berkelanjutan',
+    detail: 'Pendampingan pasca go-live agar solusi benar-benar digunakan dan memberikan ROI yang konsisten.',
+  },
+];
+
 const metrics = [
   ['12+', 'Inisiatif digital terkelola'],
   ['3', 'Domain strategis utama'],
@@ -86,6 +101,7 @@ export function App() {
   return e(
     'div',
     { className: 'page' },
+    e('a', { className: 'skip-link', href: '#kontak' }, 'Lewati ke kontak'),
     e(
       'header',
       { className: 'hero-shell', id: 'top' },
@@ -110,6 +126,7 @@ export function App() {
             'Somansa mendampingi organisasi kesehatan dan institusi enterprise untuk merancang strategi produk, mempercepat implementasi, serta memastikan teknologi menghasilkan dampak operasional yang nyata.',
           ),
           e('div', { className: 'actions' }, e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Mulai Diskusi Strategis'), e('a', { className: 'btn btn-ghost', href: '#portofolio' }, 'Tinjau Portofolio')),
+          e('div', { className: 'quick-points' }, e('span', null, 'Respons awal ≤ 1x24 jam'), e('span', null, 'Sesi discovery tanpa biaya')),
           e('p', { className: 'positioning' }, 'Dipercaya sebagai partner eksekusi untuk inisiatif mission-critical dengan ekspektasi kualitas tinggi.'),
         ),
         e(
@@ -140,6 +157,17 @@ export function App() {
         'p',
         null,
         'Kami bekerja seperti perpanjangan tim internal Anda: menjaga akurasi prioritas, mempercepat pengambilan keputusan, dan membangun solusi yang siap mendukung pertumbuhan jangka panjang.',
+      ),
+    ),
+    e(
+      'section',
+      { className: 'section trust-strip', 'aria-label': 'Alasan memilih Somansa' },
+      e('p', { className: 'chip' }, 'Kenapa Somansa'),
+      e('h2', null, 'Proses kolaborasi dirancang agar keputusan lebih cepat dan risiko lebih terkendali.'),
+      e(
+        'div',
+        { className: 'cards-3' },
+        ...trustPoints.map((item) => e('article', { key: item.title, className: 'card glass trust-card' }, e('h3', null, item.title), e('p', null, item.detail))),
       ),
     ),
     e(
@@ -188,6 +216,7 @@ export function App() {
       e('h2', null, 'Siapkan inisiatif HealthTech dan AI Anda dengan fondasi yang tepat.'),
       e('p', null, 'Diskusikan target bisnis, risiko implementasi, dan prioritas eksekusi bersama tim Somansa dalam sesi konsultasi terarah.'),
       e('a', { href: 'mailto:hello@somansa.id', className: 'btn btn-primary cta-button' }, 'Jadwalkan Konsultasi Eksekutif'),
+      e('p', { className: 'cta-note' }, 'Atau kirim ringkasan kebutuhan Anda ke hello@somansa.id — tim kami akan menyiapkan rekomendasi awal.'),
     ),
     e('footer', { className: 'footer' }, `© ${new Date().getFullYear()} Somansa. Dirancang untuk kepercayaan enterprise.`),
   );

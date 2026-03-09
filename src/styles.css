@@ -140,6 +140,38 @@ a {
   padding: clamp(1.45rem, 2.5vw, 2.2rem);
 }
 
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: #132645;
+  color: #fff;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.5rem;
+  z-index: 40;
+}
+
+.skip-link:focus-visible {
+  left: 1rem;
+  top: 1rem;
+}
+
+.quick-points {
+  margin-top: 0.95rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.quick-points span {
+  font-size: 0.78rem;
+  color: #3e5f8f;
+  background: rgba(236, 244, 255, 0.88);
+  border: 1px solid rgba(132, 166, 223, 0.35);
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+}
+
 .chip {
   display: inline-flex;
   margin: 0;
@@ -394,6 +426,29 @@ p {
   margin-top: 0.2rem;
   padding: 0.82rem 1.35rem;
   box-shadow: 0 14px 26px rgba(63, 130, 255, 0.38);
+}
+
+
+.trust-strip {
+  margin-top: 4rem;
+  padding: 0;
+}
+
+.trust-card {
+  min-height: 185px;
+}
+
+.cta-note {
+  font-size: 0.88rem;
+  color: #5f7397;
+  max-width: 64ch;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid rgba(59, 126, 221, 0.45);
+  outline-offset: 2px;
+  border-radius: 0.6rem;
 }
 
 .footer {
