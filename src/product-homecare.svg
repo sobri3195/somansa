@@ -1,0 +1,18 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11203D"/>
+      <stop offset="1" stop-color="#2D6C8F"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#bg2)"/>
+  <rect x="52" y="62" width="240" height="296" rx="18" fill="#EFF8FF" fill-opacity="0.12" stroke="#A5E1FF"/>
+  <rect x="94" y="120" width="156" height="12" rx="6" fill="#C7EEFF"/>
+  <rect x="94" y="152" width="120" height="10" rx="5" fill="#96C8E8"/>
+  <rect x="94" y="178" width="148" height="10" rx="5" fill="#96C8E8"/>
+  <circle cx="390" cy="182" r="78" fill="#7DE4D0" fill-opacity="0.24" stroke="#B9FFF4" stroke-width="2"/>
+  <path d="M390 144V220" stroke="#DFFFFB" stroke-width="10" stroke-linecap="round"/>
+  <path d="M352 182H428" stroke="#DFFFFB" stroke-width="10" stroke-linecap="round"/>
+  <rect x="326" y="292" width="180" height="18" rx="9" fill="#B7F9EE"/>
+  <text x="48" y="398" fill="#DDF8FF" font-family="Arial, sans-serif" font-size="24" font-weight="700">Homecare Hub • Patient Ops</text>
+</svg>

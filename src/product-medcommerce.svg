@@ -1,0 +1,19 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A1F44"/>
+      <stop offset="1" stop-color="#6542A7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="420" rx="28" fill="url(#bg3)"/>
+  <rect x="64" y="84" width="512" height="252" rx="18" fill="#FFFFFF" fill-opacity="0.1" stroke="#D4BEFF"/>
+  <rect x="96" y="124" width="200" height="140" rx="14" fill="#EADFFF" fill-opacity="0.2"/>
+  <rect x="328" y="124" width="216" height="20" rx="10" fill="#E6D8FF"/>
+  <rect x="328" y="158" width="172" height="12" rx="6" fill="#C7AFFF"/>
+  <rect x="328" y="184" width="188" height="12" rx="6" fill="#C7AFFF"/>
+  <rect x="328" y="210" width="150" height="12" rx="6" fill="#C7AFFF"/>
+  <circle cx="140" cy="298" r="16" fill="#D8C0FF"/>
+  <circle cx="250" cy="298" r="16" fill="#D8C0FF"/>
+  <path d="M110 152H210L232 228H134L110 152Z" stroke="#F5ECFF" stroke-width="8" stroke-linejoin="round"/>
+  <text x="48" y="398" fill="#EFE2FF" font-family="Arial, sans-serif" font-size="24" font-weight="700">Med Commerce • Inventory</text>
+</svg>

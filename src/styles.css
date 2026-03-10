@@ -543,6 +543,15 @@ p {
 
   .nav {
     flex-wrap: wrap;
+    top: 0.4rem;
+  }
+
+  .nav-links {
+    width: 100%;
+    order: 3;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: 0.2rem;
   }
 
   .page {
@@ -552,7 +561,7 @@ p {
   .section,
   .hero-copy,
   .hero-visual {
-    padding: 1.25rem;
+    padding: 1.1rem;
   }
 }
 
@@ -563,12 +572,33 @@ p {
 }
 
 @media (max-width: 640px) {
+  h1 {
+    font-size: 1.72rem;
+  }
+
   .gallery-grid {
     grid-template-columns: 1fr;
   }
 
+  .actions,
+  .filter-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .btn,
+  .btn-filter {
+    width: 100%;
+    text-align: center;
+  }
+
   .gallery-card img,
-  .usecase-image {
-    height: 130px;
+  .usecase-image,
+  .visual-card img {
+    height: 120px;
+  }
+
+  .chip {
+    letter-spacing: 0.06em;
   }
 }
