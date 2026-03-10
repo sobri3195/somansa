@@ -151,6 +151,12 @@ const metrics = [
   ['24/7', 'Monitoring untuk sistem kritikal'],
 ];
 
+const prestigeStats = [
+  ['Enterprise-Grade', 'Standar kualitas delivery premium'],
+  ['Security First', 'Governance & compliance by design'],
+  ['Human-Centered UX', 'Pengalaman modern yang elegan'],
+];
+
 const visualAssets = [
   {
     title: 'Pulse Monitoring AI',
@@ -237,6 +243,18 @@ export function App() {
           ),
           e('div', { className: 'actions' }, e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Mulai Diskusi Strategis'), e('a', { className: 'btn btn-ghost', href: '#portofolio' }, 'Tinjau Portofolio')),
           e('div', { className: 'quick-points' }, e('span', null, 'Respons awal ≤ 1x24 jam'), e('span', null, 'Sesi discovery tanpa biaya')),
+          e(
+            'div',
+            { className: 'prestige-row', 'aria-label': 'Keunggulan standar premium Somansa' },
+            ...prestigeStats.map((item) =>
+              e(
+                'article',
+                { key: item[0], className: 'prestige-item' },
+                e('strong', null, item[0]),
+                e('small', null, item[1]),
+              ),
+            ),
+          ),
         ),
         e(
           'aside',
