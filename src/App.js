@@ -10,25 +10,22 @@ const navLinks = [
 const services = [
   {
     title: 'Rekayasa Produk HealthTech',
-    description:
-      'Perancangan dan pengembangan platform klinik, rumah sakit, dan layanan pasien terpadu dengan arsitektur siap skala.',
+    description: 'Bangun platform klinik dan rumah sakit yang siap scale.',
     category: 'Product',
   },
   {
     title: 'Solusi AI Terapan',
-    description:
-      'Implementasi AI untuk clinical decision support, otomasi alur kerja, dan analitik operasional dengan tata kelola data yang disiplin.',
+    description: 'AI untuk triase, otomasi kerja, dan analitik operasional.',
     category: 'AI',
   },
   {
     title: 'Modernisasi Sistem Enterprise',
-    description:
-      'Transformasi sistem inti agar interoperabilitas, keamanan, dan performa bisnis meningkat tanpa mengganggu operasi harian.',
+    description: 'Upgrade sistem inti tanpa mengganggu operasional harian.',
     category: 'Enterprise',
   },
   {
     title: 'Integrasi Data & API',
-    description: 'Menyatukan data lintas unit bisnis agar dashboard manajemen dan pelaporan regulasi menjadi real-time.',
+    description: 'Satukan data lintas unit agar insight dan laporan real-time.',
     category: 'Data',
   },
 ];
@@ -37,14 +34,14 @@ const useCases = [
   {
     name: 'CogniScan',
     tag: 'AI Diagnostik',
-    outcome: 'Mempercepat proses triase radiologi dan memberi dukungan keputusan klinis berbasis data visual.',
-    visual: '/src/animated-pulse.svg',
+    outcome: 'Triase radiologi lebih cepat dengan dukungan AI visual.',
+    visual: '/src/product-cogniscan.svg',
   },
   {
     name: 'Kaist Medika Ecosystem',
     tag: 'Ekosistem Klinik',
-    outcome: 'Menyatukan layanan klinik, homecare, dan manajemen pasien dalam alur operasional yang konsisten.',
-    visual: '/src/animated-flow.svg',
+    outcome: 'Klinik, homecare, dan manajemen pasien dalam satu alur.',
+    visual: '/src/product-homecare.svg',
   },
   {
     name: 'Inisiatif SIMRS & SIMKlinik',
@@ -55,8 +52,8 @@ const useCases = [
   {
     name: 'Medical Commerce Stack',
     tag: 'Perdagangan Kesehatan',
-    outcome: 'Membangun kanal penjualan produk medis dengan kontrol inventori dan visibilitas permintaan yang lebih baik.',
-    visual: '/src/animated-flow.svg',
+    outcome: 'Kanal jual alat medis dengan kontrol stok yang rapi.',
+    visual: '/src/product-medcommerce.svg',
   },
   {
     name: 'Doctor Exam Platform',
@@ -183,22 +180,22 @@ const visualAssets = [
 
 const showcaseGallery = [
   {
-    title: 'Clinical Intelligence Dashboard',
-    src: '/src/animated-pulse.svg',
+    title: 'Produk: CogniScan',
+    src: '/src/product-cogniscan.svg',
     alt: 'Dashboard intelligence untuk pemantauan performa klinis',
-    caption: 'Insight real-time untuk tim operasional dan manajemen.',
+    caption: 'AI radiologi untuk percepat keputusan klinis.',
   },
   {
-    title: 'Connected Patient Journey',
-    src: '/src/health-illustration.svg',
+    title: 'Produk: Homecare Hub',
+    src: '/src/product-homecare.svg',
     alt: 'Perjalanan pasien terhubung dari registrasi hingga tindak lanjut',
-    caption: 'Alur layanan digital yang lebih jelas untuk tenaga medis dan pasien.',
+    caption: 'Jadwal kunjungan dan SLA dalam satu dashboard.',
   },
   {
-    title: 'Automation Command Center',
-    src: '/src/animated-flow.svg',
+    title: 'Produk: Med Commerce',
+    src: '/src/product-medcommerce.svg',
     alt: 'Visual command center untuk otomasi workflow layanan kesehatan',
-    caption: 'Koordinasi lintas unit lebih cepat dengan workflow automation.',
+    caption: 'Operasional penjualan alat medis lebih efisien.',
   },
   {
     title: 'Scalable Integration Hub',
@@ -268,11 +265,11 @@ export function App() {
           'div',
           { className: 'hero-copy glass' },
           e('p', { className: 'chip' }, 'Mitra Transformasi Digital HealthTech & AI'),
-          e('h1', null, 'Membangun Solusi HealthTech dan AI yang Andal, Bernilai Tinggi, dan Siap Skala Enterprise.'),
+          e('h1', null, 'Produk digital HealthTech & AI yang cepat dipakai.'),
           e(
             'p',
             { className: 'hero-lead' },
-            'Somansa mendampingi organisasi kesehatan dan institusi enterprise untuk merancang strategi produk, mempercepat implementasi, serta memastikan teknologi menghasilkan dampak operasional yang nyata.',
+            'Kami bantu dari strategi sampai go-live, fokus ke dampak bisnis.',
           ),
           e('div', { className: 'actions' }, e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Mulai Diskusi Strategis'), e('a', { className: 'btn btn-ghost', href: '#portofolio' }, 'Tinjau Portofolio')),
           e('div', { className: 'quick-points' }, e('span', null, 'Respons awal ≤ 1x24 jam'), e('span', null, 'Sesi discovery tanpa biaya')),
@@ -317,7 +314,7 @@ export function App() {
       'section',
       { className: 'section innovation-strip glass', 'aria-label': 'Visual showcase Somansa' },
       e('p', { className: 'chip' }, 'Visual Story'),
-      e('h2', null, 'Desain modern yang menyampaikan kapabilitas produk secara profesional.'),
+      e('h2', null, 'Visual produk Somansa.'),
       e(
         'div',
         { className: 'cards-3 visual-grid' },
@@ -335,7 +332,7 @@ export function App() {
       'section',
       { className: 'section image-story', 'aria-label': 'Galeri visual Somansa' },
       e('p', { className: 'chip' }, 'Image-first Experience'),
-      e('h2', null, 'UI/UX dengan lebih banyak visual agar pesan bisnis lebih cepat dipahami.'),
+      e('h2', null, 'Contoh gambar produk.'),
       e(
         'div',
         { className: 'gallery-grid' },
@@ -353,7 +350,7 @@ export function App() {
       'section',
       { className: 'section trust-strip', 'aria-label': 'Alasan memilih Somansa' },
       e('p', { className: 'chip' }, 'Kenapa Somansa'),
-      e('h2', null, 'Proses kolaborasi dirancang agar keputusan lebih cepat dan risiko lebih terkendali.'),
+      e('h2', null, 'Kerja cepat, progres jelas.'),
       e(
         'div',
         { className: 'cards-3' },
@@ -364,7 +361,7 @@ export function App() {
       'section',
       { className: 'section', id: 'layanan' },
       e('p', { className: 'chip' }, 'Layanan Inti'),
-      e('h2', null, 'Kapabilitas terstruktur untuk inisiatif bernilai strategis.'),
+      e('h2', null, 'Layanan inti.'),
       e(
         'div',
         { className: 'filters' },
@@ -398,7 +395,7 @@ export function App() {
       'section',
       { className: 'section', id: 'portofolio' },
       e('p', { className: 'chip' }, 'Portofolio & Use Case'),
-      e('h2', null, 'Inisiatif terpilih dengan konteks bisnis yang jelas.'),
+      e('h2', null, 'Produk yang sedang kami bangun.'),
       e(
         'div',
         { className: 'cards-2' },
@@ -418,7 +415,7 @@ export function App() {
       'section',
       { className: 'section glass', id: 'roadmap' },
       e('p', { className: 'chip' }, 'Roadmap Implementasi'),
-      e('h2', null, 'Rencana eksekusi 4 fase untuk memastikan hasil bertahap namun konsisten.'),
+      e('h2', null, 'Roadmap 4 fase.'),
       e(
         'div',
         { className: 'roadmap-grid' },
@@ -429,7 +426,7 @@ export function App() {
       'section',
       { className: 'section glass testimonial' },
       e('p', { className: 'chip' }, 'Testimoni Klien'),
-      e('h2', null, 'Kolaborasi yang menghasilkan dampak terukur.'),
+      e('h2', null, 'Testimoni singkat.'),
       e('blockquote', null, `“${currentTestimonial.quote}”`),
       e('p', { className: 'author' }, currentTestimonial.name),
       e(
@@ -443,7 +440,7 @@ export function App() {
       'section',
       { className: 'section', id: 'proses' },
       e('p', { className: 'chip' }, 'Metodologi Kerja'),
-      e('h2', null, 'Ringkas, disiplin, dan relevan untuk lingkungan enterprise.'),
+      e('h2', null, 'Cara kerja kami.'),
       e(
         'div',
         { className: 'cards-3 process' },
@@ -456,7 +453,7 @@ export function App() {
       'section',
       { className: 'section', id: 'faq' },
       e('p', { className: 'chip' }, 'FAQ'),
-      e('h2', null, 'Pertanyaan yang paling sering ditanyakan.'),
+      e('h2', null, 'FAQ singkat.'),
       e(
         'div',
         { className: 'faq-list' },
@@ -479,8 +476,8 @@ export function App() {
       'section',
       { className: 'section cta glass', id: 'kontak' },
       e('p', { className: 'chip' }, 'Kolaborasi Strategis'),
-      e('h2', null, 'Siapkan inisiatif HealthTech dan AI Anda dengan fondasi yang tepat.'),
-      e('p', null, 'Diskusikan target bisnis, risiko implementasi, dan prioritas eksekusi bersama tim Somansa dalam sesi konsultasi terarah.'),
+      e('h2', null, 'Siap mulai proyek?'),
+      e('p', null, 'Kirim kebutuhan, tim kami akan hubungi cepat.'),
       e(
         'form',
         { className: 'contact-form', onSubmit: handleSubmit },
@@ -501,7 +498,7 @@ export function App() {
         e('button', { type: 'submit', className: 'btn btn-primary cta-button' }, 'Kirim kebutuhan awal'),
       ),
       submitted ? e('p', { className: 'success-msg' }, 'Terima kasih! Tim Somansa akan menghubungi Anda dalam 1x24 jam.') : null,
-      e('p', { className: 'cta-note' }, 'Atau kirim ringkasan kebutuhan Anda ke hello@somansa.id — tim kami akan menyiapkan rekomendasi awal.'),
+      e('p', { className: 'cta-note' }, 'Atau email ke hello@somansa.id'),
     ),
     e(
       'a',
