@@ -38,31 +38,37 @@ const useCases = [
     name: 'CogniScan',
     tag: 'AI Diagnostik',
     outcome: 'Mempercepat proses triase radiologi dan memberi dukungan keputusan klinis berbasis data visual.',
+    visual: '/src/animated-pulse.svg',
   },
   {
     name: 'Kaist Medika Ecosystem',
     tag: 'Ekosistem Klinik',
     outcome: 'Menyatukan layanan klinik, homecare, dan manajemen pasien dalam alur operasional yang konsisten.',
+    visual: '/src/animated-flow.svg',
   },
   {
     name: 'Inisiatif SIMRS & SIMKlinik',
     tag: 'Infrastruktur Operasional',
     outcome: 'Menguatkan efisiensi administrasi dan kualitas pelaporan melalui integrasi sistem lintas unit layanan.',
+    visual: '/src/animated-orbit.svg',
   },
   {
     name: 'Medical Commerce Stack',
     tag: 'Perdagangan Kesehatan',
     outcome: 'Membangun kanal penjualan produk medis dengan kontrol inventori dan visibilitas permintaan yang lebih baik.',
+    visual: '/src/animated-flow.svg',
   },
   {
     name: 'Doctor Exam Platform',
     tag: 'EdTech Medis',
     outcome: 'Menyediakan bank soal adaptif dan analitik kompetensi untuk persiapan ujian dokter.',
+    visual: '/src/animated-orbit.svg',
   },
   {
     name: 'Homecare Operations Hub',
     tag: 'Manajemen Layanan',
     outcome: 'Menjadwalkan kunjungan, memantau SLA, dan meningkatkan kepuasan pasien melalui alur operasional terpusat.',
+    visual: '/src/animated-pulse.svg',
   },
 ];
 
@@ -166,6 +172,33 @@ const visualAssets = [
     title: 'Clinical Workflow Automation',
     src: '/src/animated-flow.svg',
     alt: 'Ilustrasi alur otomasi klinis',
+  },
+];
+
+const showcaseGallery = [
+  {
+    title: 'Clinical Intelligence Dashboard',
+    src: '/src/animated-pulse.svg',
+    alt: 'Dashboard intelligence untuk pemantauan performa klinis',
+    caption: 'Insight real-time untuk tim operasional dan manajemen.',
+  },
+  {
+    title: 'Connected Patient Journey',
+    src: '/src/health-illustration.svg',
+    alt: 'Perjalanan pasien terhubung dari registrasi hingga tindak lanjut',
+    caption: 'Alur layanan digital yang lebih jelas untuk tenaga medis dan pasien.',
+  },
+  {
+    title: 'Automation Command Center',
+    src: '/src/animated-flow.svg',
+    alt: 'Visual command center untuk otomasi workflow layanan kesehatan',
+    caption: 'Koordinasi lintas unit lebih cepat dengan workflow automation.',
+  },
+  {
+    title: 'Scalable Integration Hub',
+    src: '/src/animated-orbit.svg',
+    alt: 'Hub integrasi data dan aplikasi yang scalable',
+    caption: 'Integrasi sistem inti tanpa mengganggu operasional harian.',
   },
 ];
 
@@ -282,6 +315,24 @@ export function App() {
     ),
     e(
       'section',
+      { className: 'section image-story', 'aria-label': 'Galeri visual Somansa' },
+      e('p', { className: 'chip' }, 'Image-first Experience'),
+      e('h2', null, 'UI/UX dengan lebih banyak visual agar pesan bisnis lebih cepat dipahami.'),
+      e(
+        'div',
+        { className: 'gallery-grid' },
+        ...showcaseGallery.map((item) =>
+          e(
+            'figure',
+            { key: item.title, className: 'gallery-card glass' },
+            e('img', { src: item.src, alt: item.alt }),
+            e('figcaption', null, e('strong', null, item.title), e('span', null, item.caption)),
+          ),
+        ),
+      ),
+    ),
+    e(
+      'section',
       { className: 'section trust-strip', 'aria-label': 'Alasan memilih Somansa' },
       e('p', { className: 'chip' }, 'Kenapa Somansa'),
       e('h2', null, 'Proses kolaborasi dirancang agar keputusan lebih cepat dan risiko lebih terkendali.'),
@@ -337,6 +388,7 @@ export function App() {
           e(
             'article',
             { key: item.name, className: 'card glass usecase' },
+            e('img', { className: 'usecase-image', src: item.visual, alt: `Ilustrasi ${item.name}` }),
             e('div', { className: 'case-top' }, e('span', { className: 'case-index' }, `0${index + 1}`), e('span', { className: 'case-tag' }, item.tag)),
             e('h3', null, item.name),
             e('p', null, item.outcome),
