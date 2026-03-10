@@ -151,6 +151,24 @@ const metrics = [
   ['24/7', 'Monitoring untuk sistem kritikal'],
 ];
 
+const visualAssets = [
+  {
+    title: 'Pulse Monitoring AI',
+    src: '/src/animated-pulse.svg',
+    alt: 'Ilustrasi AI pulse monitoring',
+  },
+  {
+    title: 'Integrated Orbit Platform',
+    src: '/src/animated-orbit.svg',
+    alt: 'Ilustrasi platform orbit terintegrasi',
+  },
+  {
+    title: 'Clinical Workflow Automation',
+    src: '/src/animated-flow.svg',
+    alt: 'Ilustrasi alur otomasi klinis',
+  },
+];
+
 const e = React.createElement;
 
 export function App() {
@@ -223,6 +241,11 @@ export function App() {
         e(
           'aside',
           { className: 'hero-visual glass', 'aria-label': 'Ringkasan kapabilitas enterprise Somansa' },
+          e('img', {
+            className: 'hero-image float-soft',
+            src: '/src/health-illustration.svg',
+            alt: 'Visual ekosistem layanan kesehatan digital Somansa',
+          }),
           e('div', { className: 'orb orb-cyan' }),
           e('div', { className: 'orb orb-violet' }),
           e('p', { className: 'eyebrow' }, 'Profil Kesiapan Enterprise'),
@@ -235,6 +258,24 @@ export function App() {
             ...metrics.map((item) =>
               e('article', { key: item[0], className: 'metric-card' }, e('strong', null, item[0]), e('small', null, item[1])),
             ),
+          ),
+        ),
+      ),
+    ),
+    e(
+      'section',
+      { className: 'section innovation-strip glass', 'aria-label': 'Visual showcase Somansa' },
+      e('p', { className: 'chip' }, 'Visual Story'),
+      e('h2', null, 'Desain modern yang menyampaikan kapabilitas produk secara profesional.'),
+      e(
+        'div',
+        { className: 'cards-3 visual-grid' },
+        ...visualAssets.map((asset, index) =>
+          e(
+            'article',
+            { key: asset.title, className: 'card visual-card', style: { animationDelay: `${index * 120}ms` } },
+            e('img', { src: asset.src, alt: asset.alt }),
+            e('h3', null, asset.title),
           ),
         ),
       ),
