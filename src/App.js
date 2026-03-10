@@ -3,7 +3,7 @@ import React from 'https://esm.sh/react@18.3.1';
 const navLinks = [
   { label: 'Layanan', href: '#layanan' },
   { label: 'Portofolio', href: '#portofolio' },
-  { label: 'Proses', href: '#proses' },
+  { label: 'Roadmap', href: '#roadmap' },
   { label: 'Kontak', href: '#kontak' },
 ];
 
@@ -12,16 +12,24 @@ const services = [
     title: 'Rekayasa Produk HealthTech',
     description:
       'Perancangan dan pengembangan platform klinik, rumah sakit, dan layanan pasien terpadu dengan arsitektur siap skala.',
+    category: 'Product',
   },
   {
     title: 'Solusi AI Terapan',
     description:
       'Implementasi AI untuk clinical decision support, otomasi alur kerja, dan analitik operasional dengan tata kelola data yang disiplin.',
+    category: 'AI',
   },
   {
     title: 'Modernisasi Sistem Enterprise',
     description:
       'Transformasi sistem inti agar interoperabilitas, keamanan, dan performa bisnis meningkat tanpa mengganggu operasi harian.',
+    category: 'Enterprise',
+  },
+  {
+    title: 'Integrasi Data & API',
+    description: 'Menyatukan data lintas unit bisnis agar dashboard manajemen dan pelaporan regulasi menjadi real-time.',
+    category: 'Data',
   },
 ];
 
@@ -45,6 +53,16 @@ const useCases = [
     name: 'Medical Commerce Stack',
     tag: 'Perdagangan Kesehatan',
     outcome: 'Membangun kanal penjualan produk medis dengan kontrol inventori dan visibilitas permintaan yang lebih baik.',
+  },
+  {
+    name: 'Doctor Exam Platform',
+    tag: 'EdTech Medis',
+    outcome: 'Menyediakan bank soal adaptif dan analitik kompetensi untuk persiapan ujian dokter.',
+  },
+  {
+    name: 'Homecare Operations Hub',
+    tag: 'Manajemen Layanan',
+    outcome: 'Menjadwalkan kunjungan, memantau SLA, dan meningkatkan kepuasan pasien melalui alur operasional terpusat.',
   },
 ];
 
@@ -89,15 +107,85 @@ const trustPoints = [
   },
 ];
 
+const testimonials = [
+  {
+    quote: 'Somansa membantu kami menurunkan waktu administrasi pasien lebih dari 30% dalam 1 kuartal.',
+    name: 'Direktur Operasional Klinik',
+  },
+  {
+    quote: 'Struktur delivery mereka rapi, komunikatif, dan relevan untuk kebutuhan manajemen eksekutif.',
+    name: 'Head of Digital Transformation',
+  },
+  {
+    quote: 'Tim kami terbantu karena implementasi AI dilakukan bertahap namun langsung memberi dampak nyata.',
+    name: 'Medical Service Manager',
+  },
+];
+
+const faqItems = [
+  {
+    q: 'Apakah Somansa bisa mulai dari audit sistem lama?',
+    a: 'Ya, kami dapat memulai dari discovery dan audit sistem sebelum masuk ke desain roadmap implementasi.',
+  },
+  {
+    q: 'Berapa lama proyek biasanya berjalan?',
+    a: 'Durasi menyesuaikan ruang lingkup. Fase discovery biasanya 1-2 minggu, delivery inti 8-16 minggu.',
+  },
+  {
+    q: 'Apakah ada pendampingan setelah go-live?',
+    a: 'Ada. Kami menyediakan support stabilisasi, monitoring KPI, dan iterasi prioritas pasca peluncuran.',
+  },
+];
+
+const roadmap = [
+  ['Q1', 'Discovery dan audit proses'],
+  ['Q2', 'Implementasi MVP terfokus'],
+  ['Q3', 'Integrasi lintas unit & pelaporan'],
+  ['Q4', 'Scale-up, otomasi, dan AI advanced'],
+];
+
 const metrics = [
   ['12+', 'Inisiatif digital terkelola'],
   ['3', 'Domain strategis utama'],
   ['99,9%', 'Target reliabilitas layanan'],
+  ['24/7', 'Monitoring untuk sistem kritikal'],
 ];
 
 const e = React.createElement;
 
 export function App() {
+  const [activeService, setActiveService] = React.useState('Semua');
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [activeFaq, setActiveFaq] = React.useState(0);
+  const [testimonialIndex, setTestimonialIndex] = React.useState(0);
+  const [darkMode, setDarkMode] = React.useState(false);
+  const [email, setEmail] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
+
+  React.useEffect(() => {
+    document.body.classList.toggle('dark', darkMode);
+    return () => document.body.classList.remove('dark');
+  }, [darkMode]);
+
+  const categories = ['Semua', ...new Set(services.map((item) => item.category))];
+
+  const filteredServices = services.filter((item) => {
+    const matchCategory = activeService === 'Semua' || item.category === activeService;
+    const matchSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchCategory && matchSearch;
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!email || !message) return;
+    setSubmitted(true);
+    setEmail('');
+    setMessage('');
+  };
+
+  const currentTestimonial = testimonials[testimonialIndex];
+
   return e(
     'div',
     { className: 'page' },
@@ -110,7 +198,11 @@ export function App() {
         { className: 'nav glass' },
         e('a', { href: '#top', className: 'logo', 'aria-label': 'Somansa home' }, e('img', { src: '/somansa-logo.svg', alt: 'Somansa' }), e('span', null, 'SOMANSA')),
         e('div', { className: 'nav-links' }, ...navLinks.map((link) => e('a', { key: link.label, href: link.href }, link.label))),
-        e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Konsultasi Strategis'),
+        e(
+          'button',
+          { className: 'btn btn-ghost', onClick: () => setDarkMode((v) => !v), type: 'button' },
+          darkMode ? 'Light mode' : 'Dark mode',
+        ),
       ),
       e(
         'section',
@@ -127,7 +219,6 @@ export function App() {
           ),
           e('div', { className: 'actions' }, e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Mulai Diskusi Strategis'), e('a', { className: 'btn btn-ghost', href: '#portofolio' }, 'Tinjau Portofolio')),
           e('div', { className: 'quick-points' }, e('span', null, 'Respons awal ≤ 1x24 jam'), e('span', null, 'Sesi discovery tanpa biaya')),
-          e('p', { className: 'positioning' }, 'Dipercaya sebagai partner eksekusi untuk inisiatif mission-critical dengan ekspektasi kualitas tinggi.'),
         ),
         e(
           'aside',
@@ -150,17 +241,6 @@ export function App() {
     ),
     e(
       'section',
-      { className: 'section glass company-intro' },
-      e('p', { className: 'chip' }, 'Profil Singkat'),
-      e('h2', null, 'Somansa adalah partner strategis yang menyatukan visi bisnis dengan eksekusi teknologi.'),
-      e(
-        'p',
-        null,
-        'Kami bekerja seperti perpanjangan tim internal Anda: menjaga akurasi prioritas, mempercepat pengambilan keputusan, dan membangun solusi yang siap mendukung pertumbuhan jangka panjang.',
-      ),
-    ),
-    e(
-      'section',
       { className: 'section trust-strip', 'aria-label': 'Alasan memilih Somansa' },
       e('p', { className: 'chip' }, 'Kenapa Somansa'),
       e('h2', null, 'Proses kolaborasi dirancang agar keputusan lebih cepat dan risiko lebih terkendali.'),
@@ -175,7 +255,34 @@ export function App() {
       { className: 'section', id: 'layanan' },
       e('p', { className: 'chip' }, 'Layanan Inti'),
       e('h2', null, 'Kapabilitas terstruktur untuk inisiatif bernilai strategis.'),
-      e('div', { className: 'cards-3' }, ...services.map((item) => e('article', { key: item.title, className: 'card glass service-card' }, e('h3', null, item.title), e('p', null, item.description)))),
+      e(
+        'div',
+        { className: 'filters' },
+        e('input', {
+          value: searchTerm,
+          onChange: (event) => setSearchTerm(event.target.value),
+          placeholder: 'Cari layanan...',
+          className: 'search',
+          'aria-label': 'Cari layanan',
+        }),
+        e(
+          'div',
+          { className: 'filter-buttons' },
+          ...categories.map((item) =>
+            e(
+              'button',
+              {
+                key: item,
+                className: `btn btn-filter ${activeService === item ? 'active' : ''}`,
+                onClick: () => setActiveService(item),
+                type: 'button',
+              },
+              item,
+            ),
+          ),
+        ),
+      ),
+      e('div', { className: 'cards-3' }, ...filteredServices.map((item) => e('article', { key: item.title, className: 'card glass service-card' }, e('h3', null, item.title), e('p', null, item.description), e('span', { className: 'case-tag' }, item.category)))),
     ),
     e(
       'section',
@@ -198,6 +305,31 @@ export function App() {
     ),
     e(
       'section',
+      { className: 'section glass', id: 'roadmap' },
+      e('p', { className: 'chip' }, 'Roadmap Implementasi'),
+      e('h2', null, 'Rencana eksekusi 4 fase untuk memastikan hasil bertahap namun konsisten.'),
+      e(
+        'div',
+        { className: 'roadmap-grid' },
+        ...roadmap.map((item) => e('article', { key: item[0], className: 'card mini-card' }, e('strong', null, item[0]), e('p', null, item[1]))),
+      ),
+    ),
+    e(
+      'section',
+      { className: 'section glass testimonial' },
+      e('p', { className: 'chip' }, 'Testimoni Klien'),
+      e('h2', null, 'Kolaborasi yang menghasilkan dampak terukur.'),
+      e('blockquote', null, `“${currentTestimonial.quote}”`),
+      e('p', { className: 'author' }, currentTestimonial.name),
+      e(
+        'div',
+        { className: 'actions' },
+        e('button', { className: 'btn btn-ghost', onClick: () => setTestimonialIndex((testimonialIndex + testimonials.length - 1) % testimonials.length), type: 'button' }, 'Sebelumnya'),
+        e('button', { className: 'btn btn-primary', onClick: () => setTestimonialIndex((testimonialIndex + 1) % testimonials.length), type: 'button' }, 'Berikutnya'),
+      ),
+    ),
+    e(
+      'section',
       { className: 'section', id: 'proses' },
       e('p', { className: 'chip' }, 'Metodologi Kerja'),
       e('h2', null, 'Ringkas, disiplin, dan relevan untuk lingkungan enterprise.'),
@@ -211,12 +343,59 @@ export function App() {
     ),
     e(
       'section',
+      { className: 'section', id: 'faq' },
+      e('p', { className: 'chip' }, 'FAQ'),
+      e('h2', null, 'Pertanyaan yang paling sering ditanyakan.'),
+      e(
+        'div',
+        { className: 'faq-list' },
+        ...faqItems.map((item, index) =>
+          e(
+            'button',
+            {
+              key: item.q,
+              className: `faq-item glass ${activeFaq === index ? 'open' : ''}`,
+              onClick: () => setActiveFaq(index),
+              type: 'button',
+            },
+            e('strong', null, item.q),
+            activeFaq === index ? e('p', null, item.a) : null,
+          ),
+        ),
+      ),
+    ),
+    e(
+      'section',
       { className: 'section cta glass', id: 'kontak' },
       e('p', { className: 'chip' }, 'Kolaborasi Strategis'),
       e('h2', null, 'Siapkan inisiatif HealthTech dan AI Anda dengan fondasi yang tepat.'),
       e('p', null, 'Diskusikan target bisnis, risiko implementasi, dan prioritas eksekusi bersama tim Somansa dalam sesi konsultasi terarah.'),
-      e('a', { href: 'mailto:hello@somansa.id', className: 'btn btn-primary cta-button' }, 'Jadwalkan Konsultasi Eksekutif'),
+      e(
+        'form',
+        { className: 'contact-form', onSubmit: handleSubmit },
+        e('input', {
+          type: 'email',
+          value: email,
+          onChange: (event) => setEmail(event.target.value),
+          placeholder: 'Email bisnis Anda',
+          required: true,
+        }),
+        e('textarea', {
+          value: message,
+          onChange: (event) => setMessage(event.target.value),
+          placeholder: 'Jelaskan kebutuhan inti Anda',
+          rows: 4,
+          required: true,
+        }),
+        e('button', { type: 'submit', className: 'btn btn-primary cta-button' }, 'Kirim kebutuhan awal'),
+      ),
+      submitted ? e('p', { className: 'success-msg' }, 'Terima kasih! Tim Somansa akan menghubungi Anda dalam 1x24 jam.') : null,
       e('p', { className: 'cta-note' }, 'Atau kirim ringkasan kebutuhan Anda ke hello@somansa.id — tim kami akan menyiapkan rekomendasi awal.'),
+    ),
+    e(
+      'a',
+      { href: '#top', className: 'back-to-top', 'aria-label': 'Kembali ke atas' },
+      '↑',
     ),
     e('footer', { className: 'footer' }, `© ${new Date().getFullYear()} Somansa. Dirancang untuk kepercayaan enterprise.`),
   );
