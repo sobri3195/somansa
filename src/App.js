@@ -10,23 +10,27 @@ const navLinks = [
 const services = [
   {
     title: 'Rekayasa Produk HealthTech',
-    description: 'Bangun platform klinik dan rumah sakit yang siap scale.',
+    description: 'Bangun platform klinik dan rumah sakit yang siap scale dengan arsitektur modern dan scalable.',
     category: 'Product',
+    icon: '🏥',
   },
   {
     title: 'Solusi AI Terapan',
-    description: 'AI untuk triase, otomasi kerja, dan analitik operasional.',
+    description: 'AI untuk triase, otomasi kerja, dan analitik operasional yang meningkatkan efisiensi.',
     category: 'AI',
+    icon: '🤖',
   },
   {
     title: 'Modernisasi Sistem Enterprise',
-    description: 'Upgrade sistem inti tanpa mengganggu operasional harian.',
+    description: 'Upgrade sistem inti tanpa mengganggu operasional harian dengan pendekatan bertahap.',
     category: 'Enterprise',
+    icon: '🔄',
   },
   {
     title: 'Integrasi Data & API',
-    description: 'Satukan data lintas unit agar insight dan laporan real-time.',
+    description: 'Satukan data lintas unit agar insight dan laporan real-time selalu tersedia.',
     category: 'Data',
+    icon: '🔗',
   },
 ];
 
@@ -40,7 +44,7 @@ const useCases = [
   {
     name: 'Kaist Medika Ecosystem',
     tag: 'Ekosistem Klinik',
-    outcome: 'Klinik, homecare, dan manajemen pasien dalam satu alur.',
+    outcome: 'Klinik, homecare, dan manajemen pasien dalam satu alur terintegrasi.',
     visual: '/src/product-homecare.svg',
   },
   {
@@ -52,7 +56,7 @@ const useCases = [
   {
     name: 'Medical Commerce Stack',
     tag: 'Perdagangan Kesehatan',
-    outcome: 'Kanal jual alat medis dengan kontrol stok yang rapi.',
+    outcome: 'Kanal jual alat medis dengan kontrol stok yang rapi dan terotomatisasi.',
     visual: '/src/product-medcommerce.svg',
   },
   {
@@ -74,16 +78,19 @@ const processSteps = [
     title: 'Pemetaan Strategi',
     detail:
       'Menyelaraskan tujuan bisnis, kesiapan organisasi, regulasi, dan prioritas teknologi ke dalam peta jalan yang terukur.',
+    icon: '🎯',
   },
   {
     title: 'Desain dan Implementasi',
     detail:
       'Membangun pengalaman produk, arsitektur sistem, serta integrasi inti dengan standar kualitas enterprise-grade.',
+    icon: '⚙️',
   },
   {
     title: 'Optimalisasi Berkelanjutan',
     detail:
       'Memantau dampak, menajamkan metrik performa, dan mengeksekusi iterasi prioritas untuk pertumbuhan jangka panjang.',
+    icon: '📈',
   },
 ];
 
@@ -99,14 +106,17 @@ const trustPoints = [
   {
     title: 'Discovery yang terukur',
     detail: 'Workshop singkat untuk memetakan prioritas, risiko, dan peluang dampak bisnis sebelum fase delivery.',
+    icon: '🔍',
   },
   {
     title: 'Eksekusi transparan',
     detail: 'Update progres berkala dengan metrik yang mudah dibaca stakeholder non-teknis maupun tim operasional.',
+    icon: '📊',
   },
   {
     title: 'Adopsi berkelanjutan',
     detail: 'Pendampingan pasca go-live agar solusi benar-benar digunakan dan memberikan ROI yang konsisten.',
+    icon: '🚀',
   },
 ];
 
@@ -207,6 +217,137 @@ const showcaseGallery = [
 
 const e = React.createElement;
 
+// Custom hook for scroll reveal animation
+function useScrollReveal(threshold = 0.1) {
+  const ref = React.useRef(null);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [threshold]);
+
+  return [ref, isVisible];
+}
+
+// Custom hook for animated counter
+function useCounter(end, duration = 2000, start = 0) {
+  const [count, setCount] = React.useState(start);
+  const [isVisible, setIsVisible] = React.useState(false);
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [isVisible]);
+
+  React.useEffect(() => {
+    if (!isVisible) return;
+
+    const startTime = Date.now();
+    const animate = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      setCount(Math.floor(start + (end - start) * easeOutQuart));
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [isVisible, end, duration, start]);
+
+  return [ref, count];
+}
+
+// Particle Background Component
+function ParticleBackground() {
+  const particles = React.useMemo(() => {
+    return Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: `${Math.random() * 100}%`,
+      delay: `${Math.random() * 10}s`,
+      duration: `${8 + Math.random() * 10}s`,
+      size: 2 + Math.random() * 4,
+    }));
+  }, []);
+
+  return e(
+    'div',
+    { className: 'particles-container' },
+    particles.map((p) =>
+      e('div', {
+        key: p.id,
+        className: 'particle',
+        style: {
+          left: p.left,
+          animationDelay: p.delay,
+          animationDuration: p.duration,
+          width: p.size,
+          height: p.size,
+        },
+      })
+    )
+  );
+}
+
+// Reveal Component - Wrapper untuk animasi scroll
+function RevealSection({ className, children, delay = 0, direction = 'up', ...props }) {
+  const [ref, isVisible] = useScrollReveal();
+  const revealClass = {
+    up: 'reveal',
+    left: 'reveal-left',
+    right: 'reveal-right',
+    scale: 'reveal-scale',
+  }[direction] || 'reveal';
+
+  return e(
+    'section',
+    {
+      ref,
+      className: `${className || ''} ${revealClass} ${isVisible ? 'active' : ''}`.trim(),
+      style: { transitionDelay: `${delay}ms` },
+      ...props,
+    },
+    children
+  );
+}
+
 export function App() {
   const [activeService, setActiveService] = React.useState('Semua');
   const [searchTerm, setSearchTerm] = React.useState('');
@@ -216,6 +357,24 @@ export function App() {
   const [email, setEmail] = React.useState('');
   const [message, setMessage] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
+  const [isNavScrolled, setIsNavScrolled] = React.useState(false);
+
+  // Auto-advance testimonials
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Scroll handler for nav background
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsNavScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   React.useEffect(() => {
     document.body.classList.toggle('dark', darkMode);
@@ -236,26 +395,48 @@ export function App() {
     setSubmitted(true);
     setEmail('');
     setMessage('');
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   const currentTestimonial = testimonials[testimonialIndex];
 
+  // Counter refs and values
+  const [counter12Ref, count12] = useCounter(12, 2000);
+  const [counter3Ref, count3] = useCounter(3, 1500);
+
   return e(
     'div',
     { className: 'page' },
+    e(ParticleBackground),
     e('a', { className: 'skip-link', href: '#kontak' }, 'Lewati ke kontak'),
     e(
       'header',
       { className: 'hero-shell', id: 'top' },
       e(
         'nav',
-        { className: 'nav glass' },
-        e('a', { href: '#top', className: 'logo', 'aria-label': 'Somansa home' }, e('img', { src: '/somansa-logo.svg', alt: 'Somansa' }), e('span', null, 'SOMANSA')),
-        e('div', { className: 'nav-links' }, ...navLinks.map((link) => e('a', { key: link.label, href: link.href }, link.label))),
+        { 
+          className: `nav glass ${isNavScrolled ? 'scrolled' : ''}`,
+          style: isNavScrolled ? {
+            background: 'linear-gradient(150deg, rgba(13, 23, 43, 0.95), rgba(13, 23, 43, 0.9))',
+            boxShadow: '0 10px 40px rgba(5, 10, 23, 0.6)',
+          } : {}
+        },
+        e('a', { href: '#top', className: 'logo', 'aria-label': 'Somansa home' }, 
+          e('img', { src: '/somansa-logo.svg', alt: 'Somansa' }), 
+          e('span', null, 'SOMANSA')
+        ),
+        e('div', { className: 'nav-links' }, ...navLinks.map((link) => 
+          e('a', { key: link.label, href: link.href }, link.label)
+        )),
         e(
           'button',
-          { className: 'btn btn-ghost', onClick: () => setDarkMode((v) => !v), type: 'button' },
-          darkMode ? 'Light mode' : 'Dark mode',
+          { 
+            className: 'btn btn-ghost', 
+            onClick: () => setDarkMode((v) => !v), 
+            type: 'button',
+            style: { transition: 'all 0.3s ease' }
+          },
+          darkMode ? '☀️ Light' : '🌙 Dark',
         ),
       ),
       e(
@@ -265,21 +446,43 @@ export function App() {
           'div',
           { className: 'hero-copy glass' },
           e('p', { className: 'chip' }, 'Mitra Transformasi Digital HealthTech & AI'),
-          e('h1', null, 'Produk digital HealthTech & AI yang cepat dipakai.'),
+          e('h1', null, 
+            'Produk digital ', 
+            e('span', { className: 'highlight' }, 'HealthTech'),
+            ' & AI yang cepat dipakai.'
+          ),
           e(
             'p',
             { className: 'hero-lead' },
-            'Kami bantu dari strategi sampai go-live, fokus ke dampak bisnis.',
+            'Kami bantu dari strategi sampai go-live, fokus ke dampak bisnis yang nyata dan terukur.',
           ),
-          e('div', { className: 'actions' }, e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Mulai Diskusi Strategis'), e('a', { className: 'btn btn-ghost', href: '#portofolio' }, 'Tinjau Portofolio')),
-          e('div', { className: 'quick-points' }, e('span', null, 'Respons awal ≤ 1x24 jam'), e('span', null, 'Sesi discovery tanpa biaya')),
+          e('div', { className: 'actions' }, 
+            e('a', { 
+              className: 'btn btn-primary', 
+              href: '#kontak',
+              style: { animation: 'fadeInUp 0.6s ease 0.4s both' }
+            }, 'Mulai Diskusi Strategis'), 
+            e('a', { 
+              className: 'btn btn-ghost', 
+              href: '#portofolio',
+              style: { animation: 'fadeInUp 0.6s ease 0.5s both' }
+            }, 'Tinjau Portofolio')
+          ),
+          e('div', { className: 'quick-points' }, 
+            e('span', { style: { animation: 'fadeInUp 0.6s ease 0.6s both' } }, '⚡ Respons awal ≤ 1x24 jam'), 
+            e('span', { style: { animation: 'fadeInUp 0.6s ease 0.7s both' } }, '🎯 Sesi discovery tanpa biaya')
+          ),
           e(
             'div',
             { className: 'prestige-row', 'aria-label': 'Keunggulan standar premium Somansa' },
-            ...prestigeStats.map((item) =>
+            ...prestigeStats.map((item, index) =>
               e(
                 'article',
-                { key: item[0], className: 'prestige-item' },
+                { 
+                  key: item[0], 
+                  className: 'prestige-item',
+                  style: { animationDelay: `${0.8 + index * 0.1}s` }
+                },
                 e('strong', null, item[0]),
                 e('small', null, item[1]),
               ),
@@ -287,7 +490,7 @@ export function App() {
           ),
         ),
         e(
-          'aside',
+          'div',
           { className: 'hero-visual glass', 'aria-label': 'Ringkasan kapabilitas enterprise Somansa' },
           e('img', {
             className: 'hero-image float-soft',
@@ -296,23 +499,39 @@ export function App() {
           }),
           e('div', { className: 'orb orb-cyan' }),
           e('div', { className: 'orb orb-violet' }),
+          e('div', { className: 'orb orb-gold' }),
           e('p', { className: 'eyebrow' }, 'Profil Kesiapan Enterprise'),
           e('h3', null, 'Delivery partner untuk institusi kesehatan yang membutuhkan eksekusi presisi.'),
-          e('ul', { className: 'highlights-list' }, ...highlights.map((item) => e('li', { key: item }, item))),
-          e('div', { className: 'indicator-row' }, ...indicators.map((item) => e('span', { key: item }, item))),
+          e('ul', { className: 'highlights-list' }, ...highlights.map((item) => 
+            e('li', { key: item }, item)
+          )),
+          e('div', { className: 'indicator-row' }, ...indicators.map((item) => 
+            e('span', { key: item }, item)
+          )),
           e(
             'div',
             { className: 'metric-grid' },
-            ...metrics.map((item) =>
-              e('article', { key: item[0], className: 'metric-card' }, e('strong', null, item[0]), e('small', null, item[1])),
+            ...metrics.map((item, index) =>
+              e('article', { 
+                key: item[0], 
+                className: 'metric-card',
+                style: { animation: `fadeInUp 0.6s ease ${1 + index * 0.1}s both` }
+              }, 
+                e('strong', { 
+                  className: 'counter',
+                  ref: index === 0 ? counter12Ref : index === 1 ? counter3Ref : null
+                }, index === 0 ? `${count12}+` : index === 1 ? count3 : item[0]), 
+                e('small', null, item[1])
+              ),
             ),
           ),
         ),
       ),
     ),
-    e(
-      'section',
-      { className: 'section innovation-strip glass', 'aria-label': 'Visual showcase Somansa' },
+    e(RevealSection, { 
+      className: 'section innovation-strip glass',
+      'aria-label': 'Visual showcase Somansa'
+    }, 
       e('p', { className: 'chip' }, 'Visual Story'),
       e('h2', null, 'Visual produk Somansa.'),
       e(
@@ -321,45 +540,67 @@ export function App() {
         ...visualAssets.map((asset, index) =>
           e(
             'article',
-            { key: asset.title, className: 'card visual-card', style: { animationDelay: `${index * 120}ms` } },
+            { 
+              key: asset.title, 
+              className: 'card visual-card', 
+              style: { animationDelay: `${index * 120}ms` } 
+            },
             e('img', { src: asset.src, alt: asset.alt }),
             e('h3', null, asset.title),
           ),
         ),
-      ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section image-story', 'aria-label': 'Galeri visual Somansa' },
+    e(RevealSection, { 
+      className: 'section image-story',
+      'aria-label': 'Galeri visual Somansa',
+      direction: 'scale'
+    },
       e('p', { className: 'chip' }, 'Image-first Experience'),
       e('h2', null, 'Contoh gambar produk.'),
       e(
         'div',
         { className: 'gallery-grid' },
-        ...showcaseGallery.map((item) =>
+        ...showcaseGallery.map((item, index) =>
           e(
             'figure',
-            { key: item.title, className: 'gallery-card glass' },
+            { 
+              key: item.title, 
+              className: 'gallery-card glass',
+              style: { animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }
+            },
             e('img', { src: item.src, alt: item.alt }),
             e('figcaption', null, e('strong', null, item.title), e('span', null, item.caption)),
           ),
         ),
-      ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section trust-strip', 'aria-label': 'Alasan memilih Somansa' },
+    e(RevealSection, { 
+      className: 'section trust-strip',
+      'aria-label': 'Alasan memilih Somansa'
+    },
       e('p', { className: 'chip' }, 'Kenapa Somansa'),
       e('h2', null, 'Kerja cepat, progres jelas.'),
       e(
         'div',
         { className: 'cards-3' },
-        ...trustPoints.map((item) => e('article', { key: item.title, className: 'card glass trust-card' }, e('h3', null, item.title), e('p', null, item.detail))),
-      ),
+        ...trustPoints.map((item, index) => 
+          e('article', { 
+            key: item.title, 
+            className: 'card glass trust-card',
+            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
+          }, 
+            e('div', { style: { fontSize: '2rem', marginBottom: '0.5rem' } }, item.icon),
+            e('h3', null, item.title), 
+            e('p', null, item.detail)
+          )
+        ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section', id: 'layanan' },
+    e(RevealSection, { 
+      className: 'section',
+      id: 'layanan'
+    },
       e('p', { className: 'chip' }, 'Layanan Inti'),
       e('h2', null, 'Layanan inti.'),
       e(
@@ -368,7 +609,7 @@ export function App() {
         e('input', {
           value: searchTerm,
           onChange: (event) => setSearchTerm(event.target.value),
-          placeholder: 'Cari layanan...',
+          placeholder: '🔍 Cari layanan...',
           className: 'search',
           'aria-label': 'Cari layanan',
         }),
@@ -389,11 +630,24 @@ export function App() {
           ),
         ),
       ),
-      e('div', { className: 'cards-3' }, ...filteredServices.map((item) => e('article', { key: item.title, className: 'card glass service-card' }, e('h3', null, item.title), e('p', null, item.description), e('span', { className: 'case-tag' }, item.category)))),
+      e('div', { className: 'cards-3' }, ...filteredServices.map((item, index) => 
+        e('article', { 
+          key: item.title, 
+          className: 'card glass service-card',
+          style: { animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }
+        }, 
+          e('div', { style: { fontSize: '2.5rem', marginBottom: '0.75rem' } }, item.icon),
+          e('h3', null, item.title), 
+          e('p', null, item.description), 
+          e('span', { className: 'case-tag' }, item.category)
+        )
+      ))
     ),
-    e(
-      'section',
-      { className: 'section', id: 'portofolio' },
+    e(RevealSection, { 
+      className: 'section',
+      id: 'portofolio',
+      direction: 'left'
+    },
       e('p', { className: 'chip' }, 'Portofolio & Use Case'),
       e('h2', null, 'Produk yang sedang kami bangun.'),
       e(
@@ -402,56 +656,115 @@ export function App() {
         ...useCases.map((item, index) =>
           e(
             'article',
-            { key: item.name, className: 'card glass usecase' },
+            { 
+              key: item.name, 
+              className: 'card glass usecase',
+              style: { animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }
+            },
             e('img', { className: 'usecase-image', src: item.visual, alt: `Ilustrasi ${item.name}` }),
             e('div', { className: 'case-top' }, e('span', { className: 'case-index' }, `0${index + 1}`), e('span', { className: 'case-tag' }, item.tag)),
             e('h3', null, item.name),
             e('p', null, item.outcome),
           ),
         ),
-      ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section glass', id: 'roadmap' },
+    e(RevealSection, { 
+      className: 'section glass',
+      id: 'roadmap',
+      direction: 'right'
+    },
       e('p', { className: 'chip' }, 'Roadmap Implementasi'),
       e('h2', null, 'Roadmap 4 fase.'),
       e(
         'div',
         { className: 'roadmap-grid' },
-        ...roadmap.map((item) => e('article', { key: item[0], className: 'card mini-card' }, e('strong', null, item[0]), e('p', null, item[1]))),
-      ),
+        ...roadmap.map((item, index) => 
+          e('article', { 
+            key: item[0], 
+            className: 'card mini-card',
+            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
+          }, 
+            e('strong', null, item[0]), 
+            e('p', null, item[1])
+          )
+        ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section glass testimonial' },
+    e(RevealSection, { 
+      className: 'section glass testimonial',
+      direction: 'scale'
+    },
       e('p', { className: 'chip' }, 'Testimoni Klien'),
       e('h2', null, 'Testimoni singkat.'),
-      e('blockquote', null, `“${currentTestimonial.quote}”`),
+      e('blockquote', { key: testimonialIndex }, `"${currentTestimonial.quote}"`),
       e('p', { className: 'author' }, currentTestimonial.name),
       e(
         'div',
         { className: 'actions' },
-        e('button', { className: 'btn btn-ghost', onClick: () => setTestimonialIndex((testimonialIndex + testimonials.length - 1) % testimonials.length), type: 'button' }, 'Sebelumnya'),
-        e('button', { className: 'btn btn-primary', onClick: () => setTestimonialIndex((testimonialIndex + 1) % testimonials.length), type: 'button' }, 'Berikutnya'),
+        e('button', { 
+          className: 'btn btn-ghost', 
+          onClick: () => setTestimonialIndex((testimonialIndex + testimonials.length - 1) % testimonials.length), 
+          type: 'button' 
+        }, '← Sebelumnya'),
+        e('div', { 
+          style: { 
+            display: 'flex', 
+            gap: '0.5rem', 
+            alignItems: 'center',
+            margin: '0 1rem'
+          } 
+        }, 
+          ...testimonials.map((_, idx) => 
+            e('span', {
+              key: idx,
+              style: {
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                background: idx === testimonialIndex ? 'var(--gold)' : 'rgba(255,255,255,0.3)',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              },
+              onClick: () => setTestimonialIndex(idx)
+            })
+          )
+        ),
+        e('button', { 
+          className: 'btn btn-primary', 
+          onClick: () => setTestimonialIndex((testimonialIndex + 1) % testimonials.length), 
+          type: 'button' 
+        }, 'Berikutnya →'),
       ),
     ),
-    e(
-      'section',
-      { className: 'section', id: 'proses' },
+    e(RevealSection, { 
+      className: 'section',
+      id: 'proses'
+    },
       e('p', { className: 'chip' }, 'Metodologi Kerja'),
       e('h2', null, 'Cara kerja kami.'),
       e(
         'div',
         { className: 'cards-3 process' },
         ...processSteps.map((item, index) =>
-          e('article', { key: item.title, className: 'card glass process-card' }, e('span', { className: 'step' }, `Tahap ${index + 1}`), e('h3', null, item.title), e('p', null, item.detail)),
+          e('article', { 
+            key: item.title, 
+            className: 'card glass process-card',
+            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
+          }, 
+            e('span', { className: 'step' }, `Tahap ${index + 1}`), 
+            e('div', { style: { fontSize: '2.5rem', margin: '0.5rem 0' } }, item.icon),
+            e('h3', null, item.title), 
+            e('p', null, item.detail)
+          ),
         ),
-      ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section', id: 'faq' },
+    e(RevealSection, { 
+      className: 'section',
+      id: 'faq',
+      direction: 'left'
+    },
       e('p', { className: 'chip' }, 'FAQ'),
       e('h2', null, 'FAQ singkat.'),
       e(
@@ -463,21 +776,24 @@ export function App() {
             {
               key: item.q,
               className: `faq-item glass ${activeFaq === index ? 'open' : ''}`,
-              onClick: () => setActiveFaq(index),
+              onClick: () => setActiveFaq(activeFaq === index ? -1 : index),
               type: 'button',
+              style: { animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }
             },
             e('strong', null, item.q),
             activeFaq === index ? e('p', null, item.a) : null,
           ),
         ),
-      ),
+      )
     ),
-    e(
-      'section',
-      { className: 'section cta glass', id: 'kontak' },
+    e(RevealSection, { 
+      className: 'section cta glass',
+      id: 'kontak',
+      direction: 'scale'
+    },
       e('p', { className: 'chip' }, 'Kolaborasi Strategis'),
       e('h2', null, 'Siap mulai proyek?'),
-      e('p', null, 'Kirim kebutuhan, tim kami akan hubungi cepat.'),
+      e('p', null, 'Kirim kebutuhan, tim kami akan hubungi Anda dengan cepat.'),
       e(
         'form',
         { className: 'contact-form', onSubmit: handleSubmit },
@@ -485,20 +801,24 @@ export function App() {
           type: 'email',
           value: email,
           onChange: (event) => setEmail(event.target.value),
-          placeholder: 'Email bisnis Anda',
+          placeholder: '📧 Email bisnis Anda',
           required: true,
         }),
         e('textarea', {
           value: message,
           onChange: (event) => setMessage(event.target.value),
-          placeholder: 'Jelaskan kebutuhan inti Anda',
+          placeholder: '💬 Jelaskan kebutuhan inti Anda',
           rows: 4,
           required: true,
         }),
-        e('button', { type: 'submit', className: 'btn btn-primary cta-button' }, 'Kirim kebutuhan awal'),
+        e('button', { 
+          type: 'submit', 
+          className: 'btn btn-primary cta-button',
+          disabled: submitted
+        }, submitted ? '✓ Terkirim!' : '🚀 Kirim kebutuhan awal'),
       ),
       submitted ? e('p', { className: 'success-msg' }, 'Terima kasih! Tim Somansa akan menghubungi Anda dalam 1x24 jam.') : null,
-      e('p', { className: 'cta-note' }, 'Atau email ke hello@somansa.id'),
+      e('p', { className: 'cta-note' }, 'Atau email ke ', e('a', { href: 'mailto:hello@somansa.id' }, 'hello@somansa.id')),
     ),
     e(
       'a',
