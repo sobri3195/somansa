@@ -3,11 +3,17 @@ import React from 'https://esm.sh/react@18.3.1';
 const navLinks = [
   { label: 'Layanan', href: '#layanan' },
   { label: 'Portofolio', href: '#portofolio' },
-  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Hubungi', href: '#hubungi' },
   { label: 'Kontak', href: '#kontak' },
 ];
 
 const services = [
+  {
+    title: 'Service Blueprint & PMO Digital',
+    description: 'Rancang proses lintas tim dengan SLA jelas agar implementasi lebih cepat dan minim risiko.',
+    category: 'Service',
+    icon: '🧭',
+  },
   {
     title: 'Rekayasa Produk HealthTech',
     description: 'Bangun platform klinik dan rumah sakit yang siap scale dengan arsitektur modern dan scalable.',
@@ -153,10 +159,10 @@ const faqItems = [
 ];
 
 const roadmap = [
-  ['Q1', 'Discovery dan audit proses'],
-  ['Q2', 'Implementasi MVP terfokus'],
-  ['Q3', 'Integrasi lintas unit & pelaporan'],
-  ['Q4', 'Scale-up, otomasi, dan AI advanced'],
+  ['01', 'Discovery: audit proses, prioritas bisnis, dan peta risiko implementasi.'],
+  ['02', 'MVP: bangun solusi inti yang siap dipakai tim operasional dalam hitungan minggu.'],
+  ['03', 'Integrasi: sambungkan data, API, dan workflow lintas unit tanpa ganggu layanan.'],
+  ['04', 'Scale: optimasi KPI, reliability, dan rollout bertahap untuk skala enterprise.'],
 ];
 
 const metrics = [
@@ -355,7 +361,7 @@ export function App() {
   const [searchTerm, setSearchTerm] = React.useState('');
   const [activeFaq, setActiveFaq] = React.useState(0);
   const [testimonialIndex, setTestimonialIndex] = React.useState(0);
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [message, setMessage] = React.useState('');
   const [submitted, setSubmitted] = React.useState(false);
@@ -378,12 +384,7 @@ export function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  React.useEffect(() => {
-    document.body.classList.toggle('dark', darkMode);
-    return () => document.body.classList.remove('dark');
-  }, [darkMode]);
-
-  const categories = ['Semua', ...new Set(services.map((item) => item.category))];
+  const categories = ['Semua', 'Service', 'Product', 'AI', 'Enterprise', 'Data'];
 
   const filteredServices = services.filter((item) => {
     const matchCategory = activeService === 'Semua' || item.category === activeService;
@@ -393,8 +394,9 @@ export function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!email || !message) return;
+    if (!name || !email || !message) return;
     setSubmitted(true);
+    setName('');
     setEmail('');
     setMessage('');
     setTimeout(() => setSubmitted(false), 5000);
@@ -430,16 +432,7 @@ export function App() {
         e('div', { className: 'nav-links' }, ...navLinks.map((link) => 
           e('a', { key: link.label, href: link.href }, link.label)
         )),
-        e(
-          'button',
-          { 
-            className: 'btn btn-ghost', 
-            onClick: () => setDarkMode((v) => !v), 
-            type: 'button',
-            style: { transition: 'all 0.3s ease' }
-          },
-          darkMode ? '☀️ Light' : '🌙 Dark',
-        ),
+        e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Jadwalkan Demo'),
       ),
         e(
           'section',
@@ -459,16 +452,16 @@ export function App() {
             'Kami bantu dari strategi sampai go-live, fokus ke dampak bisnis yang nyata dan terukur.',
           ),
           e('div', { className: 'actions' }, 
-            e('a', { 
+            e('a', {
               className: 'btn btn-primary', 
               href: '#kontak',
               style: { animation: 'fadeInUp 0.6s ease 0.4s both' }
-            }, 'Mulai Diskusi Strategis'), 
-            e('a', { 
+            }, 'Jadwalkan Demo'),
+            e('a', {
               className: 'btn btn-ghost', 
               href: '#portofolio',
               style: { animation: 'fadeInUp 0.6s ease 0.5s both' }
-            }, 'Tinjau Portofolio')
+            }, 'Lihat Produk')
           ),
           e('div', { className: 'quick-points' }, 
             e('span', { style: { animation: 'fadeInUp 0.6s ease 0.6s both' } }, '⚡ Respons awal ≤ 1x24 jam'), 
@@ -690,11 +683,11 @@ export function App() {
     ),
     e(RevealSection, { 
       className: 'section glass',
-      id: 'roadmap',
+      id: 'delivery',
       direction: 'right'
     },
-      e('p', { className: 'chip' }, 'Roadmap Implementasi'),
-      e('h2', null, 'Alur delivery yang ringkas, transparan, dan terukur.'),
+      e('p', { className: 'chip' }, 'Alur Delivery'),
+      e('h2', null, 'Discovery hingga scale dengan step yang jelas.'),
       e(
         'div',
         { className: 'roadmap-grid' },
@@ -704,7 +697,7 @@ export function App() {
             className: 'card mini-card',
             style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
           }, 
-            e('strong', null, item[0]), 
+            e('strong', null, `Step ${item[0]}`), 
             e('p', null, item[1])
           )
         ),
@@ -712,6 +705,7 @@ export function App() {
     ),
     e(RevealSection, { 
       className: 'section glass testimonial',
+      id: 'hubungi',
       direction: 'scale'
     },
       e('p', { className: 'chip' }, 'Testimoni Klien'),
@@ -816,6 +810,13 @@ export function App() {
       e(
         'form',
         { className: 'contact-form', onSubmit: handleSubmit },
+        e('input', {
+          type: 'text',
+          value: name,
+          onChange: (event) => setName(event.target.value),
+          placeholder: '👤 Nama lengkap',
+          required: true,
+        }),
         e('input', {
           type: 'email',
           value: email,
