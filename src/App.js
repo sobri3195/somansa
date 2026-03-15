@@ -135,6 +135,8 @@ const testimonials = [
   },
 ];
 
+const partnerLogos = ['Klinik Pratama', 'RS Mitra Medika', 'LabPro', 'Care365', 'MediSupply'];
+
 const faqItems = [
   {
     q: 'Apakah Somansa bisa mulai dari audit sistem lama?',
@@ -439,9 +441,9 @@ export function App() {
           darkMode ? '☀️ Light' : '🌙 Dark',
         ),
       ),
-      e(
-        'section',
-        { className: 'hero grid' },
+        e(
+          'section',
+          { className: 'hero grid' },
         e(
           'div',
           { className: 'hero-copy glass' },
@@ -526,6 +528,23 @@ export function App() {
             ),
           ),
         ),
+        ),
+      ),
+    e(
+      RevealSection,
+      { className: 'section partner-strip glass', direction: 'up' },
+      e('p', { className: 'chip' }, 'Dipercaya Tim Operasional Kesehatan'),
+      e(
+        'div',
+        { className: 'partner-row', 'aria-label': 'Daftar partner dan unit yang pernah berkolaborasi' },
+        ...partnerLogos.map((partner) => e('span', { key: partner, className: 'partner-badge' }, partner)),
+      ),
+      e(
+        'div',
+        { className: 'partner-proof' },
+        e('article', null, e('strong', null, '95%'), e('small', null, 'klien melanjutkan fase iterasi')),
+        e('article', null, e('strong', null, '< 14 hari'), e('small', null, 'waktu dari kickoff ke prototype')),
+        e('article', null, e('strong', null, 'Zero downtime'), e('small', null, 'untuk rollout bertahap sistem inti')),
       ),
     ),
     e(RevealSection, { 
@@ -602,7 +621,7 @@ export function App() {
       id: 'layanan'
     },
       e('p', { className: 'chip' }, 'Layanan Inti'),
-      e('h2', null, 'Layanan inti.'),
+      e('h2', null, 'Paket layanan untuk mempercepat transformasi digital.'),
       e(
         'div',
         { className: 'filters' },
@@ -649,7 +668,7 @@ export function App() {
       direction: 'left'
     },
       e('p', { className: 'chip' }, 'Portofolio & Use Case'),
-      e('h2', null, 'Produk yang sedang kami bangun.'),
+      e('h2', null, 'Use case nyata yang bisa langsung direplikasi untuk organisasi Anda.'),
       e(
         'div',
         { className: 'cards-2' },
@@ -675,7 +694,7 @@ export function App() {
       direction: 'right'
     },
       e('p', { className: 'chip' }, 'Roadmap Implementasi'),
-      e('h2', null, 'Roadmap 4 fase.'),
+      e('h2', null, 'Alur delivery yang ringkas, transparan, dan terukur.'),
       e(
         'div',
         { className: 'roadmap-grid' },
@@ -742,7 +761,7 @@ export function App() {
       id: 'proses'
     },
       e('p', { className: 'chip' }, 'Metodologi Kerja'),
-      e('h2', null, 'Cara kerja kami.'),
+      e('h2', null, 'Framework kerja yang menjaga kualitas dari awal hingga scale-up.'),
       e(
         'div',
         { className: 'cards-3 process' },
