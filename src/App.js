@@ -1,850 +1,151 @@
 import React from 'https://esm.sh/react@18.3.1';
 
+const e = React.createElement;
+
 const navLinks = [
+  { label: 'Tentang', href: '#tentang' },
   { label: 'Layanan', href: '#layanan' },
   { label: 'Portofolio', href: '#portofolio' },
-  { label: 'Hubungi', href: '#hubungi' },
   { label: 'Kontak', href: '#kontak' },
+];
+
+const stats = [
+  ['12+', 'Produk & unit bisnis aktif'],
+  ['30+', 'Kolaborasi dengan tim kesehatan & digital'],
+  ['99.9%', 'Target reliability layanan'],
 ];
 
 const services = [
   {
-    title: 'Service Blueprint & PMO Digital',
-    description: 'Rancang proses lintas tim dengan SLA jelas agar implementasi lebih cepat dan minim risiko.',
-    category: 'Service',
-    icon: '🧭',
+    title: 'HealthTech Product Development',
+    desc: 'Membangun platform klinik, homecare, dan sistem medis yang siap scale dengan fondasi aman.',
   },
   {
-    title: 'Rekayasa Produk HealthTech',
-    description: 'Bangun platform klinik dan rumah sakit yang siap scale dengan arsitektur modern dan scalable.',
-    category: 'Product',
-    icon: '🏥',
+    title: 'AI & Automation',
+    desc: 'Mengotomatiskan proses operasional dan analitik agar tim medis lebih fokus ke kualitas layanan.',
   },
   {
-    title: 'Solusi AI Terapan',
-    description: 'AI untuk triase, otomasi kerja, dan analitik operasional yang meningkatkan efisiensi.',
-    category: 'AI',
-    icon: '🤖',
-  },
-  {
-    title: 'Modernisasi Sistem Enterprise',
-    description: 'Upgrade sistem inti tanpa mengganggu operasional harian dengan pendekatan bertahap.',
-    category: 'Enterprise',
-    icon: '🔄',
-  },
-  {
-    title: 'Integrasi Data & API',
-    description: 'Satukan data lintas unit agar insight dan laporan real-time selalu tersedia.',
-    category: 'Data',
-    icon: '🔗',
+    title: 'Enterprise Modernization',
+    desc: 'Transformasi sistem lama ke ekosistem digital modern tanpa mengganggu operasional harian.',
   },
 ];
 
-const useCases = [
-  {
-    name: 'CogniScan',
-    tag: 'AI Diagnostik',
-    outcome: 'Triase radiologi lebih cepat dengan dukungan AI visual.',
-    visual: '/src/product-cogniscan.svg',
-  },
-  {
-    name: 'Kaist Medika Ecosystem',
-    tag: 'Ekosistem Klinik',
-    outcome: 'Klinik, homecare, dan manajemen pasien dalam satu alur terintegrasi.',
-    visual: '/src/product-homecare.svg',
-  },
-  {
-    name: 'Inisiatif SIMRS & SIMKlinik',
-    tag: 'Infrastruktur Operasional',
-    outcome: 'Menguatkan efisiensi administrasi dan kualitas pelaporan melalui integrasi sistem lintas unit layanan.',
-    visual: '/src/animated-orbit.svg',
-  },
-  {
-    name: 'Medical Commerce Stack',
-    tag: 'Perdagangan Kesehatan',
-    outcome: 'Kanal jual alat medis dengan kontrol stok yang rapi dan terotomatisasi.',
-    visual: '/src/product-medcommerce.svg',
-  },
-  {
-    name: 'Doctor Exam Platform',
-    tag: 'EdTech Medis',
-    outcome: 'Menyediakan bank soal adaptif dan analitik kompetensi untuk persiapan ujian dokter.',
-    visual: '/src/animated-orbit.svg',
-  },
-  {
-    name: 'Homecare Operations Hub',
-    tag: 'Manajemen Layanan',
-    outcome: 'Menjadwalkan kunjungan, memantau SLA, dan meningkatkan kepuasan pasien melalui alur operasional terpusat.',
-    visual: '/src/animated-pulse.svg',
-  },
+const portfolios = [
+  'CogniScan — AI Radiologi & Lab',
+  'Kaist Medika — Klinik & HomeCare',
+  'SIMRS / SIMKlinik',
+  'Medical Commerce Platform',
+  'Website Ujian Dokter',
+  'Apotek & Retail Health',
 ];
 
-const processSteps = [
-  {
-    title: 'Pemetaan Strategi',
-    detail:
-      'Menyelaraskan tujuan bisnis, kesiapan organisasi, regulasi, dan prioritas teknologi ke dalam peta jalan yang terukur.',
-    icon: '🎯',
-  },
-  {
-    title: 'Desain dan Implementasi',
-    detail:
-      'Membangun pengalaman produk, arsitektur sistem, serta integrasi inti dengan standar kualitas enterprise-grade.',
-    icon: '⚙️',
-  },
-  {
-    title: 'Optimalisasi Berkelanjutan',
-    detail:
-      'Memantau dampak, menajamkan metrik performa, dan mengeksekusi iterasi prioritas untuk pertumbuhan jangka panjang.',
-    icon: '📈',
-  },
+const process = [
+  ['01', 'Discovery & Strategy', 'Audit kebutuhan bisnis, regulasi, dan peta implementasi prioritas.'],
+  ['02', 'Design & Build', 'Perancangan UI/UX, arsitektur sistem, dan pengembangan produk bertahap.'],
+  ['03', 'Launch & Optimize', 'Go-live terstruktur, monitoring KPI, dan iterasi berkelanjutan.'],
 ];
 
-const highlights = [
-  'Arsitektur modular untuk kesiapan multi-unit dan multi-lokasi.',
-  'Pendekatan delivery disiplin: strategi, desain, implementasi, hingga stabilisasi.',
-  'Fokus pada nilai bisnis terukur, bukan sekadar penyelesaian fitur teknis.',
-];
-
-const indicators = ['NDA-ready', 'Keamanan data sebagai fondasi', 'Pendekatan audit-trail'];
-
-const trustPoints = [
-  {
-    title: 'Discovery yang terukur',
-    detail: 'Workshop singkat untuk memetakan prioritas, risiko, dan peluang dampak bisnis sebelum fase delivery.',
-    icon: '🔍',
-  },
-  {
-    title: 'Eksekusi transparan',
-    detail: 'Update progres berkala dengan metrik yang mudah dibaca stakeholder non-teknis maupun tim operasional.',
-    icon: '📊',
-  },
-  {
-    title: 'Adopsi berkelanjutan',
-    detail: 'Pendampingan pasca go-live agar solusi benar-benar digunakan dan memberikan ROI yang konsisten.',
-    icon: '🚀',
-  },
-];
-
-const testimonials = [
-  {
-    quote: 'Somansa membantu kami menurunkan waktu administrasi pasien lebih dari 30% dalam 1 kuartal.',
-    name: 'Direktur Operasional Klinik',
-  },
-  {
-    quote: 'Struktur delivery mereka rapi, komunikatif, dan relevan untuk kebutuhan manajemen eksekutif.',
-    name: 'Head of Digital Transformation',
-  },
-  {
-    quote: 'Tim kami terbantu karena implementasi AI dilakukan bertahap namun langsung memberi dampak nyata.',
-    name: 'Medical Service Manager',
-  },
-];
-
-const partnerLogos = ['Klinik Pratama', 'RS Mitra Medika', 'LabPro', 'Care365', 'MediSupply'];
-
-const faqItems = [
-  {
-    q: 'Apakah Somansa bisa mulai dari audit sistem lama?',
-    a: 'Ya, kami dapat memulai dari discovery dan audit sistem sebelum masuk ke desain roadmap implementasi.',
-  },
-  {
-    q: 'Berapa lama proyek biasanya berjalan?',
-    a: 'Durasi menyesuaikan ruang lingkup. Fase discovery biasanya 1-2 minggu, delivery inti 8-16 minggu.',
-  },
-  {
-    q: 'Apakah ada pendampingan setelah go-live?',
-    a: 'Ada. Kami menyediakan support stabilisasi, monitoring KPI, dan iterasi prioritas pasca peluncuran.',
-  },
-];
-
-const roadmap = [
-  ['01', 'Discovery: audit proses, prioritas bisnis, dan peta risiko implementasi.'],
-  ['02', 'MVP: bangun solusi inti yang siap dipakai tim operasional dalam hitungan minggu.'],
-  ['03', 'Integrasi: sambungkan data, API, dan workflow lintas unit tanpa ganggu layanan.'],
-  ['04', 'Scale: optimasi KPI, reliability, dan rollout bertahap untuk skala enterprise.'],
-];
-
-const metrics = [
-  ['12+', 'Inisiatif digital terkelola'],
-  ['3', 'Domain strategis utama'],
-  ['99,9%', 'Target reliabilitas layanan'],
-  ['24/7', 'Monitoring untuk sistem kritikal'],
-];
-
-const prestigeStats = [
-  ['Enterprise-Grade', 'Standar kualitas delivery premium'],
-  ['Security First', 'Governance & compliance by design'],
-  ['Human-Centered UX', 'Pengalaman modern yang elegan'],
-];
-
-const visualAssets = [
-  {
-    title: 'Pulse Monitoring AI',
-    src: '/src/animated-pulse.svg',
-    alt: 'Ilustrasi AI pulse monitoring',
-  },
-  {
-    title: 'Integrated Orbit Platform',
-    src: '/src/animated-orbit.svg',
-    alt: 'Ilustrasi platform orbit terintegrasi',
-  },
-  {
-    title: 'Clinical Workflow Automation',
-    src: '/src/animated-flow.svg',
-    alt: 'Ilustrasi alur otomasi klinis',
-  },
-];
-
-const showcaseGallery = [
-  {
-    title: 'Produk: CogniScan',
-    src: '/src/product-cogniscan.svg',
-    alt: 'Dashboard intelligence untuk pemantauan performa klinis',
-    caption: 'AI radiologi untuk percepat keputusan klinis.',
-  },
-  {
-    title: 'Produk: Homecare Hub',
-    src: '/src/product-homecare.svg',
-    alt: 'Perjalanan pasien terhubung dari registrasi hingga tindak lanjut',
-    caption: 'Jadwal kunjungan dan SLA dalam satu dashboard.',
-  },
-  {
-    title: 'Produk: Med Commerce',
-    src: '/src/product-medcommerce.svg',
-    alt: 'Visual command center untuk otomasi workflow layanan kesehatan',
-    caption: 'Operasional penjualan alat medis lebih efisien.',
-  },
-  {
-    title: 'Scalable Integration Hub',
-    src: '/src/animated-orbit.svg',
-    alt: 'Hub integrasi data dan aplikasi yang scalable',
-    caption: 'Integrasi sistem inti tanpa mengganggu operasional harian.',
-  },
-];
-
-const e = React.createElement;
-
-// Custom hook for scroll reveal animation
-function useScrollReveal(threshold = 0.1) {
-  const ref = React.useRef(null);
-  const [isVisible, setIsVisible] = React.useState(false);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [threshold]);
-
-  return [ref, isVisible];
-}
-
-// Custom hook for animated counter
-function useCounter(end, duration = 2000, start = 0) {
-  const [count, setCount] = React.useState(start);
-  const [isVisible, setIsVisible] = React.useState(false);
-  const ref = React.useRef(null);
-
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, [isVisible]);
-
-  React.useEffect(() => {
-    if (!isVisible) return;
-
-    const startTime = Date.now();
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-      setCount(Math.floor(start + (end - start) * easeOutQuart));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [isVisible, end, duration, start]);
-
-  return [ref, count];
-}
-
-// Particle Background Component
-function ParticleBackground() {
-  const particles = React.useMemo(() => {
-    return Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 10}s`,
-      duration: `${8 + Math.random() * 10}s`,
-      size: 2 + Math.random() * 4,
-    }));
-  }, []);
-
-  return e(
-    'div',
-    { className: 'particles-container' },
-    particles.map((p) =>
-      e('div', {
-        key: p.id,
-        className: 'particle',
-        style: {
-          left: p.left,
-          animationDelay: p.delay,
-          animationDuration: p.duration,
-          width: p.size,
-          height: p.size,
-        },
-      })
-    )
-  );
-}
-
-// Reveal Component - Wrapper untuk animasi scroll
-function RevealSection({ className, children, delay = 0, direction = 'up', ...props }) {
-  const [ref, isVisible] = useScrollReveal();
-  const revealClass = {
-    up: 'reveal',
-    left: 'reveal-left',
-    right: 'reveal-right',
-    scale: 'reveal-scale',
-  }[direction] || 'reveal';
-
-  return e(
-    'section',
-    {
-      ref,
-      className: `${className || ''} ${revealClass} ${isVisible ? 'active' : ''}`.trim(),
-      style: { transitionDelay: `${delay}ms` },
-      ...props,
-    },
-    children
-  );
+function sectionTitle(kicker, title, desc) {
+  return e('div', { className: 'section-title' }, [
+    e('p', { className: 'kicker', key: 'kicker' }, kicker),
+    e('h2', { key: 'title' }, title),
+    desc ? e('p', { className: 'section-desc', key: 'desc' }, desc) : null,
+  ]);
 }
 
 export function App() {
-  const [activeService, setActiveService] = React.useState('Semua');
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [activeFaq, setActiveFaq] = React.useState(0);
-  const [testimonialIndex, setTestimonialIndex] = React.useState(0);
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [message, setMessage] = React.useState('');
-  const [submitted, setSubmitted] = React.useState(false);
-  const [isNavScrolled, setIsNavScrolled] = React.useState(false);
-
-  // Auto-advance testimonials
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Scroll handler for nav background
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsNavScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const categories = ['Semua', 'Service', 'Product', 'AI', 'Enterprise', 'Data'];
-
-  const filteredServices = services.filter((item) => {
-    const matchCategory = activeService === 'Semua' || item.category === activeService;
-    const matchSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchCategory && matchSearch;
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!name || !email || !message) return;
-    setSubmitted(true);
-    setName('');
-    setEmail('');
-    setMessage('');
-    setTimeout(() => setSubmitted(false), 5000);
-  };
-
-  const currentTestimonial = testimonials[testimonialIndex];
-
-  // Counter refs and values
-  const [counter12Ref, count12] = useCounter(12, 2000);
-  const [counter3Ref, count3] = useCounter(3, 1500);
-
-  return e(
-    'div',
-    { className: 'page' },
-    e(ParticleBackground),
-    e('a', { className: 'skip-link', href: '#kontak' }, 'Lewati ke kontak'),
-    e(
-      'header',
-      { className: 'hero-shell', id: 'top' },
-      e(
-        'nav',
-        { 
-          className: `nav glass ${isNavScrolled ? 'scrolled' : ''}`,
-          style: isNavScrolled ? {
-            background: 'linear-gradient(150deg, rgba(13, 23, 43, 0.95), rgba(13, 23, 43, 0.9))',
-            boxShadow: '0 10px 40px rgba(5, 10, 23, 0.6)',
-          } : {}
-        },
-        e('a', { href: '#top', className: 'logo', 'aria-label': 'Somansa home' }, 
-          e('img', { src: '/somansa-logo.svg', alt: 'Somansa' }), 
-          e('span', null, 'SOMANSA')
-        ),
-        e('div', { className: 'nav-links' }, ...navLinks.map((link) => 
-          e('a', { key: link.label, href: link.href }, link.label)
-        )),
-        e('a', { className: 'btn btn-primary', href: '#kontak' }, 'Jadwalkan Demo'),
-      ),
-        e(
-          'section',
-          { className: 'hero grid' },
+  return e('div', { className: 'page' }, [
+    e('header', { className: 'hero', key: 'hero' }, [
+      e('nav', { className: 'nav', key: 'nav' }, [
+        e('div', { className: 'brand', key: 'brand' }, [
+          e('img', { src: '/somansa-logo.svg', alt: 'Somansa logo', key: 'logo' }),
+          e('span', { key: 'name' }, 'SOMANSA'),
+        ]),
         e(
           'div',
-          { className: 'hero-copy glass' },
-          e('p', { className: 'chip' }, 'Mitra Transformasi Digital HealthTech & AI'),
-          e('h1', null, 
-            'Produk digital ', 
-            e('span', { className: 'highlight' }, 'HealthTech'),
-            ' & AI yang cepat dipakai.'
-          ),
-          e(
-            'p',
-            { className: 'hero-lead' },
-            'Kami bantu dari strategi sampai go-live, fokus ke dampak bisnis yang nyata dan terukur.',
-          ),
-          e('div', { className: 'actions' }, 
-            e('a', {
-              className: 'btn btn-primary', 
-              href: '#kontak',
-              style: { animation: 'fadeInUp 0.6s ease 0.4s both' }
-            }, 'Jadwalkan Demo'),
-            e('a', {
-              className: 'btn btn-ghost', 
-              href: '#portofolio',
-              style: { animation: 'fadeInUp 0.6s ease 0.5s both' }
-            }, 'Lihat Produk')
-          ),
-          e('div', { className: 'quick-points' }, 
-            e('span', { style: { animation: 'fadeInUp 0.6s ease 0.6s both' } }, '⚡ Respons awal ≤ 1x24 jam'), 
-            e('span', { style: { animation: 'fadeInUp 0.6s ease 0.7s both' } }, '🎯 Sesi discovery tanpa biaya')
-          ),
-          e(
-            'div',
-            { className: 'prestige-row', 'aria-label': 'Keunggulan standar premium Somansa' },
-            ...prestigeStats.map((item, index) =>
-              e(
-                'article',
-                { 
-                  key: item[0], 
-                  className: 'prestige-item',
-                  style: { animationDelay: `${0.8 + index * 0.1}s` }
-                },
-                e('strong', null, item[0]),
-                e('small', null, item[1]),
-              ),
-            ),
-          ),
+          { className: 'nav-links', key: 'links' },
+          navLinks.map((link) => e('a', { href: link.href, key: link.href }, link.label)),
         ),
+        e('a', { className: 'btn btn-primary', href: '#kontak', key: 'cta' }, 'Konsultasi'),
+      ]),
+      e('div', { className: 'hero-content', key: 'content' }, [
+        e('p', { className: 'kicker', key: 'k' }, 'Company Profile'),
+        e('h1', { key: 'h1' }, 'Mitra Transformasi Digital untuk Kesehatan, Teknologi, dan Bisnis Modern.'),
         e(
-          'div',
-          { className: 'hero-visual glass', 'aria-label': 'Ringkasan kapabilitas enterprise Somansa' },
-          e('img', {
-            className: 'hero-image float-soft',
-            src: '/src/health-illustration.svg',
-            alt: 'Visual ekosistem layanan kesehatan digital Somansa',
-          }),
-          e('div', { className: 'orb orb-cyan' }),
-          e('div', { className: 'orb orb-violet' }),
-          e('div', { className: 'orb orb-gold' }),
-          e('p', { className: 'eyebrow' }, 'Profil Kesiapan Enterprise'),
-          e('h3', null, 'Delivery partner untuk institusi kesehatan yang membutuhkan eksekusi presisi.'),
-          e('ul', { className: 'highlights-list' }, ...highlights.map((item) => 
-            e('li', { key: item }, item)
-          )),
-          e('div', { className: 'indicator-row' }, ...indicators.map((item) => 
-            e('span', { key: item }, item)
-          )),
-          e(
-            'div',
-            { className: 'metric-grid' },
-            ...metrics.map((item, index) =>
-              e('article', { 
-                key: item[0], 
-                className: 'metric-card',
-                style: { animation: `fadeInUp 0.6s ease ${1 + index * 0.1}s both` }
-              }, 
-                e('strong', { 
-                  className: 'counter',
-                  ref: index === 0 ? counter12Ref : index === 1 ? counter3Ref : null
-                }, index === 0 ? `${count12}+` : index === 1 ? count3 : item[0]), 
-                e('small', null, item[1])
-              ),
-            ),
-          ),
+          'p',
+          { className: 'lead', key: 'lead' },
+          'Somansa menghadirkan solusi digital terintegrasi dari strategi hingga implementasi untuk membantu organisasi tumbuh lebih cepat dan efisien.',
         ),
+        e('div', { className: 'hero-actions', key: 'actions' }, [
+          e('a', { className: 'btn btn-primary', href: '#portofolio', key: 'btn1' }, 'Lihat Portofolio'),
+          e('a', { className: 'btn btn-outline', href: '#tentang', key: 'btn2' }, 'Pelajari Somansa'),
+        ]),
+      ]),
+      e(
+        'div',
+        { className: 'stats', key: 'stats' },
+        stats.map((item) =>
+          e('article', { className: 'stat-card', key: item[0] }, [
+            e('strong', { key: 'n' }, item[0]),
+            e('span', { key: 'd' }, item[1]),
+          ]),
         ),
       ),
-    e(
-      RevealSection,
-      { className: 'section partner-strip glass', direction: 'up' },
-      e('p', { className: 'chip' }, 'Dipercaya Tim Operasional Kesehatan'),
+    ]),
+
+    e('section', { id: 'tentang', className: 'section about', key: 'about' }, [
+      sectionTitle('Tentang Kami', 'Membangun Ekosistem Digital yang Berdampak', 'Kami memadukan kekuatan teknologi, desain pengalaman pengguna, dan eksekusi produk agar setiap solusi memberikan hasil bisnis yang terukur.'),
+      e('div', { className: 'about-grid', key: 'grid' }, [
+        e('div', { className: 'about-card', key: 'a1' }, [e('h3', { key: 'h' }, 'Visi'), e('p', { key: 'p' }, 'Menjadi company profile digital Indonesia yang dikenal melalui produk inovatif di sektor kesehatan dan layanan modern.')]),
+        e('div', { className: 'about-card', key: 'a2' }, [e('h3', { key: 'h' }, 'Misi'), e('p', { key: 'p' }, 'Menciptakan pengalaman digital yang aman, cepat, dan relevan untuk organisasi serta pengguna akhir.')]),
+        e('div', { className: 'about-card', key: 'a3' }, [e('h3', { key: 'h' }, 'Value'), e('p', { key: 'p' }, 'Integrity, agility, dan impact-driven delivery pada setiap proyek dan kolaborasi jangka panjang.')]),
+      ]),
+    ]),
+
+    e('section', { id: 'layanan', className: 'section', key: 'services' }, [
+      sectionTitle('Layanan Utama', 'Solusi End-to-End untuk Organisasi Anda'),
       e(
         'div',
-        { className: 'partner-row', 'aria-label': 'Daftar partner dan unit yang pernah berkolaborasi' },
-        ...partnerLogos.map((partner) => e('span', { key: partner, className: 'partner-badge' }, partner)),
-      ),
-      e(
-        'div',
-        { className: 'partner-proof' },
-        e('article', null, e('strong', null, '95%'), e('small', null, 'klien melanjutkan fase iterasi')),
-        e('article', null, e('strong', null, '< 14 hari'), e('small', null, 'waktu dari kickoff ke prototype')),
-        e('article', null, e('strong', null, 'Zero downtime'), e('small', null, 'untuk rollout bertahap sistem inti')),
-      ),
-    ),
-    e(RevealSection, { 
-      className: 'section innovation-strip glass',
-      'aria-label': 'Visual showcase Somansa'
-    }, 
-      e('p', { className: 'chip' }, 'Visual Story'),
-      e('h2', null, 'Visual produk Somansa.'),
-      e(
-        'div',
-        { className: 'cards-3 visual-grid' },
-        ...visualAssets.map((asset, index) =>
-          e(
-            'article',
-            { 
-              key: asset.title, 
-              className: 'card visual-card', 
-              style: { animationDelay: `${index * 120}ms` } 
-            },
-            e('img', { src: asset.src, alt: asset.alt }),
-            e('h3', null, asset.title),
-          ),
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section image-story',
-      'aria-label': 'Galeri visual Somansa',
-      direction: 'scale'
-    },
-      e('p', { className: 'chip' }, 'Image-first Experience'),
-      e('h2', null, 'Contoh gambar produk.'),
-      e(
-        'div',
-        { className: 'gallery-grid' },
-        ...showcaseGallery.map((item, index) =>
-          e(
-            'figure',
-            { 
-              key: item.title, 
-              className: 'gallery-card glass',
-              style: { animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }
-            },
-            e('img', { src: item.src, alt: item.alt }),
-            e('figcaption', null, e('strong', null, item.title), e('span', null, item.caption)),
-          ),
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section trust-strip',
-      'aria-label': 'Alasan memilih Somansa'
-    },
-      e('p', { className: 'chip' }, 'Kenapa Somansa'),
-      e('h2', null, 'Kerja cepat, progres jelas.'),
-      e(
-        'div',
-        { className: 'cards-3' },
-        ...trustPoints.map((item, index) => 
-          e('article', { 
-            key: item.title, 
-            className: 'card glass trust-card',
-            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
-          }, 
-            e('div', { style: { fontSize: '2rem', marginBottom: '0.5rem' } }, item.icon),
-            e('h3', null, item.title), 
-            e('p', null, item.detail)
-          )
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section',
-      id: 'layanan'
-    },
-      e('p', { className: 'chip' }, 'Layanan Inti'),
-      e('h2', null, 'Paket layanan untuk mempercepat transformasi digital.'),
-      e(
-        'div',
-        { className: 'filters' },
-        e('input', {
-          value: searchTerm,
-          onChange: (event) => setSearchTerm(event.target.value),
-          placeholder: '🔍 Cari layanan...',
-          className: 'search',
-          'aria-label': 'Cari layanan',
-        }),
-        e(
-          'div',
-          { className: 'filter-buttons' },
-          ...categories.map((item) =>
-            e(
-              'button',
-              {
-                key: item,
-                className: `btn btn-filter ${activeService === item ? 'active' : ''}`,
-                onClick: () => setActiveService(item),
-                type: 'button',
-              },
-              item,
-            ),
-          ),
+        { className: 'card-grid', key: 'service-grid' },
+        services.map((service) =>
+          e('article', { className: 'feature-card', key: service.title }, [
+            e('h3', { key: 'h' }, service.title),
+            e('p', { key: 'p' }, service.desc),
+          ]),
         ),
       ),
-      e('div', { className: 'cards-3' }, ...filteredServices.map((item, index) => 
-        e('article', { 
-          key: item.title, 
-          className: 'card glass service-card',
-          style: { animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }
-        }, 
-          e('div', { style: { fontSize: '2.5rem', marginBottom: '0.75rem' } }, item.icon),
-          e('h3', null, item.title), 
-          e('p', null, item.description), 
-          e('span', { className: 'case-tag' }, item.category)
-        )
-      ))
-    ),
-    e(RevealSection, { 
-      className: 'section',
-      id: 'portofolio',
-      direction: 'left'
-    },
-      e('p', { className: 'chip' }, 'Portofolio & Use Case'),
-      e('h2', null, 'Use case nyata yang bisa langsung direplikasi untuk organisasi Anda.'),
+    ]),
+
+    e('section', { id: 'portofolio', className: 'section', key: 'portfolio' }, [
+      sectionTitle('Portofolio', 'Produk & Unit Bisnis Somansa'),
       e(
         'div',
-        { className: 'cards-2' },
-        ...useCases.map((item, index) =>
-          e(
-            'article',
-            { 
-              key: item.name, 
-              className: 'card glass usecase',
-              style: { animation: `fadeInUp 0.6s ease ${index * 0.1}s both` }
-            },
-            e('img', { className: 'usecase-image', src: item.visual, alt: `Ilustrasi ${item.name}` }),
-            e('div', { className: 'case-top' }, e('span', { className: 'case-index' }, `0${index + 1}`), e('span', { className: 'case-tag' }, item.tag)),
-            e('h3', null, item.name),
-            e('p', null, item.outcome),
-          ),
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section glass',
-      id: 'delivery',
-      direction: 'right'
-    },
-      e('p', { className: 'chip' }, 'Alur Delivery'),
-      e('h2', null, 'Discovery hingga scale dengan step yang jelas.'),
-      e(
-        'div',
-        { className: 'roadmap-grid' },
-        ...roadmap.map((item, index) => 
-          e('article', { 
-            key: item[0], 
-            className: 'card mini-card',
-            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
-          }, 
-            e('strong', null, `Step ${item[0]}`), 
-            e('p', null, item[1])
-          )
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section glass testimonial',
-      id: 'hubungi',
-      direction: 'scale'
-    },
-      e('p', { className: 'chip' }, 'Testimoni Klien'),
-      e('h2', null, 'Testimoni singkat.'),
-      e('blockquote', { key: testimonialIndex }, `"${currentTestimonial.quote}"`),
-      e('p', { className: 'author' }, currentTestimonial.name),
-      e(
-        'div',
-        { className: 'actions' },
-        e('button', { 
-          className: 'btn btn-ghost', 
-          onClick: () => setTestimonialIndex((testimonialIndex + testimonials.length - 1) % testimonials.length), 
-          type: 'button' 
-        }, '← Sebelumnya'),
-        e('div', { 
-          style: { 
-            display: 'flex', 
-            gap: '0.5rem', 
-            alignItems: 'center',
-            margin: '0 1rem'
-          } 
-        }, 
-          ...testimonials.map((_, idx) => 
-            e('span', {
-              key: idx,
-              style: {
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: idx === testimonialIndex ? 'var(--gold)' : 'rgba(255,255,255,0.3)',
-                transition: 'all 0.3s ease',
-                cursor: 'pointer'
-              },
-              onClick: () => setTestimonialIndex(idx)
-            })
-          )
-        ),
-        e('button', { 
-          className: 'btn btn-primary', 
-          onClick: () => setTestimonialIndex((testimonialIndex + 1) % testimonials.length), 
-          type: 'button' 
-        }, 'Berikutnya →'),
+        { className: 'portfolio-list', key: 'list' },
+        portfolios.map((item, idx) => e('div', { className: 'portfolio-item', key: item }, `${String(idx + 1).padStart(2, '0')} — ${item}`)),
       ),
-    ),
-    e(RevealSection, { 
-      className: 'section',
-      id: 'proses'
-    },
-      e('p', { className: 'chip' }, 'Metodologi Kerja'),
-      e('h2', null, 'Framework kerja yang menjaga kualitas dari awal hingga scale-up.'),
+    ]),
+
+    e('section', { className: 'section', key: 'process' }, [
+      sectionTitle('Metodologi', 'Proses Kerja yang Transparan dan Terukur'),
       e(
         'div',
-        { className: 'cards-3 process' },
-        ...processSteps.map((item, index) =>
-          e('article', { 
-            key: item.title, 
-            className: 'card glass process-card',
-            style: { animation: `fadeInUp 0.6s ease ${index * 0.15}s both` }
-          }, 
-            e('span', { className: 'step' }, `Tahap ${index + 1}`), 
-            e('div', { style: { fontSize: '2.5rem', margin: '0.5rem 0' } }, item.icon),
-            e('h3', null, item.title), 
-            e('p', null, item.detail)
-          ),
+        { className: 'timeline', key: 'timeline' },
+        process.map((step) =>
+          e('article', { className: 'timeline-item', key: step[0] }, [
+            e('span', { className: 'step', key: 's' }, step[0]),
+            e('h3', { key: 'h' }, step[1]),
+            e('p', { key: 'p' }, step[2]),
+          ]),
         ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section',
-      id: 'faq',
-      direction: 'left'
-    },
-      e('p', { className: 'chip' }, 'FAQ'),
-      e('h2', null, 'FAQ singkat.'),
-      e(
-        'div',
-        { className: 'faq-list' },
-        ...faqItems.map((item, index) =>
-          e(
-            'button',
-            {
-              key: item.q,
-              className: `faq-item glass ${activeFaq === index ? 'open' : ''}`,
-              onClick: () => setActiveFaq(activeFaq === index ? -1 : index),
-              type: 'button',
-              style: { animation: `fadeInUp 0.5s ease ${index * 0.1}s both` }
-            },
-            e('strong', null, item.q),
-            activeFaq === index ? e('p', null, item.a) : null,
-          ),
-        ),
-      )
-    ),
-    e(RevealSection, { 
-      className: 'section cta glass',
-      id: 'kontak',
-      direction: 'scale'
-    },
-      e('p', { className: 'chip' }, 'Kolaborasi Strategis'),
-      e('h2', null, 'Siap mulai proyek?'),
-      e('p', null, 'Kirim kebutuhan, tim kami akan hubungi Anda dengan cepat.'),
-      e(
-        'form',
-        { className: 'contact-form', onSubmit: handleSubmit },
-        e('input', {
-          type: 'text',
-          value: name,
-          onChange: (event) => setName(event.target.value),
-          placeholder: '👤 Nama lengkap',
-          required: true,
-        }),
-        e('input', {
-          type: 'email',
-          value: email,
-          onChange: (event) => setEmail(event.target.value),
-          placeholder: '📧 Email bisnis Anda',
-          required: true,
-        }),
-        e('textarea', {
-          value: message,
-          onChange: (event) => setMessage(event.target.value),
-          placeholder: '💬 Jelaskan kebutuhan inti Anda',
-          rows: 4,
-          required: true,
-        }),
-        e('button', { 
-          type: 'submit', 
-          className: 'btn btn-primary cta-button',
-          disabled: submitted
-        }, submitted ? '✓ Terkirim!' : '🚀 Kirim kebutuhan awal'),
       ),
-      submitted ? e('p', { className: 'success-msg' }, 'Terima kasih! Tim Somansa akan menghubungi Anda dalam 1x24 jam.') : null,
-      e('p', { className: 'cta-note' }, 'Atau email ke ', e('a', { href: 'mailto:hello@somansa.id' }, 'hello@somansa.id')),
-    ),
-    e(
-      'a',
-      { href: '#top', className: 'back-to-top', 'aria-label': 'Kembali ke atas' },
-      '↑',
-    ),
-    e('footer', { className: 'footer' }, `© ${new Date().getFullYear()} Somansa. Dirancang untuk kepercayaan enterprise.`),
-  );
+    ]),
+
+    e('section', { id: 'kontak', className: 'section cta', key: 'cta-section' }, [
+      e('h2', { key: 'h2' }, 'Siap berkolaborasi dengan Somansa?'),
+      e('p', { key: 'p' }, 'Diskusikan kebutuhan transformasi digital perusahaan Anda bersama tim kami.'),
+      e('a', { className: 'btn btn-primary', href: 'mailto:hello@somansa.id', key: 'mail' }, 'Hubungi Kami'),
+    ]),
+
+    e('footer', { className: 'footer', key: 'footer' }, `© ${new Date().getFullYear()} Somansa. All rights reserved.`),
+  ]);
 }
