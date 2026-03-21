@@ -163,8 +163,10 @@ ul {
 .showcase-card h3,
 .highlight-card h3,
 .pillar-card h3,
-.roadmap-card h3 {
-  line-height: 1.05;
+.roadmap-card h3,
+.product-card h3 {
+  margin: 0;
+  line-height: 1.06;
   letter-spacing: -0.04em;
 }
 
@@ -179,6 +181,7 @@ ul {
 .highlight-card p,
 .pillar-card p,
 .roadmap-card p,
+.product-card p,
 .showcase-list,
 .footer,
 .stat-card span,
@@ -254,7 +257,8 @@ ul {
 .highlight-card,
 .pillar-card,
 .roadmap-card,
-.list-card,
+.product-card,
+.spotlight-card,
 .cta-panel {
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -264,6 +268,7 @@ ul {
 .highlight-card,
 .pillar-card,
 .roadmap-card,
+.product-card,
 .showcase-card,
 .list-card {
   padding: 26px;
@@ -357,30 +362,21 @@ ul {
   font-size: clamp(2rem, 3vw, 3.2rem);
 }
 
-.section-desc {
+.section-desc,
+.spotlight-card p,
+.highlight-card p,
+.pillar-card p,
+.roadmap-card p,
+.product-card p {
   margin-top: 16px;
   line-height: 1.85;
 }
 
 .highlight-card h3,
 .pillar-card h3,
-.roadmap-card h3 {
-  font-size: 1.34rem;
-}
-
-.service-card h3 {
-  margin-top: 12px;
-}
-
-.pillar-card,
-.highlight-card,
-.roadmap-card,
-.list-card {
-  min-height: 100%;
-}
-
-.list-card {
-  background: linear-gradient(180deg, rgba(10, 20, 36, 0.86), rgba(10, 20, 36, 0.6));
+.roadmap-card h3,
+.product-card h3 {
+  font-size: 1.35rem;
 }
 
 .roadmap-card span {
@@ -388,6 +384,26 @@ ul {
   letter-spacing: 0.18em;
   color: var(--primary);
   margin-bottom: 18px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 100%;
+  background: linear-gradient(180deg, rgba(10, 20, 36, 0.92), rgba(9, 19, 34, 0.74));
+}
+
+.product-card .mini-label {
+  color: var(--primary);
+}
+
+.product-card h3 {
+  font-size: 1.4rem;
+}
+
+.product-card p {
+  margin: 0;
 }
 
 .cta-panel {
@@ -454,7 +470,8 @@ ul {
   .highlight-card,
   .pillar-card,
   .roadmap-card,
-  .list-card,
+  .product-card,
+  .spotlight-card,
   .cta-panel {
     padding: 22px;
   }

@@ -3,34 +3,35 @@ import React from 'https://esm.sh/react@18.3.1';
 const e = React.createElement;
 
 const navLinks = [
-  { label: 'Approach', href: '#solution' },
-  { label: 'Deliverables', href: '#deliverables' },
-  { label: 'Process', href: '#process' },
-  { label: 'Consultation', href: '#cta' },
+  { label: 'Produk', href: '#products' },
+  { label: 'Layanan', href: '#services' },
+  { label: 'Tentang', href: '#about' },
+  { label: 'Proses', href: '#process' },
+  { label: 'Kontak', href: '#contact' },
 ];
 
-const credibilityItems = [
-  {
-    value: 'Decision-maker ready',
-    label: 'Dirancang untuk membantu calon klien, partner, dan investor memahami perusahaan tanpa perlu dijelaskan berulang.',
-  },
-  {
-    value: 'Trust + conversion',
-    label: 'Fokus pada kredibilitas digital sekaligus mendorong inquiry yang lebih relevan ke tahap konsultasi.',
-  },
-  {
-    value: 'Strategic narrative',
-    label: 'Bukan sekadar desain halaman, tetapi penyusunan pesan bisnis, struktur informasi, dan CTA yang lebih meyakinkan.',
-  },
+const stats = [
+  { value: '12', label: 'Produk dan unit bisnis aktif yang memperluas ekosistem Somansa.' },
+  { value: '24/7', label: 'Komitmen support untuk operasional dan transformasi digital.' },
+  { value: 'End-to-End', label: 'Dari strategi, desain produk, pengembangan, hingga implementasi.' },
 ];
 
-const problems = [
-  'Value proposition terdengar umum sehingga perusahaan sulit tampak berbeda di mata calon klien.',
-  'Halaman company profile padat informasi, tetapi tidak membimbing pengunjung menuju diskusi atau inquiry.',
-  'Narasi layanan, kredibilitas, dan alasan memilih perusahaan belum tersusun sebagai argumen bisnis yang kuat.',
+const products = [
+  { name: 'CogniScan', category: 'AI Radiologi & Lab', desc: 'Platform AI untuk membantu pembacaan radiologi dan alur analitik laboratorium yang lebih cepat.' },
+  { name: 'Kaist Medika', category: 'Klinik & HomeCare', desc: 'Layanan klinik Dokter Sobri dan homecare untuk konsultasi, tindakan, serta monitoring pasien.' },
+  { name: 'Klinik Kecantikan', category: 'Aesthetic Care', desc: 'Layanan estetika dengan pendekatan medis untuk perawatan kulit, wajah, dan self-care modern.' },
+  { name: 'SIMRS & SIMKlinik', category: 'Sistem Operasional', desc: 'Sistem manajemen rumah sakit dan klinik untuk administrasi, rekam medis, hingga pelaporan.' },
+  { name: 'Klinik Rawat Luka', category: 'Specialized Care', desc: 'Layanan rawat luka terfokus untuk penanganan pasien kronis, pascaoperasi, dan home visit.' },
+  { name: 'Scrub Dokter', category: 'Medical Apparel', desc: 'Produk apparel medis yang nyaman, rapi, dan relevan untuk kebutuhan tenaga kesehatan.' },
+  { name: 'Alat Medis Dokter', category: 'Medical Commerce', desc: 'Distribusi alat medis yang mendukung praktik dokter, klinik, dan kebutuhan operasional kesehatan.' },
+  { name: 'Apotek', category: 'Pharmacy Retail', desc: 'Unit distribusi obat dan kebutuhan kesehatan yang terhubung dengan layanan klinik dan pasien.' },
+  { name: 'Website Ujian Dokter', category: 'MedEd Platform', desc: 'Platform persiapan ujian dokter dengan materi, latihan soal, dan alur belajar yang terstruktur.' },
+  { name: 'Tools Hacking Sobri', category: 'Security Tools', desc: 'Eksplorasi tools keamanan dan otomasi teknis untuk riset, audit, dan pengembangan internal.' },
+  { name: 'Software House', category: 'Digital Product Studio', desc: 'Tim pengembang yang membangun website, aplikasi, dashboard, dan sistem bisnis lintas industri.' },
+  { name: 'Kosan', category: 'Property Unit', desc: 'Unit properti yang memperkuat diversifikasi Somansa di luar healthtech dan layanan digital.' },
 ];
 
-const solutions = [
+const services = [
   {
     title: 'Strategic positioning',
     desc: 'Kami menyusun ulang headline, value proposition, dan urutan informasi agar positioning perusahaan terbaca dalam beberapa detik pertama.',
@@ -124,6 +125,47 @@ const processSteps = [
   },
 ];
 
+function renderStats(item) {
+  return e('article', { className: 'stat-card', key: item.value }, [
+    e('strong', { key: 'value' }, item.value),
+    e('span', { key: 'label' }, item.label),
+  ]);
+}
+
+function renderProduct(item) {
+  return e('article', { className: 'product-card', key: item.name }, [
+    e('p', { className: 'mini-label', key: 'category' }, item.category),
+    e('h3', { key: 'name' }, item.name),
+    e('p', { key: 'desc' }, item.desc),
+  ]);
+}
+
+function renderService(item) {
+  return e('article', { className: 'highlight-card', key: item.title }, [
+    e('h3', { key: 'title' }, item.title),
+    e('p', { key: 'desc' }, item.desc),
+  ]);
+}
+
+function renderAdvantage(item) {
+  return e('article', { className: 'pillar-card', key: item }, [
+    e('h3', { key: 'title' }, item),
+    e(
+      'p',
+      { key: 'desc' },
+      'Disusun untuk membantu audiens memahami nilai perusahaan Anda dengan cepat dan meyakinkan.',
+    ),
+  ]);
+}
+
+function renderProcess(item) {
+  return e('article', { className: 'roadmap-card', key: item.step }, [
+    e('span', { key: 'step' }, item.step),
+    e('h3', { key: 'title' }, item.title),
+    e('p', { key: 'desc' }, item.desc),
+  ]);
+}
+
 export function App() {
   return e('div', { className: 'page-shell' }, [
     e('div', { className: 'background-grid', key: 'grid' }),
@@ -140,20 +182,16 @@ export function App() {
       ]),
       e('div', { className: 'hero-grid', key: 'hero-grid' }, [
         e('section', { className: 'hero-copy', key: 'copy' }, [
-          e('p', { className: 'hero-badge', key: 'badge' }, 'Strategic Company Landing Page'),
-          e(
-            'h1',
-            { key: 'title' },
-            'Bangun landing page perusahaan yang memperjelas positioning dan mendorong inquiry bernilai tinggi.',
-          ),
+          e('p', { className: 'hero-badge', key: 'badge' }, 'Multi-Product Ecosystem'),
+          e('h1', { key: 'title' }, 'Landing page perusahaan yang rapi, profesional, dan menjual value bisnis.'),
           e(
             'p',
             { className: 'hero-desc', key: 'desc' },
-            'Somansa membantu perusahaan menyusun company profile website yang tidak berhenti di tampilan. Kami merapikan narasi bisnis, menajamkan value proposition, dan mengarahkan pengunjung menuju konsultasi, diskusi, atau peluang kerja sama yang lebih serius.',
+            'Somansa membangun ekosistem multi-produk di healthtech, software, edukasi medis, commerce, dan layanan modern. Halaman ini merangkum portofolio inti agar calon klien, partner, dan investor langsung memahami kekuatan bisnis yang sedang dibangun.',
           ),
           e('div', { className: 'hero-actions', key: 'actions' }, [
-            e('a', { className: 'button button-primary', href: '#cta', key: 'primary' }, 'Jadwalkan Konsultasi'),
-            e('a', { className: 'button button-secondary', href: '#deliverables', key: 'secondary' }, 'Lihat Cakupan Layanan'),
+            e('a', { className: 'button button-primary', href: '#products', key: 'primary' }, 'Lihat Produk'),
+            e('a', { className: 'button button-secondary', href: '#about', key: 'secondary' }, 'Lihat Profil'),
           ]),
           e('div', { className: 'stats-grid', key: 'stats' }, credibilityItems.map((item) =>
             e('article', { className: 'stat-card', key: item.value }, [
@@ -163,16 +201,12 @@ export function App() {
           )),
         ]),
         e('aside', { className: 'showcase-card', key: 'showcase' }, [
-          e('p', { className: 'mini-label', key: 'label' }, 'Business outcome'),
-          e('h3', { key: 'title' }, 'Website perusahaan seharusnya membantu audiens memahami nilai bisnis Anda lebih cepat.'),
+          e('p', { className: 'mini-label', key: 'label' }, 'Kenapa portofolio produk penting?'),
+          e('h3', { key: 'title' }, 'Karena orang perlu melihat bukti eksekusi bisnis, bukan hanya janji brand.'),
           e('ul', { className: 'showcase-list', key: 'list' }, [
-            e('li', { key: '1' }, 'Menjelaskan perusahaan, layanan, dan positioning tanpa berputar-putar.'),
-            e('li', { key: '2' }, 'Meningkatkan rasa percaya sebelum calon klien masuk ke tahap meeting.'),
-            e('li', { key: '3' }, 'Mengarahkan inquiry ke langkah berikutnya dengan CTA yang lebih jelas dan meyakinkan.'),
-          ]),
-          e('div', { className: 'hero-proof', key: 'proof' }, [
-            e('span', { key: 'proof-label' }, 'Target use cases'),
-            e('p', { key: 'proof-copy' }, 'Agency • Klinik • Professional services • Software house • Company profile B2B'),
+            e('li', { key: '1' }, 'Menunjukkan breadth bisnis Somansa dari healthtech sampai properti.'),
+            e('li', { key: '2' }, 'Membantu partner memahami unit yang paling relevan untuk diajak kolaborasi.'),
+            e('li', { key: '3' }, 'Menguatkan kredibilitas melalui daftar produk yang sudah atau sedang dibangun.'),
           ]),
         ]),
       ]),
@@ -225,6 +259,18 @@ export function App() {
             ]),
           ),
         ),
+      ]),
+      e('section', { className: 'section', id: 'products', key: 'products' }, [
+        e('div', { className: 'section-header', key: 'header' }, [
+          e('p', { className: 'section-label', key: 'label' }, 'Produk & Unit Bisnis'),
+          e('h2', { key: 'title' }, 'Ekosistem produk Somansa yang sekarang ikut kami tampilkan.'),
+          e(
+            'p',
+            { className: 'section-desc', key: 'desc' },
+            'Dari layanan kesehatan, software operasional, edukasi dokter, hingga commerce dan properti, setiap unit dirancang untuk saling memperkuat pertumbuhan ekosistem Somansa.',
+          ),
+        ]),
+        e('div', { className: 'cards-grid cards-grid-3', key: 'grid' }, products.map(renderProduct)),
       ]),
       e('section', { className: 'section', id: 'services', key: 'services' }, [
         e('div', { className: 'section-header', key: 'header' }, [
