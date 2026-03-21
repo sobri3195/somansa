@@ -1,9 +1,12 @@
 :root {
   color-scheme: dark;
   --bg: #07111f;
-  --panel: rgba(10, 20, 36, 0.82);
-  --panel-soft: rgba(255, 255, 255, 0.04);
+  --bg-deep: #040914;
+  --panel: rgba(9, 19, 34, 0.8);
+  --panel-strong: rgba(10, 22, 39, 0.92);
+  --panel-soft: rgba(255, 255, 255, 0.035);
   --line: rgba(148, 163, 184, 0.16);
+  --line-strong: rgba(103, 232, 249, 0.22);
   --text: #eef5ff;
   --muted: #9caec6;
   --primary: #67e8f9;
@@ -27,9 +30,9 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top left, rgba(103, 232, 249, 0.14), transparent 24%),
-    radial-gradient(circle at 85% 16%, rgba(139, 92, 246, 0.18), transparent 24%),
-    linear-gradient(180deg, #07111f 0%, #091526 55%, #050b14 100%);
+    radial-gradient(circle at top left, rgba(103, 232, 249, 0.14), transparent 20%),
+    radial-gradient(circle at 82% 14%, rgba(139, 92, 246, 0.16), transparent 26%),
+    linear-gradient(180deg, var(--bg) 0%, #081425 42%, var(--bg-deep) 100%);
   color: var(--text);
   font-family: Inter, 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
 }
@@ -41,6 +44,14 @@ body::selection {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+ul {
+  margin: 0;
 }
 
 .page-shell {
@@ -65,11 +76,11 @@ a {
 
 .background-glow {
   border-radius: 999px;
-  filter: blur(40px);
+  filter: blur(42px);
 }
 
 .glow-left {
-  top: 70px;
+  top: 80px;
   left: -110px;
   width: 320px;
   height: 320px;
@@ -77,11 +88,11 @@ a {
 }
 
 .glow-right {
-  top: 140px;
-  right: -120px;
-  width: 360px;
-  height: 360px;
-  background: rgba(139, 92, 246, 0.2);
+  top: 160px;
+  right: -110px;
+  width: 380px;
+  height: 380px;
+  background: rgba(139, 92, 246, 0.18);
 }
 
 .hero,
@@ -94,7 +105,7 @@ a {
 }
 
 .hero {
-  padding: 24px 0 36px;
+  padding: 24px 0 44px;
 }
 
 .nav {
@@ -118,6 +129,7 @@ a {
 
 .nav-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 24px;
   color: var(--muted);
   font-size: 0.95rem;
@@ -130,16 +142,15 @@ a {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
   gap: 32px;
-  align-items: center;
-  padding: 76px 0 12px;
+  align-items: start;
+  padding: 88px 0 0;
 }
 
 .hero-badge,
 .section-label,
 .mini-label {
-  margin: 0;
   color: var(--primary);
   font-size: 0.78rem;
   letter-spacing: 0.18em;
@@ -148,39 +159,38 @@ a {
 
 .hero-copy h1,
 .section-header h2,
-.spotlight-card h2,
 .cta-panel h2,
 .showcase-card h3,
 .highlight-card h3,
 .pillar-card h3,
 .roadmap-card h3 {
-  margin: 0;
-  line-height: 1.06;
+  line-height: 1.05;
   letter-spacing: -0.04em;
 }
 
 .hero-copy h1 {
   margin-top: 18px;
-  max-width: 12ch;
-  font-size: clamp(3rem, 5vw, 5.4rem);
+  max-width: 11ch;
+  font-size: clamp(3.1rem, 5vw, 5.5rem);
 }
 
 .hero-desc,
 .section-desc,
-.spotlight-card p,
 .highlight-card p,
 .pillar-card p,
 .roadmap-card p,
 .showcase-list,
 .footer,
-.stat-card span {
+.stat-card span,
+.list-card p,
+.hero-proof p {
   color: var(--muted);
 }
 
 .hero-desc {
-  max-width: 64ch;
-  margin: 22px 0 0;
-  line-height: 1.85;
+  max-width: 66ch;
+  margin-top: 24px;
+  line-height: 1.82;
   font-size: 1.05rem;
 }
 
@@ -189,14 +199,14 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-  margin-top: 32px;
+  margin-top: 34px;
 }
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 52px;
+  min-height: 54px;
   padding: 0 22px;
   border: 1px solid transparent;
   border-radius: 999px;
@@ -220,14 +230,15 @@ a {
 }
 
 .stats-grid,
-.cards-grid {
+.cards-grid,
+.stack-list {
   display: grid;
-  gap: 16px;
+  gap: 18px;
 }
 
 .stats-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 36px;
+  margin-top: 42px;
 }
 
 .cards-grid-3 {
@@ -243,7 +254,7 @@ a {
 .highlight-card,
 .pillar-card,
 .roadmap-card,
-.spotlight-card,
+.list-card,
 .cta-panel {
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
@@ -254,76 +265,122 @@ a {
 .pillar-card,
 .roadmap-card,
 .showcase-card,
-.spotlight-card {
-  padding: 24px;
+.list-card {
+  padding: 26px;
   border-radius: var(--radius-lg);
   background: var(--panel-soft);
   backdrop-filter: blur(14px);
 }
 
+.stat-card {
+  min-height: 100%;
+}
+
 .stat-card strong,
-.roadmap-card span {
+.roadmap-card span,
+.hero-proof span {
   display: block;
   color: var(--text);
   font-weight: 800;
 }
 
 .stat-card strong {
-  font-size: 1.4rem;
+  font-size: 1.08rem;
+  letter-spacing: -0.02em;
 }
 
-.stat-card span {
-  margin-top: 8px;
-  display: block;
-  line-height: 1.6;
+.stat-card span,
+.list-card p,
+.highlight-card p,
+.pillar-card p,
+.roadmap-card p {
+  margin-top: 10px;
+  line-height: 1.7;
 }
 
 .showcase-card {
-  background: linear-gradient(180deg, rgba(10, 20, 36, 0.92), rgba(11, 24, 42, 0.72));
+  background: linear-gradient(180deg, rgba(10, 20, 36, 0.95), rgba(11, 24, 42, 0.78));
+  position: sticky;
+  top: 24px;
 }
 
 .showcase-card h3 {
   margin-top: 16px;
-  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  font-size: clamp(1.9rem, 2.7vw, 2.8rem);
 }
 
 .showcase-list {
-  margin: 22px 0 0;
-  padding-left: 18px;
+  margin-top: 24px;
+  padding-left: 20px;
   line-height: 1.8;
 }
 
+.showcase-list li + li {
+  margin-top: 12px;
+}
+
+.hero-proof {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-proof span {
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-proof p {
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
 .section {
-  padding: 36px 0;
+  padding: 46px 0;
 }
 
 .section-split {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
   gap: 24px;
-  align-items: stretch;
+  align-items: start;
+}
+
+.section-header {
+  max-width: 760px;
 }
 
 .section-header h2,
-.cta-panel h2,
-.spotlight-card h2 {
+.cta-panel h2 {
   margin-top: 14px;
-  font-size: clamp(2rem, 3vw, 3rem);
+  font-size: clamp(2rem, 3vw, 3.2rem);
 }
 
-.section-desc,
-.spotlight-card p,
-.highlight-card p,
-.pillar-card p,
-.roadmap-card p {
+.section-desc {
   margin-top: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 .highlight-card h3,
 .pillar-card h3,
 .roadmap-card h3 {
-  font-size: 1.35rem;
+  font-size: 1.34rem;
+}
+
+.service-card h3 {
+  margin-top: 12px;
+}
+
+.pillar-card,
+.highlight-card,
+.roadmap-card,
+.list-card {
+  min-height: 100%;
+}
+
+.list-card {
+  background: linear-gradient(180deg, rgba(10, 20, 36, 0.86), rgba(10, 20, 36, 0.6));
 }
 
 .roadmap-card span {
@@ -338,9 +395,10 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px;
+  padding: 36px;
   border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(10, 20, 36, 0.95), rgba(18, 31, 54, 0.8));
+  background: linear-gradient(135deg, rgba(10, 20, 36, 0.98), rgba(18, 31, 54, 0.86));
+  border-color: var(--line-strong);
 }
 
 .footer {
@@ -357,6 +415,10 @@ a {
   .stats-grid,
   .cta-panel {
     grid-template-columns: 1fr;
+  }
+
+  .showcase-card {
+    position: static;
   }
 
   .cta-panel {
@@ -376,12 +438,11 @@ a {
   }
 
   .nav-links {
-    flex-wrap: wrap;
     gap: 14px;
   }
 
   .hero-grid {
-    padding-top: 46px;
+    padding-top: 54px;
   }
 
   .hero-copy h1 {
@@ -393,8 +454,12 @@ a {
   .highlight-card,
   .pillar-card,
   .roadmap-card,
-  .spotlight-card,
+  .list-card,
   .cta-panel {
     padding: 22px;
+  }
+
+  .section {
+    padding: 34px 0;
   }
 }
