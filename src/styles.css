@@ -171,6 +171,50 @@ button { font: inherit; }
 .hero-lead { color: var(--muted); line-height: 1.85; max-width: 60ch; margin-top: 1.15rem; }
 .hero-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.6rem; }
 
+.metric-row {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.metric-item {
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+.metric-item strong {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+.metric-item span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.process-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.process-card {
+  position: relative;
+  padding-top: 3rem;
+}
+.step-index {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  color: #d6f2ff;
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+}
+
+
 .hero-panel { position: relative; min-height: 480px; display: grid; place-items: center; }
 .panel-card,
 .card {
@@ -329,7 +373,7 @@ button { font: inherit; }
 .sheet-links a:hover { border-color: var(--line); background: rgba(255,255,255,0.03); }
 
 @media (max-width: 1024px) {
-  .solution-grid { grid-template-columns: 1fr; }
+  .solution-grid, .process-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 900px) {
   .hero-grid, .product-grid, .why-grid, .footer-grid, .logo-row { grid-template-columns: 1fr 1fr; }
@@ -340,7 +384,7 @@ button { font: inherit; }
   .section { padding: 3.8rem 0; }
   .nav-links, .nav-actions .btn { display: none; }
   .menu-btn { display: inline-grid; }
-  .hero-grid, .product-grid, .why-grid, .footer-grid, .logo-row { grid-template-columns: 1fr; }
+  .hero-grid, .product-grid, .why-grid, .footer-grid, .logo-row, .metric-row, .process-grid { grid-template-columns: 1fr; }
   .hero-copy h1 { max-width: 100%; font-size: clamp(2rem, 10vw, 3rem); }
   .hero-panel { min-height: 380px; }
 }

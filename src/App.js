@@ -4,128 +4,127 @@ const { useEffect, useMemo, useState } = React;
 const e = React.createElement;
 
 const navLinks = [
-  { label: 'Fokus', href: '#fokus' },
-  { label: 'Produk', href: '#produk' },
   { label: 'Solusi', href: '#solusi' },
+  { label: 'Layanan', href: '#layanan' },
+  { label: 'Proses', href: '#proses' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontak', href: '#kontak' },
 ];
 
-const products = [
+const metrics = [
+  { value: '20+', label: 'Produk & modul digital' },
+  { value: '5', label: 'Domain layanan utama' },
+  { value: '99.9%', label: 'Target ketersediaan sistem' },
+];
+
+const solutions = [
   {
-    title: 'AI Radiologi & Lab',
-    desc: 'Analisis berbasis AI untuk membantu triase awal, asistensi pembacaan, dan alur kerja lab yang lebih cepat.',
-    badge: 'Terintegrasi',
-    icon: 'scan',
-  },
-  {
-    title: 'SIMRS & SIMKlinik',
-    desc: 'Operasional klinik dan rumah sakit dari pendaftaran, rekam medis, billing, hingga pelaporan dalam satu sistem.',
-    badge: 'Scalable',
+    title: 'Health Information System',
+    desc: 'Platform SIMRS/SIMKlinik modular untuk operasional klinik, rumah sakit, dan jaringan layanan kesehatan.',
+    badge: 'Core Platform',
     icon: 'building',
   },
   {
-    title: 'HomeCare',
-    desc: 'Manajemen layanan kunjungan pasien dengan penjadwalan, monitoring, dan komunikasi tim medis yang rapi.',
-    badge: 'Custom',
+    title: 'AI Clinical Support',
+    desc: 'Asistensi AI untuk radiologi dan alur laboratorium agar proses triase serta interpretasi awal lebih efisien.',
+    badge: 'AI Engine',
+    icon: 'scan',
+  },
+  {
+    title: 'HomeCare Orchestration',
+    desc: 'Penjadwalan kunjungan, koordinasi tenaga medis, dan pemantauan layanan pasien dari satu dashboard.',
+    badge: 'Field Ops',
     icon: 'home',
   },
   {
-    title: 'Apotek',
-    desc: 'Sistem apotek untuk inventori, resep, penjualan, dan integrasi ke layanan klinik agar data tetap sinkron.',
-    badge: 'Terintegrasi',
+    title: 'Pharmacy & Inventory',
+    desc: 'Manajemen resep, stok, distribusi, dan pelaporan farmasi yang terhubung ke data layanan pasien.',
+    badge: 'Integrated',
     icon: 'pill',
   },
   {
-    title: 'Software House',
-    desc: 'Pengembangan produk digital kesehatan secara end-to-end, dari discovery, UI/UX, engineering, hingga maintenance.',
-    badge: 'Custom',
+    title: 'Custom Product Development',
+    desc: 'End-to-end product development untuk inisiatif digital health dari discovery, UX, engineering, hingga support.',
+    badge: 'Professional Service',
     icon: 'code',
   },
   {
-    title: 'Edukasi Dokter',
-    desc: 'Platform pembelajaran, bank soal, dan pengelolaan materi untuk program edukasi tenaga kesehatan modern.',
-    badge: 'Scalable',
+    title: 'Medical Education Platform',
+    desc: 'Sistem pembelajaran tenaga kesehatan: bank soal, kurikulum digital, dan tracking progres peserta.',
+    badge: 'Learning',
     icon: 'graduation',
   },
 ];
 
-const tabsData = {
-  Klinik: {
-    useCase: 'Sinkronisasi pendaftaran, antrean, rekam medis, farmasi, dan laporan operasional harian.',
-    benefits: ['Waktu administrasi lebih singkat', 'Data pasien lebih konsisten', 'Koordinasi lintas tim lebih rapi'],
-    features: ['SIMKlinik terintegrasi', 'Laporan operasional', 'Manajemen antrean & jadwal'],
-  },
-  Dokter: {
-    useCase: 'Akses informasi klinis lebih cepat untuk mendukung keputusan medis dan tindak lanjut pasien.',
-    benefits: ['Akses riwayat pasien lebih cepat', 'Kolaborasi dengan lab lebih efisien', 'Dokumentasi klinis lebih tertata'],
-    features: ['Ringkasan pasien', 'Integrasi hasil lab', 'Template catatan medis'],
-  },
-  Pasien: {
-    useCase: 'Pengalaman layanan yang lebih nyaman dari booking, konsultasi, hingga pemantauan berkelanjutan.',
-    benefits: ['Alur layanan lebih jelas', 'Komunikasi perawatan lebih mudah', 'Kontinuitas layanan lebih baik'],
-    features: ['Jadwal dan pengingat', 'Layanan HomeCare', 'Riwayat layanan terpusat'],
-  },
-  Lab: {
-    useCase: 'Pengelolaan order pemeriksaan dan distribusi hasil yang terhubung langsung ke sistem fasilitas kesehatan.',
-    benefits: ['Proses order lebih cepat', 'Minim input berulang', 'Distribusi hasil lebih aman dan rapi'],
-    features: ['Manajemen order', 'Status proses pemeriksaan', 'Integrasi hasil ke SIMRS/SIMKlinik'],
-  },
-};
-
-const whyItems = [
+const servicePillars = [
   {
-    title: 'Implementasi cepat',
-    desc: 'Struktur produk disiapkan agar adopsi lebih ringkas untuk tim operasional dan klinis.',
-    icon: 'bolt',
+    title: 'Strategi & Discovery',
+    desc: 'Audit proses bisnis, pemetaan use case, dan prioritas roadmap implementasi.',
+    icon: 'search',
   },
   {
-    title: 'Modular',
-    desc: 'Mulai dari kebutuhan inti, lalu tambah modul sesuai pertumbuhan layanan Anda.',
+    title: 'Implementasi Terstruktur',
+    desc: 'Deployment bertahap dengan standar kualitas, dokumentasi, dan kontrol risiko.',
     icon: 'layers',
   },
   {
-    title: 'Integrasi lebih rapi',
-    desc: 'Arsitektur data dirancang untuk mengurangi silo antar aplikasi kesehatan.',
+    title: 'Data & Integrasi',
+    desc: 'Sinkronisasi lintas aplikasi, migrasi data, dan interoperabilitas sistem existing.',
     icon: 'link',
   },
   {
-    title: 'Siap scale',
-    desc: 'Fondasi teknis dibangun agar stabil saat volume pasien dan layanan meningkat.',
-    icon: 'expand',
-  },
-  {
-    title: 'Fokus industri kesehatan',
-    desc: 'Pendekatan produk berangkat dari alur kerja nyata di klinik, dokter, pasien, dan lab.',
-    icon: 'heart',
-  },
-  {
-    title: 'Dukungan custom',
-    desc: 'Tim kami membantu penyesuaian fitur agar sejalan dengan proses dan target institusi.',
-    icon: 'wrench',
+    title: 'Enablement Tim',
+    desc: 'Training pengguna, playbook operasional, dan pendampingan untuk adopsi yang berkelanjutan.',
+    icon: 'users',
   },
 ];
 
+const processSteps = [
+  { title: 'Assessment', desc: 'Menilai kebutuhan organisasi, kesiapan data, dan target KPI utama.' },
+  { title: 'Blueprint', desc: 'Merancang arsitektur solusi, alur implementasi, serta prioritas modul.' },
+  { title: 'Execution', desc: 'Pengembangan/implementasi bertahap dengan quality assurance terukur.' },
+  { title: 'Scale & Support', desc: 'Optimasi performa, monitoring, dan ekspansi modul sesuai pertumbuhan.' },
+];
+
+const tabsData = {
+  Klinik: {
+    useCase: 'Menyatukan pendaftaran, rekam medis, farmasi, billing, dan laporan operasional dalam satu alur kerja.',
+    benefits: ['Administrasi lebih efisien', 'Koordinasi antar tim meningkat', 'Pelaporan lebih cepat dan akurat'],
+    features: ['SIMKlinik terintegrasi', 'Dashboard operasional', 'Manajemen jadwal & antrean'],
+  },
+  Dokter: {
+    useCase: 'Menyediakan konteks klinis yang relevan agar pengambilan keputusan medis lebih tepat waktu.',
+    benefits: ['Akses informasi pasien lebih cepat', 'Dokumentasi klinis lebih rapi', 'Kolaborasi lintas unit lebih lancar'],
+    features: ['Ringkasan riwayat pasien', 'Integrasi hasil lab', 'Template catatan medis'],
+  },
+  Pasien: {
+    useCase: 'Meningkatkan pengalaman layanan dari booking, konsultasi, hingga tindak lanjut perawatan.',
+    benefits: ['Alur layanan lebih jelas', 'Komunikasi perawatan lebih baik', 'Kontinuitas layanan terjaga'],
+    features: ['Jadwal & pengingat', 'Layanan HomeCare', 'Riwayat layanan terpadu'],
+  },
+  Lab: {
+    useCase: 'Mempercepat pengelolaan order dan distribusi hasil pemeriksaan secara aman ke unit terkait.',
+    benefits: ['Order lebih terstruktur', 'Minim input berulang', 'Waktu distribusi hasil lebih singkat'],
+    features: ['Tracking order', 'Status pemeriksaan real-time', 'Integrasi hasil ke SIMRS/SIMKlinik'],
+  },
+};
+
 const faqItems = [
   {
-    q: 'Apakah bisa integrasi dengan sistem lama?',
-    a: 'Bisa. Kami melakukan asesmen sistem existing terlebih dahulu, lalu menyiapkan skema integrasi bertahap agar transisi tetap aman.',
+    q: 'Apakah Somansa dapat menyesuaikan dengan sistem yang sudah berjalan?',
+    a: 'Bisa. Kami memulai dengan asesmen integrasi dan menyusun rencana transisi bertahap agar operasional tetap stabil.',
   },
   {
-    q: 'Berapa lama implementasi?',
-    a: 'Durasi bergantung pada cakupan modul dan kesiapan data. Kami biasanya memulai dari kebutuhan prioritas agar hasil bisa dirasakan lebih cepat.',
+    q: 'Berapa lama implementasi umumnya?',
+    a: 'Durasi tergantung kompleksitas modul, jumlah integrasi, dan kesiapan data. Pendekatan kami berfokus pada quick wins terlebih dahulu.',
   },
   {
-    q: 'Apakah bisa custom / white-label?',
-    a: 'Bisa. Somansa menyediakan opsi pengembangan custom termasuk penyesuaian brand, alur kerja, dan fitur spesifik institusi.',
+    q: 'Apakah tersedia pengembangan custom dan white-label?',
+    a: 'Tersedia. Tim Somansa mendukung penyesuaian brand, alur kerja, serta fitur spesifik sesuai kebutuhan organisasi.',
   },
   {
-    q: 'Bagaimana keamanan data?',
-    a: 'Kami menerapkan praktik keamanan berlapis pada akses, infrastruktur, dan tata kelola data sesuai kebutuhan operasional organisasi kesehatan.',
-  },
-  {
-    q: 'Apakah tersedia training dan support?',
-    a: 'Tersedia. Kami menyiapkan onboarding, pelatihan pengguna, dan dukungan teknis pasca implementasi agar tim lebih siap menjalankan sistem.',
+    q: 'Bagaimana dukungan pasca go-live?',
+    a: 'Kami menyediakan support berkelanjutan, monitoring sistem, pelatihan lanjutan, dan evaluasi periodik berbasis KPI.',
   },
 ];
 
@@ -137,15 +136,13 @@ function Icon({ name }) {
     pill: 'M10.5 4.5a4.24 4.24 0 0 1 6 6l-6 6a4.24 4.24 0 1 1-6-6zM8 13h8',
     code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M14 4l-4 16',
     graduation: 'M3 9l9-4 9 4-9 4-9-4zm3 4v4c0 1.5 3 3 6 3s6-1.5 6-3v-4',
-    bolt: 'M13 2L4 14h6l-1 8 9-12h-6z',
-    layers: 'M12 3l9 5-9 5-9-5 9-5zm0 7l9 5-9 5-9-5',
-    link: 'M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 1 1-7-7l1-1',
-    expand: 'M8 3H3v5M16 3h5v5M21 16v5h-5M3 16v5h5',
-    heart: 'M12 21s-7-4.3-9-8.9C1.6 8.5 4.2 5 7.7 5c2 0 3.4 1 4.3 2.3C12.9 6 14.3 5 16.3 5 19.8 5 22.4 8.5 21 12.1 19 16.7 12 21 12 21z',
-    wrench: 'M14.7 6.3a4 4 0 0 0-5 5l-5.6 5.6a2 2 0 1 0 2.8 2.8l5.6-5.6a4 4 0 0 0 5-5l-2.2 2.2-2.8-2.8z',
     check: 'M20 6L9 17l-5-5',
     menu: 'M4 6h16M4 12h16M4 18h16',
     x: 'M6 6l12 12M18 6L6 18',
+    link: 'M10 13a5 5 0 0 1 0-7l2-2a5 5 0 0 1 7 7l-1 1M14 11a5 5 0 0 1 0 7l-2 2a5 5 0 1 1-7-7l1-1',
+    layers: 'M12 3l9 5-9 5-9-5 9-5zm0 7l9 5-9 5-9-5',
+    users: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+    search: 'M11 19a8 8 0 1 1 5.3-14l4.7 4.7-1.4 1.4-4.7-4.7A8 8 0 0 1 11 19z',
   };
 
   return e(
@@ -171,22 +168,8 @@ function Sheet({ open, onClose }) {
         e('strong', { key: 'title' }, 'Navigasi'),
         e('button', { className: 'icon-btn', onClick: onClose, 'aria-label': 'Tutup menu', key: 'close' }, e(Icon, { name: 'x' })),
       ]),
-      e(
-        'div',
-        { className: 'sheet-links', key: 'links' },
-        navLinks.map((item) =>
-          e(
-            'a',
-            {
-              href: item.href,
-              key: item.href,
-              onClick: onClose,
-            },
-            item.label,
-          ),
-        ),
-      ),
-      e(Button, { href: '#kontak', variant: 'primary', key: 'cta' }, 'Hubungi Kami'),
+      e('div', { className: 'sheet-links', key: 'links' }, navLinks.map((item) => e('a', { href: item.href, key: item.href, onClick: onClose }, item.label))),
+      e(Button, { href: '#kontak', variant: 'primary', key: 'cta' }, 'Jadwalkan Konsultasi'),
     ]),
   ]);
 }
@@ -198,7 +181,7 @@ export function App() {
   const [activeFaq, setActiveFaq] = useState(null);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 16);
+    const onScroll = () => setIsScrolled(window.scrollY > 18);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -209,64 +192,69 @@ export function App() {
   return e('div', { className: 'page-shell' }, [
     e('header', { className: `header ${isScrolled ? 'header-scrolled' : ''}`, key: 'header' },
       e('div', { className: 'container nav-wrap' }, [
-        e('a', { href: '#top', className: 'brand', key: 'brand' }, [
-          e('span', { className: 'brand-mark', key: 'mark' }, 'S'),
-          e('span', { key: 'txt' }, 'SOMANSA'),
-        ]),
+        e('a', { href: '#top', className: 'brand', key: 'brand' }, [e('span', { className: 'brand-mark' }, 'S'), e('span', {}, 'SOMANSA')]),
         e('nav', { className: 'nav-links', key: 'desktop-nav' }, navLinks.map((item) => e('a', { href: item.href, key: item.href }, item.label))),
         e('div', { className: 'nav-actions', key: 'actions' }, [
-          e(Button, { href: '#kontak', variant: 'primary', key: 'hubungi' }, 'Hubungi Kami'),
+          e(Button, { href: '#kontak', variant: 'primary', key: 'hubungi' }, 'Jadwalkan Konsultasi'),
           e('button', { className: 'icon-btn menu-btn', 'aria-label': 'Buka menu', onClick: () => setMenuOpen(true), key: 'menu' }, e(Icon, { name: 'menu' })),
         ]),
       ]),
     ),
 
     e('main', { id: 'top' }, [
-      e('section', { id: 'fokus', className: 'section hero', key: 'hero' },
+      e('section', { className: 'section hero', key: 'hero' },
         e('div', { className: 'container hero-grid' }, [
           e('div', { className: 'hero-copy', key: 'copy' }, [
-            e(Badge, { key: 'badge' }, 'Ekosistem Digital Kesehatan'),
-            e('h1', { key: 'title' }, 'Satu ekosistem produk kesehatan untuk operasional yang lebih terhubung.'),
-            e('p', { className: 'hero-lead', key: 'lead' }, 'Somansa membantu klinik, dokter, pasien, dan lab menjalankan layanan modern dengan alur yang rapi, jelas, dan siap berkembang.'),
+            e(Badge, { key: 'badge' }, 'Enterprise Healthtech Partner'),
+            e('h1', { key: 'title' }, 'Landing page baru Somansa: lebih profesional, lebih kredibel, dan siap konversi.'),
+            e('p', { className: 'hero-lead', key: 'lead' }, 'Kami membantu institusi kesehatan membangun layanan digital modern melalui kombinasi platform terintegrasi, implementasi terstruktur, dan dukungan jangka panjang.'),
             e('div', { className: 'hero-actions', key: 'hero-actions' }, [
-              e(Button, { href: '#produk', variant: 'primary', key: 'produk' }, 'Lihat Produk'),
-              e(Button, { href: 'mailto:hello@somansa.id', variant: 'secondary', key: 'email' }, 'Konsultasi / Email Kami'),
+              e(Button, { href: '#solusi', variant: 'primary', key: 'produk' }, 'Lihat Solusi'),
+              e(Button, { href: '#proses', variant: 'secondary', key: 'proses' }, 'Pelajari Proses'),
             ]),
+            e('div', { className: 'metric-row', key: 'metrics' }, metrics.map((item) => e('div', { className: 'metric-item', key: item.label }, [e('strong', {}, item.value), e('span', {}, item.label)]))),
           ]),
           e('div', { className: 'hero-panel', key: 'panel' }, [
             e('div', { className: 'panel-glow glow-a', 'aria-hidden': 'true', key: 'ga' }),
             e('div', { className: 'panel-glow glow-b', 'aria-hidden': 'true', key: 'gb' }),
             e('article', { className: 'panel-card', key: 'card' }, [
-              e('p', { className: 'mini-label', key: 'ml' }, 'Fokus Somansa'),
-              e('h2', { key: 'h2' }, 'Produk digital yang siap dipakai dan mudah dikembangkan.'),
-              e('div', { className: 'focus-list', key: 'list' }, [
-                e('div', { className: 'focus-item', key: 'f1' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Cepat diimplementasikan'), e('span', {}, 'Onboarding lebih ringkas untuk tim Anda.')])]),
-                e('div', { className: 'focus-item', key: 'f2' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Sistem saling terhubung'), e('span', {}, 'Data lintas layanan tetap sinkron.')])]),
-                e('div', { className: 'focus-item', key: 'f3' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Siap berkembang'), e('span', {}, 'Modular untuk kebutuhan tahap berikutnya.')])]),
+              e('p', { className: 'mini-label' }, 'Operational Impact'),
+              e('h2', {}, 'Framework implementasi yang jelas untuk eksekusi cepat.'),
+              e('div', { className: 'focus-list' }, [
+                e('div', { className: 'focus-item', key: 'f1' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Blueprint berbasis prioritas'), e('span', {}, 'Mulai dari area berdampak tinggi dengan indikator keberhasilan terukur.')])]),
+                e('div', { className: 'focus-item', key: 'f2' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Integrasi sistem existing'), e('span', {}, 'Pendekatan modular agar transisi tetap aman dan minim gangguan.')])]),
+                e('div', { className: 'focus-item', key: 'f3' }, [e(Icon, { name: 'check' }), e('div', {}, [e('strong', {}, 'Governance & support'), e('span', {}, 'Dokumentasi, training, dan support berkelanjutan untuk stabilitas operasional.')])]),
               ]),
             ]),
           ]),
         ]),
       ),
 
-      e('section', { id: 'produk', className: 'section', key: 'produk-section' },
+      e('section', { id: 'solusi', className: 'section', key: 'solusi' },
         e('div', { className: 'container' }, [
-          e('div', { className: 'section-head', key: 'head' }, [e(Badge, {}, 'Produk'), e('h2', {}, 'Yang kami bangun'), e('p', {}, 'Portofolio Somansa dirancang agar tiap solusi bisa berdiri sendiri sekaligus saling terintegrasi.')]),
-          e('div', { className: 'product-grid', key: 'grid' }, products.map((item) =>
+          e('div', { className: 'section-head' }, [e(Badge, {}, 'Solusi'), e('h2', {}, 'Portofolio produk untuk ekosistem kesehatan modern'), e('p', {}, 'Setiap produk dapat berdiri sendiri maupun terhubung sebagai platform terpadu, sehingga organisasi bisa bertumbuh secara bertahap tanpa mengorbankan konsistensi data.')]),
+          e('div', { className: 'product-grid' }, solutions.map((item) =>
             e('article', { className: 'card product-card', key: item.title }, [
-              e('div', { className: 'card-head', key: 'ch' }, [e('span', { className: 'icon-wrap' }, e(Icon, { name: item.icon })), e('span', { className: 'chip' }, item.badge)]),
-              e('h3', { key: 't' }, item.title),
-              e('p', { key: 'd' }, item.desc),
+              e('div', { className: 'card-head' }, [e('span', { className: 'icon-wrap' }, e(Icon, { name: item.icon })), e('span', { className: 'chip' }, item.badge)]),
+              e('h3', {}, item.title),
+              e('p', {}, item.desc),
             ]),
           )),
         ]),
       ),
 
-      e('section', { id: 'solusi', className: 'section', key: 'solusi' },
+      e('section', { id: 'layanan', className: 'section', key: 'layanan' },
         e('div', { className: 'container' }, [
-          e('div', { className: 'section-head', key: 'head' }, [e(Badge, {}, 'Solusi Berdasarkan Pengguna'), e('h2', {}, 'Disesuaikan untuk peran yang berbeda'), e('p', {}, 'Setiap peran memiliki kebutuhan operasional yang unik. Pilih peran untuk melihat use case, manfaat, dan fitur relevan.')]),
-          e('div', { className: 'tabs', role: 'tablist', 'aria-label': 'Solusi pengguna', key: 'tabs' }, Object.keys(tabsData).map((tab) => e('button', { className: `tab ${tab === activeTab ? 'active' : ''}`, key: tab, onClick: () => setActiveTab(tab), role: 'tab', 'aria-selected': String(tab === activeTab) }, tab))),
-          e('article', { className: 'card tabs-panel', key: 'panel' }, [
+          e('div', { className: 'section-head compact' }, [e(Badge, {}, 'Layanan Profesional'), e('h2', {}, 'Pendampingan menyeluruh dari strategi hingga scale')]),
+          e('div', { className: 'why-grid' }, servicePillars.map((item) => e('article', { className: 'card why-card', key: item.title }, [e('span', { className: 'icon-wrap' }, e(Icon, { name: item.icon })), e('h3', {}, item.title), e('p', {}, item.desc)]))),
+        ]),
+      ),
+
+      e('section', { className: 'section', key: 'use-case' },
+        e('div', { className: 'container' }, [
+          e('div', { className: 'section-head compact' }, [e(Badge, {}, 'Use Case'), e('h2', {}, 'Disesuaikan untuk peran pengguna yang berbeda')]),
+          e('div', { className: 'tabs', role: 'tablist', 'aria-label': 'Solusi pengguna' }, Object.keys(tabsData).map((tab) => e('button', { className: `tab ${tab === activeTab ? 'active' : ''}`, key: tab, onClick: () => setActiveTab(tab), role: 'tab', 'aria-selected': String(tab === activeTab) }, tab))),
+          e('article', { className: 'card tabs-panel' }, [
             e('div', { className: 'solution-grid' }, [
               e('div', {}, [e('h3', {}, activeTab), e('p', {}, activeSolution.useCase)]),
               e('div', {}, [e('h4', {}, 'Manfaat utama'), e('ul', { className: 'list' }, activeSolution.benefits.map((b) => e('li', { key: b }, b)))]),
@@ -276,27 +264,17 @@ export function App() {
         ]),
       ),
 
-      e('section', { className: 'section', key: 'why' },
+      e('section', { id: 'proses', className: 'section', key: 'proses' },
         e('div', { className: 'container' }, [
-          e('div', { className: 'section-head', key: 'head' }, [e(Badge, {}, 'Why Somansa'), e('h2', {}, 'Dibangun untuk kebutuhan kesehatan yang nyata')]),
-          e('div', { className: 'why-grid', key: 'wg' }, whyItems.map((item) => e('article', { className: 'card why-card', key: item.title }, [e('span', { className: 'icon-wrap' }, e(Icon, { name: item.icon })), e('h3', {}, item.title), e('p', {}, item.desc)]))),
-        ]),
-      ),
-
-      e('section', { className: 'section trust', key: 'trust' },
-        e('div', { className: 'container' }, [
-          e('div', { className: 'section-head compact', key: 'head' }, [e(Badge, {}, 'Kepercayaan & Kredibilitas'), e('h2', {}, 'Dirancang untuk kolaborasi jangka panjang')]),
-          e('div', { className: 'card trust-card', key: 'tc' }, [
-            e('p', {}, 'Somansa berfokus pada kemitraan implementatif bersama institusi kesehatan, tim dokter, dan unit operasional digital.'),
-            e('div', { className: 'logo-row' }, ['Mitra Klinik', 'Jaringan Dokter', 'Tim Lab', 'Unit Operasional'].map((item) => e('span', { key: item }, item))),
-          ]),
+          e('div', { className: 'section-head compact' }, [e(Badge, {}, 'Delivery Process'), e('h2', {}, 'Metodologi implementasi yang transparan dan terukur')]),
+          e('div', { className: 'process-grid' }, processSteps.map((item, idx) => e('article', { className: 'card process-card', key: item.title }, [e('span', { className: 'step-index' }, `0${idx + 1}`), e('h3', {}, item.title), e('p', {}, item.desc)]))),
         ]),
       ),
 
       e('section', { id: 'faq', className: 'section', key: 'faq' },
         e('div', { className: 'container' }, [
-          e('div', { className: 'section-head compact', key: 'head' }, [e(Badge, {}, 'FAQ'), e('h2', {}, 'Pertanyaan yang sering ditanyakan')]),
-          e('div', { className: 'accordion', key: 'acc' }, faqItems.map((item, idx) => {
+          e('div', { className: 'section-head compact' }, [e(Badge, {}, 'FAQ'), e('h2', {}, 'Pertanyaan umum seputar kolaborasi dengan Somansa')]),
+          e('div', { className: 'accordion' }, faqItems.map((item, idx) => {
             const open = idx === activeFaq;
             return e('article', { className: `card faq-item ${open ? 'open' : ''}`, key: item.q }, [
               e('button', { className: 'faq-trigger', onClick: () => setActiveFaq(open ? null : idx), 'aria-expanded': String(open) }, [e('span', {}, item.q), e('span', { className: 'faq-plus' }, open ? '−' : '+')]),
@@ -309,12 +287,12 @@ export function App() {
       e('section', { id: 'kontak', className: 'section', key: 'cta' },
         e('div', { className: 'container' }, [
           e('article', { className: 'card cta-card' }, [
-            e(Badge, {}, 'Kolaborasi'),
-            e('h2', {}, 'Bangun layanan kesehatan digital yang lebih siap untuk masa depan.'),
-            e('p', {}, 'Diskusikan kebutuhan organisasi Anda bersama tim Somansa untuk strategi implementasi yang tepat.'),
+            e(Badge, {}, 'Next Step'),
+            e('h2', {}, 'Butuh landing page dan positioning produk yang lebih enterprise?'),
+            e('p', {}, 'Kami siap membantu Anda merancang strategi digital, mengimplementasikan platform, dan meningkatkan pengalaman layanan secara menyeluruh.'),
             e('div', { className: 'hero-actions' }, [
-              e(Button, { href: 'mailto:hello@somansa.id', variant: 'primary' }, 'Hubungi Somansa'),
-              e(Button, { href: 'mailto:hello@somansa.id?subject=Jadwalkan%20Diskusi', variant: 'secondary' }, 'Jadwalkan Diskusi'),
+              e(Button, { href: 'mailto:hello@somansa.id', variant: 'primary' }, 'Hubungi Tim Somansa'),
+              e(Button, { href: 'mailto:hello@somansa.id?subject=Request%20Company%20Deck', variant: 'secondary' }, 'Minta Company Deck'),
             ]),
           ]),
         ]),
@@ -325,7 +303,7 @@ export function App() {
       e('div', { className: 'container footer-grid' }, [
         e('div', { key: 'desc' }, [
           e('a', { className: 'brand footer-brand', href: '#top' }, [e('span', { className: 'brand-mark' }, 'S'), e('span', {}, 'SOMANSA')]),
-          e('p', {}, 'Brand health-tech yang membangun ekosistem produk digital untuk klinik, dokter, pasien, dan laboratorium.'),
+          e('p', {}, 'Healthtech partner untuk transformasi layanan kesehatan yang terintegrasi, aman, dan berkelanjutan.'),
         ]),
         e('div', { key: 'links' }, [e('h4', {}, 'Navigasi'), e('div', { className: 'footer-links' }, navLinks.map((item) => e('a', { href: item.href, key: item.href }, item.label)))]),
         e('div', { key: 'contact' }, [e('h4', {}, 'Kontak'), e('a', { href: 'mailto:hello@somansa.id', className: 'footer-email' }, 'hello@somansa.id')]),
